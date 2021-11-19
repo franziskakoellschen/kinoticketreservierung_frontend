@@ -3,11 +3,11 @@ import './App.css';
 import axios from 'axios';
 
 function onButtonClick() {
-  alert(process.env.DEPLOYMENT_STAGE);
+  
   var backendUrl;
-  if (process.env.DEPLOYMENT_STAGE == "DEV") {
+  if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
     backendUrl = "https://kinoticket-backend-dev.herokuapp.com/";
-  } else if (process.env.DEPLOYMENT_STAGE == "PROD") {
+  } else if (process.env.REACT_APP_DEPLOYMENT_STAGE === "PROD") {
     backendUrl = "https://kinoticket-backend-prod.herokuapp.com/";
   } else {
     backendUrl = "http://localhost:8080/";
