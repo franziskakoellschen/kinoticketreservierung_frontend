@@ -1,0 +1,48 @@
+name: NodeJS CI
+
+on:
+  push:
+    branches:
+     - main
+     - dev
+  pull_request:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2.4.1
+    - run: |
+        npm install
+        npm install react-scripts
+    - run: npm run build
+      env:
+        CI: false
+
+  Deployment:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+    needs: TestsAndCoverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Heroku Deploy Prod
+        if: github.ref == 'refs/heads/main'
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: 8a20555b-903b-4259-a8d1-77b660c63e4c
+          heroku_email: kinoticketbuchung@gmail.com
+          heroku_app_name: kinoticket-frontend-prod
+          buildpack: heroku/java
+
+      - name: Heroku Deploy Dev
+        if: github.ref == 'refs/heads/dev'
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: 8a20555b-903b-4259-a8d1-77b660c63e4c
+          heroku_email: kinoticketbuchung@gmail.com
+          heroku_app_name: kinoticket-frontend-dev
+          buildpack: heroku/nodejs
