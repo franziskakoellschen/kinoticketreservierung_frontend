@@ -1,4 +1,4 @@
-name: Build JavaScript
+name: NodeJS CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -20,3 +20,41 @@ jobs:
     - run: npm run build
       env:
         CI: false
+
+  DeployProd:
+    if: github.ref == 'refs/heads/main'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: 
+      name: kinoticket-frontend-prod 
+      url: https://kinoticket-frontend-prod.herokuapp.com/
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Heroku Deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: 8a20555b-903b-4259-a8d1-77b660c63e4c
+          heroku_email: kinoticketbuchung@gmail.com
+          heroku_app_name: kinoticket-frontend-prod
+          buildpack: heroku/nodejs
+
+  DeployDev:
+    if: github.ref == 'refs/heads/dev'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment:
+      name: kinoticket-frontend-dev 
+      url: https://kinoticket-frontend-dev.herokuapp.com/
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Heroku Deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: 8a20555b-903b-4259-a8d1-77b660c63e4c
+          heroku_email: kinoticketbuchung@gmail.com
+          heroku_app_name: kinoticket-frontend-dev
+          buildpack: heroku/nodejs
