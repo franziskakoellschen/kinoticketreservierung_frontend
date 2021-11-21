@@ -21,25 +21,33 @@ jobs:
       env:
         CI: false
 
-  Deployment:
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
-    needs: TestsAndCoverage
+  DeployProd:
+    if: github.ref == 'refs/heads/main'
+    needs: Build
     runs-on: ubuntu-latest
+    environment: kinoticket-frontend-prod 
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Heroku Deploy Prod
-        if: github.ref == 'refs/heads/main'
+      - name: Heroku Deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: 8a20555b-903b-4259-a8d1-77b660c63e4c
           heroku_email: kinoticketbuchung@gmail.com
           heroku_app_name: kinoticket-frontend-prod
-          buildpack: heroku/java
+          buildpack: heroku/nodejs
 
-      - name: Heroku Deploy Dev
-        if: github.ref == 'refs/heads/dev'
+  DeployDev:
+    if: github.ref == 'refs/heads/dev'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: kinoticket-frontend-dev 
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Heroku Deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: 8a20555b-903b-4259-a8d1-77b660c63e4c
