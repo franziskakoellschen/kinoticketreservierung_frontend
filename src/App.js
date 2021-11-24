@@ -1,6 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './pages';
+import Program from './pages/program';
+import Movie from './pages/movie';
+import Signup from './pages/singup';
+import Signin from './pages/signin';
+import Booking from './pages/booking';
 
 function onButtonClick() {
   
@@ -25,15 +32,17 @@ function onButtonClick() {
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={onButtonClick}>Trigger backend</button>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+        <Route path='/program' exact element={<Program />} />
+        <Route path='/movie' exact element={<Movie />} />
+        <Route path='/sign-up' exact element={<Signup />} />
+        <Route path='/signin' exact element={<Signin />} />
+        <Route path='/booking' exact element={<Booking />} />
+      </Routes>
+    </Router>
   );
 }
 
