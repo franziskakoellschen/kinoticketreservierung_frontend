@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { Movie } from '../components/Movie/Movie.js';
 
-const Movie = () => {
+const MoviePage = () => {
   const [data, setData] = useState([]);
 
   useEffect(()=>{
@@ -30,7 +30,7 @@ const Movie = () => {
         }
         {
           data && data.map((movie) =>
-            <p>{movie.title}</p>
+            <Movie movie={movie} />
           )
         }
       </div>
@@ -38,4 +38,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default MoviePage;
