@@ -1,7 +1,8 @@
-import styles from './Movie.css';
+import './Movie.css';
 
 import React from 'react';
 import { Component } from 'react';
+import { FilmShows } from './FilmShows';
 
 export class Movie extends Component {
 
@@ -13,13 +14,27 @@ export class Movie extends Component {
 
   render = function () {
     return (
+      <div onClick={() => alert("test")}
+        style={{
+          display: 'flex',
+          alignItems: 'top',
+          margin: 60,
+          border: '2px solid red',
+          borderRadius: '5px',
+        }}
+      >
+        <img src={this.movie.imageUrl} alt="No Image available" style={{
+          height: '300px',
+          marginRight: 80
+        }}/>
         <div>
-            <p>Titel: {this.movie.title}</p>
+            <p>{this.movie.title}</p>
             <p>Jahr: {this.movie.year}</p>
             <p>FSK: {this.movie.fsk}</p>
-            <p>Trailer: {this.movie.trailer}</p>
             <p>Kurzbeschreibung: {this.movie.shortDescription}</p>
+            <FilmShows filmShows={this.movie.filmShows}/>
         </div>
+      </div>
     );
   };
 }

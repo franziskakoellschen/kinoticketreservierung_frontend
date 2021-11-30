@@ -24,14 +24,17 @@ const MoviePage = () => {
         height: '90vh'
       }}
     >
-      <div>
+      <div
+        style={{
+          alignItems: 'center',
+          height: '90vh'
+        }}
+      >
         {
           data && data.length === 0 && (<p>No Movies available</p>)
         }
         {
-          data && data.map((movie) =>
-            <Movie movie={movie} />
-          )
+          data && data.map((movie) => <Movie movie={movie} /> )
         }
       </div>
     </div>
