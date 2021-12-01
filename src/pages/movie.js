@@ -31,7 +31,14 @@ const MoviePage = () => {
         }}
       >
         {
-          data && data.length === 0 && (<p>No Movies available</p>)
+          data && data.length === 0 && (
+            <p style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '90vh'
+            }}>Sorry! There are currently no movies available.</p>
+          )
         }
         {
           data && data.map((movie) => <Movie movie={movie} /> )
