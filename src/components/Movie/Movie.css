@@ -2,7 +2,12 @@
 .movieDiv {
     display: flex;
     align-items: top;
-    margin: 60;
+    margin: 60px;
     border: 2px solid red;
     border-radius: 5px;
+}
+
+.movieImg {
+    height: 300px;
+    margin-right: 80px;
 }

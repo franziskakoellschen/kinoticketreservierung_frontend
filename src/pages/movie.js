@@ -1,3 +1,5 @@
+import './movie.css'
+
 import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { Movie } from '../components/Movie/Movie.js';
@@ -16,28 +18,13 @@ const MoviePage = () => {
   }, []);
   
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
-      <div
-        style={{
-          alignItems: 'center',
-          height: '90vh'
-        }}
-      >
-        {
+    <div className="moviePageDiv">
+      <div className="moviesDiv">
+      {
           data && data.length === 0 && (
-            <p style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '90vh'
-            }}>Sorry! There are currently no movies available.</p>
+            <p className="errorMessageText">
+              Sorry! There are currently no movies available.
+            </p>
           )
         }
         {

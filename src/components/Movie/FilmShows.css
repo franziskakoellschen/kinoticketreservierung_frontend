@@ -1,0 +1,18 @@
+
+.filmShowsDiv {
+    display: flex;
+    align-items: top;
+    margin: 60px;
+}
+
+.filmShowDiv {
+    border: 2px solid red;
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.noShowsAvailableMsg {
+    display: flex;
+    justify-content: center;
+}

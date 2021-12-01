@@ -15,18 +15,10 @@ export class Movie extends Component {
   render = function () {
     return (
       <div onClick={() => alert("test")}
-        style={{
-          display: 'flex',
-          alignItems: 'top',
-          margin: 60,
-          border: '2px solid red',
-          borderRadius: '5px',
-        }}
+        className="movieDiv"
       >
-        <img src={this.movie.imageUrl} alt="No Image available" style={{
-          height: '300px',
-          marginRight: 80
-        }}/>
+        <img src={this.movie.imageUrl} alt="Not available"
+          className="movieImg"/>
         <div>
             <p>{this.movie.title}</p>
             <p>Jahr: {this.movie.year}</p>

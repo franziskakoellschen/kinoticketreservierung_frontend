@@ -1,3 +1,4 @@
+import './FilmShows.css';
 
 import React from 'react';
 import { Component } from 'react';
@@ -13,19 +14,10 @@ export class FilmShows extends Component {
 
   render = function () {
     return (
-      <div 
-        style={{
-          display: 'flex',
-          alignItems: 'top',
-          margin: 60,
-        }}
-      >
+      <div className="filmShowsDiv">
         {
-          this.filmShows && this.filmShows.length === 0 && (<p
-            style={{
-                display: 'flex',
-                justifyContent: 'center'
-            }}>
+          this.filmShows && this.filmShows.length === 0 && (
+            <p className="noShowsAvailableMsg">
                 Sorry! There are currently no Shows available. We'll be back soon.
             </p>)
         }
@@ -35,12 +27,7 @@ export class FilmShows extends Component {
             let time = filmShow.time // TODO: parse Date from timestamp
 
             return (
-                <div style={{
-                    border: '2px solid red',
-                    borderRadius: '5px',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between'
-                }}>
+                <div className="filmShowDiv">
                     <p>{date}</p>
                     <p>{time}</p>
                 </div>
