@@ -18,7 +18,7 @@ const Program = () => {
   }, []);
   
   return (
-    <div className="moviePageDiv">
+    <div className="programPageDiv">
       <div className="moviesDiv">
       {
           data && data.length === 0 && (

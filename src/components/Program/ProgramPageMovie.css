@@ -10,4 +10,5 @@
 .movieImg {
     height: 300px;
     margin-right: 80px;
+    border-radius: 10px;
 }

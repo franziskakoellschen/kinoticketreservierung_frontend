@@ -22,7 +22,9 @@ export class FilmShows extends Component {
             </p>)
         }
         {
-          this.filmShows && this.filmShows.map((filmShow) => {
+          this.filmShows && (
+            <p>Nächste Vorstellungen</p>
+          ) && this.filmShows.map((filmShow) => {
             let date = new Date(filmShow.date).toLocaleDateString();
             let time = filmShow.time // TODO: parse Date from timestamp
 
