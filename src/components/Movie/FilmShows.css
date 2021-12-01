@@ -6,7 +6,7 @@
 }
 
 .filmShowDiv {
-    border: 2px solid red;
+    border: 2px solid grey;
     border-radius: 5px;
     flex-direction: row;
     justify-content: space-between;

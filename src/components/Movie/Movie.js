@@ -20,7 +20,7 @@ export class Movie extends Component {
         <img src={this.movie.imageUrl} alt="Not available"
           className="movieImg"/>
         <div>
-            <p>{this.movie.title}</p>
+            <p style={{margin:30, marginLeft:0}}>{this.movie.title}</p>
             <p>Jahr: {this.movie.year}</p>
             <p>FSK: {this.movie.fsk}</p>
             <p>Kurzbeschreibung: {this.movie.shortDescription}</p>
