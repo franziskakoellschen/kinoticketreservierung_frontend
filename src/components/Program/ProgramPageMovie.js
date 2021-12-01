@@ -1,10 +1,10 @@
-import './Movie.css';
+import './ProgramPageMovie.css';
 
 import React from 'react';
 import { Component } from 'react';
 import { FilmShows } from './FilmShows';
 
-export class Movie extends Component {
+export class ProgramPageMovie extends Component {
 
   constructor(props) {
     super(props);

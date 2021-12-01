@@ -1,18 +1,38 @@
-import React from 'react';
+import './program.css'
 
-const Program = () => {
+import React, { useEffect, useState } from 'react';
+import { getMovies } from '../api';
+import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
+
+const ProgramPage = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(()=>{
+    async function fetchMyAPI ()  {
+      let answer = await getMovies();
+      setData(answer);
+    }
+    
+    fetchMyAPI();
+    
+  }, []);
+  
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
-      <h1>Program</h1>
+    <div className="moviePageDiv">
+      <div className="moviesDiv">
+      {
+          data && data.length === 0 && (
+            <p className="errorMessageText">
+              Sorry! There are currently no movies available.
+            </p>
+          )
+        }
+        {
+          data && data.map((movie) => <ProgramPageMovie movie={movie} /> )
+        }
+      </div>
     </div>
   );
 };
 
-export default Program;
+export default ProgramPage;
