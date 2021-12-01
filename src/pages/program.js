@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 
-const ProgramPage = () => {
+const Program = () => {
   const [data, setData] = useState([]);
 
   useEffect(()=>{
@@ -35,4 +35,4 @@ const ProgramPage = () => {
   );
 };
 
-export default ProgramPage;
+export default Program;
