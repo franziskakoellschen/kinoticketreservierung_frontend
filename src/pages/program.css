@@ -1,0 +1,19 @@
+
+.programPageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.moviesDiv {
+    align-items: center;
+    height: 90vh;
+}
+
+.errorMessageText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
