@@ -2,17 +2,20 @@
 .filmShowsDiv {
     display: flex;
     align-items: top;
-    margin: 60px;
+    justify-content: center;
 }
 
 .filmShowDiv {
     border: 2px solid grey;
     border-radius: 5px;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    margin: 5px;
+    margin-top: 30px;
 }
 
 .noShowsAvailableMsg {
+    text-align:center; 
+    vertical-align: middle;
     display: flex;
-    justify-content: center;
+    margin-top: 60px;
 }
