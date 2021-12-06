@@ -14,7 +14,7 @@ export class ProgramPageMovie extends Component {
 
   render = function () {
     return (
-      <div onClick={() => alert("test")}
+      <div
         className="movieDiv"
       >
         <img src={this.movie.imageUrl} alt="Not available"
@@ -26,6 +26,7 @@ export class ProgramPageMovie extends Component {
             <p>Kurzbeschreibung: {this.movie.shortDescription}</p>
             <FilmShows filmShows={this.movie.filmShows}/>
         </div>
+        <button className="moreDetailsButton" onClick={() => alert("to details page")}>More details</button>
       </div>
     );
   };

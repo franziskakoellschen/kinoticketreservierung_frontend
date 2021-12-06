@@ -29,7 +29,7 @@ export class FilmShows extends Component {
             let time = filmShow.time // TODO: parse Date from timestamp
 
             return (
-                <div className="filmShowDiv">
+                <div className="filmShowDiv" onClick={() => alert("to booking page")}>
                     <p>{date}</p>
                     <p>{time}</p>
                 </div>
