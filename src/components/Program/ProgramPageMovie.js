@@ -19,7 +19,9 @@ export class ProgramPageMovie extends Component {
       >
         <img src={this.movie.imageUrl} alt="Not available"
           className="movieImg"/>
-        <div>
+        <div style={{
+          flex: "1 1 auto"  
+        }}>
             <p style={{margin:30, marginLeft:0}}>{this.movie.title}</p>
             <p>Jahr: {this.movie.year}</p>
             <p>FSK: {this.movie.fsk}</p>
