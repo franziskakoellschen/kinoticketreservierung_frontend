@@ -17,8 +17,10 @@ export class ProgramPageMovie extends Component {
       <div
         className="movieDiv"
       >
-        <img src={this.movie.imageUrl} alt="Not available"
-          className="movieImg"/>
+        <div className="movieImgDiv">
+          <img src={this.movie.imageUrl} alt="Not available"
+            className="movieImg"/>
+        </div>
         <div className="movieInformationDiv">
             <p className="movieTitle">{this.movie.title}</p>
             <p className="movieDetails">Jahr: {this.movie.year} | FSK {this.movie.fsk}</p>
