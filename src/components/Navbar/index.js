@@ -4,8 +4,6 @@ import {
   NavLink,
   Bars,
   NavMenu,
-  NavBtn,
-  NavBtnLink
 } from './NavbarElements';
 
 const Navbar = () => {
@@ -13,7 +11,10 @@ const Navbar = () => {
     <>
       <Nav>
         <NavLink to='/'>
-          <h1>Logo</h1>
+          <h1 style={{
+            color: "#F3AF00",
+            background: "#000000",
+          }}>Kinoname</h1>
         </NavLink>
         <Bars />
         <NavMenu>
@@ -26,13 +27,10 @@ const Navbar = () => {
           <NavLink to='/booking'activestyle="true">
             Booking
           </NavLink>
-          <NavLink to='/sign-up' activestyle="true">
-            Sign Up
+          <NavLink to='/signin' activestyle="true">
+            Login
           </NavLink>
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-        </NavBtn>
       </Nav>
     </>
   );

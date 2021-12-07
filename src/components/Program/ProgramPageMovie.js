@@ -22,10 +22,22 @@ export class ProgramPageMovie extends Component {
         <div style={{
           flex: "1 1 auto"  
         }}>
-            <p style={{margin:30, marginLeft:0}}>{this.movie.title}</p>
-            <p>Jahr: {this.movie.year}</p>
-            <p>FSK: {this.movie.fsk}</p>
-            <p>Kurzbeschreibung: {this.movie.shortDescription}</p>
+            <p style={{
+              alignItems: "center",
+              display: "flex",
+              fontSize: "36px",
+              margin: 30,
+              marginLeft: 0,
+            }}>{this.movie.title}</p>
+            <p style={{
+              alignItems: "center",
+              display: "flex",
+              marginBottom: 20,
+            }}>Jahr: {this.movie.year} | FSK {this.movie.fsk}</p>
+            <p style={{
+              alignItems: "center",
+              display: "flex",
+            }}>{this.movie.shortDescription}</p>
             <FilmShows filmShows={this.movie.filmShows}/>
         </div>
         <button className="moreDetailsButton" onClick={() => alert("to details page")}>More details</button>
