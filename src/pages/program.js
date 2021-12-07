@@ -20,7 +20,7 @@ const Program = () => {
   return (
     <div className="programPageDiv">
       <div className="moviesDiv">
-      {
+        {
           data && data.length === 0 && (
             <p className="errorMessageText">
               Sorry! There are currently no movies available.
