@@ -1,9 +1,9 @@
 
 .programPageDiv {
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
     height: 90vh;
+    justify-content: center;
 }
 
 .moviesDiv {
@@ -12,8 +12,8 @@
 }
 
 .errorMessageText {
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
     height: 90vh;
+    justify-content: center;
 }
