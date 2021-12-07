@@ -24,3 +24,26 @@
     height: 50px;
     margin-right: 0;    
 }
+
+.movieTitle {
+    align-items: center;
+    display: flex;
+    font-size: 36px;
+    margin: 30px;
+    margin-left: 0px;
+}
+
+.movieDetails {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.movieDescription {
+    align-items: center;
+    display: flex;    
+}
+
+.movieInformationDiv {
+    flex: 1 1 auto;
+}

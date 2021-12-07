@@ -19,25 +19,10 @@ export class ProgramPageMovie extends Component {
       >
         <img src={this.movie.imageUrl} alt="Not available"
           className="movieImg"/>
-        <div style={{
-          flex: "1 1 auto"  
-        }}>
-            <p style={{
-              alignItems: "center",
-              display: "flex",
-              fontSize: "36px",
-              margin: 30,
-              marginLeft: 0,
-            }}>{this.movie.title}</p>
-            <p style={{
-              alignItems: "center",
-              display: "flex",
-              marginBottom: 20,
-            }}>Jahr: {this.movie.year} | FSK {this.movie.fsk}</p>
-            <p style={{
-              alignItems: "center",
-              display: "flex",
-            }}>{this.movie.shortDescription}</p>
+        <div className="movieInformationDiv">
+            <p className="movieTitle">{this.movie.title}</p>
+            <p className="movieDetails">Jahr: {this.movie.year} | FSK {this.movie.fsk}</p>
+            <p className="movieDescription">{this.movie.shortDescription}</p>
             <FilmShows filmShows={this.movie.filmShows}/>
         </div>
         <button className="moreDetailsButton" onClick={() => alert("to details page")}>More details</button>

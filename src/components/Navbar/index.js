@@ -1,3 +1,5 @@
+import "./index.css"
+
 import React from 'react';
 import {
   Nav,
@@ -11,10 +13,7 @@ const Navbar = () => {
     <>
       <Nav>
         <NavLink to='/'>
-          <h1 style={{
-            color: "#F3AF00",
-            background: "#000000",
-          }}>Kinoname</h1>
+          <h1 className="title">Kinoname</h1>
         </NavLink>
         <Bars />
         <NavMenu>
