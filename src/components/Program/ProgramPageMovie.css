@@ -8,9 +8,13 @@
     border-bottom-style: groove;
 }
 
-.movieImg {
+.movieImgDiv {
     height: 300px;
-    margin-right: 80px;
+    width: 250px;
+}
+
+.movieImg {
+    height: inherit;
     border-radius: 10px;
 }
 
