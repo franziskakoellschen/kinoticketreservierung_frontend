@@ -2,6 +2,8 @@ import './Register.css'
 
 import React, { useState } from 'react';
 import Field from '../components/TextInput/Field';
+import PopupContainer from '../components/Popup/PopupContainer';
+import Page from '../components/Page/Page';
 
 
 const Register = () => {
@@ -14,9 +16,9 @@ const Register = () => {
   }
 
   return (
-    <div className='RegisterPageDiv'>
-        <div className='RegisterDiv'>
-          <h1 className='RegisterHeader'>Registrierung</h1>
+    <Page>
+      <PopupContainer>
+        <h1 className='RegisterHeader'>Registrierung</h1>
           <div style={{margin: "5%"}}>
             <Field label="Email Adresse" setInputValue={setEmail}/>
           </div>
@@ -26,9 +28,9 @@ const Register = () => {
           <div style={{margin: "5%"}}>
             <Field label="Name" setInputValue={setName}/>
           </div>
-          <button className='RegisterButton' onClick={onRegisterButtonPress}>Register</button>
-        </div>
-      </div>
+        <button className='RegisterButton' onClick={onRegisterButtonPress}>Register</button>
+      </PopupContainer>
+    </Page>
   );
 };
 

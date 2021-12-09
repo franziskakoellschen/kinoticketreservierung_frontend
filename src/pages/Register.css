@@ -1,18 +1,3 @@
-.RegisterPageDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh
-}
-
-.RegisterDiv {
-    display: block;
-    background: #404040;
-    border-radius: 4px;
-    width: 30%;
-    height: 0;
-    padding-bottom: 25%;
-}
 
 .RegisterHeader {
     background: inherit;

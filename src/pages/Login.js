@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Field from '../components/TextInput/Field';
 import { isUserRegistered, signIn  } from '../api';
 import { useNavigate } from 'react-router-dom';
-
+import PopupContainer from '../components/Popup/PopupContainer';
+import Page from '../components/Page/Page';
 
 
 const Login = ({setIsLoggedIn}) => {
@@ -45,17 +46,17 @@ const Login = ({setIsLoggedIn}) => {
 
   if (loginSuccess) {
     return (
-      <div className='LoginPageDiv'>
+      <Page>
         <div className='LoginSuccessDiv'>
           <h1 className='Message'>Login erfolgreich!</h1>
         </div>
-      </div>
+      </Page>
     )
   }
 
   return (
-    <div className='LoginPageDiv'>
-      <div className='LoginDiv'>
+    <Page>
+      <PopupContainer>
         <h1 className='Message'>Herzlich Willkommen bei THEATERY</h1>
         <div style={{margin: "5%"}}>
           {
@@ -69,8 +70,8 @@ const Login = ({setIsLoggedIn}) => {
         } {
           !userIsRegistered && <button className='ContinueAndLoginButton' onClick={onContinueButtonPress}>Weiter</button>
         }
-      </div>
-    </div>
+      </PopupContainer>
+    </Page>
   );
 };
 

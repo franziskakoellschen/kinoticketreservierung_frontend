@@ -1,5 +1,6 @@
 import { getTestRequestData } from './../api';
 import React, { useState, useEffect } from 'react';
+import Page from '../components/Page/Page';
 
 
 
@@ -20,16 +21,9 @@ const Booking = () => {
           
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
+    <Page>
        <button onClick={onButtonClick}>Trigger backend</button>
-    </div>
+    </Page>
   );
 };
 

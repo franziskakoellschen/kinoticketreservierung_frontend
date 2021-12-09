@@ -1,0 +1,8 @@
+
+.PopupDiv {
+    display: block;
+    background: #404040;
+    border-radius: 4px;
+    width: 30%;
+    height: fit-content;
+}
