@@ -6,6 +6,7 @@ import { isUserRegistered, signIn  } from '../api';
 import { useNavigate } from 'react-router-dom';
 import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
+import PopupMessage from '../components/Popup/PopupMessage';
 
 
 const Login = ({setIsLoggedIn}) => {
@@ -47,9 +48,9 @@ const Login = ({setIsLoggedIn}) => {
   if (loginSuccess) {
     return (
       <Page>
-        <div className='LoginSuccessDiv'>
-          <h1 className='Message'>Login erfolgreich!</h1>
-        </div>
+        <PopupMessage>
+          Login erfolgreich!
+        </PopupMessage>
       </Page>
     )
   }

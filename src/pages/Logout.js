@@ -1,6 +1,6 @@
 import React from 'react';
 import Page from '../components/Page/Page';
-import PopupContainer from '../components/Popup/PopupContainer';
+import PopupMessage from '../components/Popup/PopupMessage';
 
 const Logout = ({setIsLoggedIn}) => {
 
@@ -8,9 +8,9 @@ const Logout = ({setIsLoggedIn}) => {
 
   return (
     <Page>
-      <PopupContainer>
-        <h1>Goodbye!</h1>
-      </PopupContainer>
+      <PopupMessage>
+        Auf Wiedersehen!
+      </PopupMessage>
     </Page>
   );
 };
