@@ -6,3 +6,8 @@
     width: 30%;
     height: fit-content;
 }
+
+.PopupTitle {
+    background: inherit;
+    margin: 5%;
+}

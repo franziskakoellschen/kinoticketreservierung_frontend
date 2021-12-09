@@ -64,19 +64,21 @@ export default class Field extends Component {
         
 
         return (
-            <div className={fieldClassName}>
-                <input
-                  id ={id}
-                  type={type}
-                  value={value}
-                  placeholder={label}
-                  onChange={this.onChange}
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                />
-                <label htmlFor={id} className={error && 'error'}>
-                    {error || label}
-                </label>
+            <div style={{margin: "5%"}}>
+                <div className={fieldClassName}>
+                    <input
+                    id ={id}
+                    type={type}
+                    value={value}
+                    placeholder={label}
+                    onChange={this.onChange}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    />
+                    <label htmlFor={id} className={error && 'error'}>
+                        {error || label}
+                    </label>
+                </div>
             </div>
         );
     }

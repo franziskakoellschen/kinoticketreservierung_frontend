@@ -1,10 +1,5 @@
 
-.RegisterHeader {
-    background: inherit;
-    margin: 5%;
-}
-
-.RegisterButton {
+.PopupContinueButton {
     margin: 5%;
     background: #F3AF00;
     border-radius: 6px;

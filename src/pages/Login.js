@@ -1,4 +1,3 @@
-import './Login.css'
 
 import React, { useState } from 'react';
 import Field from '../components/TextInput/Field';
@@ -7,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
 import PopupMessage from '../components/Popup/PopupMessage';
+import PopupContinueButton from '../components/Popup/PopupContinueButton';
 
 
 const Login = ({setIsLoggedIn}) => {
@@ -57,19 +57,16 @@ const Login = ({setIsLoggedIn}) => {
 
   return (
     <Page>
-      <PopupContainer>
-        <h1 className='Message'>Herzlich Willkommen bei THEATERY</h1>
-        <div style={{margin: "5%"}}>
-          {
-            userIsRegistered && <Field label="Password" type="password" setInputValue={setPassword}/>
-          } {
-            !userIsRegistered && <Field label="Email Adresse" setInputValue={setUserName}/>
-          }
-        </div>
+      <PopupContainer title="Herzlich Willkommen bei THEATERY">
         {
-          userIsRegistered && <button className='ContinueAndLoginButton' onClick={onLoginButtonPress}>Login</button>
+          userIsRegistered && <Field label="Password" type="password" setInputValue={setPassword}/>
         } {
-          !userIsRegistered && <button className='ContinueAndLoginButton' onClick={onContinueButtonPress}>Weiter</button>
+          !userIsRegistered && <Field label="Email Adresse" setInputValue={setUserName}/>
+        }
+        {
+          userIsRegistered && <PopupContinueButton onClick={onLoginButtonPress}>Login</PopupContinueButton>
+        } {
+          !userIsRegistered && <PopupContinueButton onClick={onContinueButtonPress}>Weiter</PopupContinueButton>
         }
       </PopupContainer>
     </Page>
