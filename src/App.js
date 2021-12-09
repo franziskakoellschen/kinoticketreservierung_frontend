@@ -7,7 +7,7 @@ import Movie from './pages/movie';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Booking from './pages/booking';
-import Register from './pages/register';
+import Register from './pages/Register';
 import { useState } from 'react';
 
 
