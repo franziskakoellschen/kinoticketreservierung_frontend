@@ -14,7 +14,7 @@
     padding-bottom: 20%;
 }
 
-.LoginHeader {
+.Message {
     background: inherit;
     margin: 5%;
 }
@@ -26,4 +26,14 @@
     width: 90%;
     justify-content: center;
     font-size: larger;
+}
+
+.LoginSuccessDiv {
+    display: flex;
+    justify-content: center;
+    background: #404040;
+    border-radius: 4px;
+    width: 30%;
+    height: 0;
+    padding-bottom: 5%;
 }

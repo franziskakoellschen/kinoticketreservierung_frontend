@@ -11,6 +11,7 @@ const Login = ({setIsLoggedIn}) => {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [loginSuccess, setloginSuccess] = useState(false);
   const [userIsRegistered, setUserIsRegistered] = useState(false);
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ const Login = ({setIsLoggedIn}) => {
   
       if (answer) {
         setIsLoggedIn(true);
+        setloginSuccess(true);
       } else {
         alert("wrong password")
       }}
@@ -41,10 +43,20 @@ const Login = ({setIsLoggedIn}) => {
     fetchMyAPI();
   }
 
+  if (loginSuccess) {
+    return (
+      <div className='LoginPageDiv'>
+        <div className='LoginSuccessDiv'>
+          <h1 className='Message'>Login erfolgreich!</h1>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className='LoginPageDiv'>
       <div className='LoginDiv'>
-        <h1 className='LoginHeader'>Herzlich Willkommen bei THEATERY</h1>
+        <h1 className='Message'>Herzlich Willkommen bei THEATERY</h1>
         <div style={{margin: "5%"}}>
           {
             userIsRegistered && <Field label="Password" type="password" setInputValue={setPassword}/>
