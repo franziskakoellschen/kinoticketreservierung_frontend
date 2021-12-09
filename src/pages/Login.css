@@ -1,0 +1,29 @@
+.LoginPageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh
+}
+
+.LoginDiv {
+    display: block;
+    background: #404040;
+    border-radius: 4px;
+    width: 30%;
+    height: 0;
+    padding-bottom: 20%;
+}
+
+.LoginHeader {
+    background: inherit;
+    margin: 5%;
+}
+
+.ContinueAndLoginButton {
+    margin: 5%;
+    background: #F3AF00;
+    border-radius: 6px;
+    width: 90%;
+    justify-content: center;
+    font-size: larger;
+}
