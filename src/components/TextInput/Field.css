@@ -18,7 +18,8 @@
 .field.focussed input + label {
     top: 4px;
     opacity: 1;
-    color: #28cc70;
+    color: #282828;
+    background: none;
 }
 
 .field.locked {

@@ -10,13 +10,13 @@
     background: #404040;
     border-radius: 4px;
     width: 30%;
-    height: 0;
-    padding-bottom: 20%;
+    height: fit-content;
 }
 
 .Message {
     background: inherit;
     margin: 5%;
+    font-size: 3vmin;
 }
 
 .ContinueAndLoginButton {
