@@ -58,14 +58,13 @@ const Login = ({setIsLoggedIn}) => {
   return (
     <Page>
       <PopupContainer title="Herzlich Willkommen bei THEATERY">
+        <Field label="Email Adresse" setInputValue={setUserName}/>
+        {userIsRegistered && (
+          <>
+            <Field label="Password" type="password" setInputValue={setPassword}/>
+            <PopupContinueButton onClick={onLoginButtonPress}>Login</PopupContinueButton>
+          </>)}
         {
-          userIsRegistered && <Field label="Password" type="password" setInputValue={setPassword}/>
-        } {
-          !userIsRegistered && <Field label="Email Adresse" setInputValue={setUserName}/>
-        }
-        {
-          userIsRegistered && <PopupContinueButton onClick={onLoginButtonPress}>Login</PopupContinueButton>
-        } {
           !userIsRegistered && <PopupContinueButton onClick={onContinueButtonPress}>Weiter</PopupContinueButton>
         }
       </PopupContainer>

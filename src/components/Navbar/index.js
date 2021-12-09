@@ -8,7 +8,7 @@ import {
   NavMenu,
 } from './NavbarElements';
 
-const Navbar = ({loggedIn}) => {
+const Navbar = ({loggedIn, userFirstName}) => {
   return (
     <>
       <Nav>
@@ -29,7 +29,7 @@ const Navbar = ({loggedIn}) => {
           {
             loggedIn && (
               <NavLink to='/logout' activestyle="true">
-                Logout
+                {userFirstName}
               </NavLink>
             )
           }

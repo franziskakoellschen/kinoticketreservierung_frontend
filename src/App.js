@@ -18,7 +18,11 @@ function App() {
 
   return (
     <Router>
-      <Navbar loggedIn={isLoggedIn}/>
+      <Navbar
+        loggedIn={isLoggedIn}
+        // TEMP
+        userFirstName={"Vorname"}
+      />
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/program' exact element={<Program />} />
