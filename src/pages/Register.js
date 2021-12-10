@@ -6,22 +6,22 @@ import Page from '../components/Page/Page';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
 
 
-const Register = () => {
+const Register = ({desiredEmail}) => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(desiredEmail);
   const [password, setPassword] = useState("");
 
   const onRegisterButtonPress = () => {
-    alert("register")
+    alert("Registrierung")
   }
 
   return (
     <Page>
       <PopupContainer title="Registrierung">
-        <Field label="Email Adresse" setInputValue={setEmail}/>
+        <Field label="Email Adresse" value={email} setInputValue={setEmail}/>
         <Field label="Password" type="password" setInputValue={setPassword}/>
         <Field label="Name" setInputValue={setName}/>
-        <PopupContinueButton onClick={onRegisterButtonPress}>Register</PopupContinueButton>
+        <PopupContinueButton onClick={onRegisterButtonPress}>Registrieren</PopupContinueButton>
       </PopupContainer>
     </Page>
   );

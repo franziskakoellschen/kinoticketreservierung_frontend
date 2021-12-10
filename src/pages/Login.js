@@ -9,23 +9,25 @@ import PopupMessage from '../components/Popup/PopupMessage';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
 
 
-const Login = ({setIsLoggedIn}) => {
-
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [loginSuccess, setloginSuccess] = useState(false);
-  const [userIsRegistered, setUserIsRegistered] = useState(false);
+const Login = ({setIsLoggedIn, setDesiredEmail}) => {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginSuccess, setloginSuccess] = useState(false);
+  const [userRegistrationChecked, setUserRegistrationChecked] = useState(false);
 
   const onContinueButtonPress = () => {
     async function fetchMyAPI ()  {
-      let answer = await isUserRegistered(userName);
+      let answer = await isUserRegistered(email);
   
       if (answer) {
         // switch to password input
-        setUserIsRegistered(true)
+        setUserRegistrationChecked(true)
       } else {
-        navigate('/register')
+        setDesiredEmail(email);
+        navigate('/register');
       }}
 
     fetchMyAPI();
@@ -33,7 +35,7 @@ const Login = ({setIsLoggedIn}) => {
 
   const onLoginButtonPress = () => {
     async function fetchMyAPI ()  {
-      let answer = await signIn(userName, password);
+      let answer = await signIn(email, password);
   
       if (answer) {
         setIsLoggedIn(true);
@@ -58,14 +60,14 @@ const Login = ({setIsLoggedIn}) => {
   return (
     <Page>
       <PopupContainer title="Herzlich Willkommen bei THEATERY">
-        <Field label="Email Adresse" setInputValue={setUserName}/>
-        {userIsRegistered && (
+        <Field label="Email Adresse" setInputValue={setEmail}/>
+        {userRegistrationChecked && (
           <>
             <Field label="Password" type="password" setInputValue={setPassword}/>
             <PopupContinueButton onClick={onLoginButtonPress}>Login</PopupContinueButton>
           </>)}
         {
-          !userIsRegistered && <PopupContinueButton onClick={onContinueButtonPress}>Weiter</PopupContinueButton>
+          !userRegistrationChecked && <PopupContinueButton onClick={onContinueButtonPress}>Weiter</PopupContinueButton>
         }
       </PopupContainer>
     </Page>
