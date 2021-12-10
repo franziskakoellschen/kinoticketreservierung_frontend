@@ -1,4 +1,29 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+
 .title {
     color: #F3AF00;
+    font-size: 44px;
+    font-family: 'Montserrat', sans-serif;
     background: #000000;
+}
+
+.activeLink {
+    color: #FFFFFF;
+    font-weight: normal;
+    background-color: #000000;
+    font-size: 24px;
+}
+
+.link {
+    color: #ADADAD;
+    font-weight: normal;
+    background-color: #000000;
+    font-size: 24px;
+}
+
+.link:hover {
+    color: #F3AF00;
+    font-weight: normal;
+    background-color: #000000;
+    font-size: 24px;
 }

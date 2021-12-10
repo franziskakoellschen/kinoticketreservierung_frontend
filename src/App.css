@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 * {
   background: #222222;
   box-sizing: border-box;
   color: #FFFFFF;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
   padding: 0;
 }
