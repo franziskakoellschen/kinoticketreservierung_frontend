@@ -1,7 +1,5 @@
 
 .Message {
-    background: inherit;
-    margin: 5%;
     font-size: 3vmin;
 }
 
@@ -13,4 +11,10 @@
     width: 30%;
     height: 0;
     padding-bottom: 5%;
+}
+
+
+.PopupMessageDiv > * {
+    background: inherit;
+    margin: 5%;
 }

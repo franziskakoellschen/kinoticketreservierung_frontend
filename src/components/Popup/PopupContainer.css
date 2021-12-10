@@ -7,7 +7,7 @@
     height: fit-content;
 }
 
-.PopupTitle {
+.PopupDiv > * {
     background: inherit;
     margin: 5%;
 }
