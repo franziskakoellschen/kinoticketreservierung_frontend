@@ -26,3 +26,31 @@ export const getMovies = async () => {
     console.log(data);
     return data;
 }
+
+export const getMoviesTest = async () => {
+    const {data} = await instance.get("/movies/3");
+    return data;
+}
+
+export async function getImage(imageId){
+  const {data} = await  instance.get("image/2")
+    return data;
+    /*
+    .get(
+      'http://localhost:8080/image/2',
+      { responseType: 'arraybuffer' },
+    )
+    .then(response => {
+      const base64 = btoa(
+        new Uint8Array(response.data).reduce(
+          (data, byte) => data + String.fromCharCode(byte),
+          '',
+        ),
+      );
+      console.log(base64);
+      return(base64);
+        });*/
+
+}
+
+      

@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 
-const Program = () => {
+const Program = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(()=>{
     async function fetchMyAPI ()  {
       let answer = await getMovies();
       setData(answer);
+      console.log(answer);
     }
     
     fetchMyAPI();
@@ -26,9 +27,9 @@ const Program = () => {
               Sorry! There are currently no movies available.
             </p>
           )
-        }
+        } 
         {
-          data && data.map((movie) => <ProgramPageMovie movie={movie} /> )
+          data && data.map((movie) => <ProgramPageMovie movie={movie} setMovie={props.setMovie} /> )
         }
       </div>
     </div>
