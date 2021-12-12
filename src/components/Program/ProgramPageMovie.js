@@ -1,36 +1,30 @@
 import './ProgramPageMovie.css';
 
-import React, { useEffect } from 'react';
-import { Component } from 'react';
+import React from 'react';
 import { FilmShows } from './FilmShows';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
-export const ProgramPageMovie = (props) => {
+export const ProgramPageMovie = ({movie}) => {
 
-  useEffect(() => {
-  console.log(props.movie.title)    
-  })
-   
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleClick = () => {
-      props.setMovie(props.movie)
-      navigate('/movie')
-    }
-  
+  const handleClick = () => {
+    navigate('/movie/' + movie.id);
+  }
+
     return (
       <div
         className="movieDiv"
       >
         <div className="movieImgDiv">
-          <img src={props.movie.imageUrl} alt="Not available"
+          <img src={movie.imageUrl} alt="Not available"
             className="movieImg"/>
         </div>
         <div className="movieInformationDiv">
-            <p className="movieTitle">{props.movie.title}</p>
-            <p className="movieDetails">Jahr: {props.movie.year} | FSK {props.movie.fsk}</p>
-            <p className="movieDescription">{props.movie.shortDescription}</p>
-            <FilmShows filmShows={props.movie.filmShows}/>
+            <p className="movieTitle">{movie.title}</p>
+            <p className="movieDetails">Jahr: {movie.year} | FSK {movie.fsk}</p>
+            <p className="movieDescription">{movie.shortDescription}</p>
+            <FilmShows filmShows={movie.filmShows}/>
         </div>
         <button className="moreDetailsButton" onClick={handleClick}>More details</button>
       </div>

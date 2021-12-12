@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 
-const Program = (props) => {
+const Program = () => {
   const [data, setData] = useState([]);
 
   useEffect(()=>{
@@ -29,7 +29,7 @@ const Program = (props) => {
           )
         } 
         {
-          data && data.map((movie) => <ProgramPageMovie movie={movie} setMovie={props.setMovie} /> )
+          data && data.map((movie) => <ProgramPageMovie movie={movie} /> )
         }
       </div>
     </div>

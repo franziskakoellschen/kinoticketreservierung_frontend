@@ -27,6 +27,12 @@ export const getMovies = async () => {
     return data;
 }
 
+export const getMovieById = async (id) => {
+  const {data} = await instance.get("/movies/"+id);
+  console.log(data);
+  return data;
+}
+
 export const getMoviesTest = async () => {
     const {data} = await instance.get("/movies/3");
     return data;
