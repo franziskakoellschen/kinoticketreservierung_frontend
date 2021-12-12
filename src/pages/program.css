@@ -2,18 +2,18 @@
 .programPageDiv {
     align-items: center;
     display: flex;
-    height: 90vh;
+    height: inherit;
     justify-content: center;
 }
 
 .moviesDiv {
     align-items: center;
-    height: 90vh;
+    height: inherit;
 }
 
 .errorMessageText {
     align-items: center;
     display: flex;
-    height: 90vh;
+    height: inherit;
     justify-content: center;
 }

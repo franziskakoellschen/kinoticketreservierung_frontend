@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MovieDescription  from '../components/MovieDetail/movieDescription';
+import Page from '../components/Page/Page';
 import ReactPlayer from 'react-player'
 import './movie.css';
 import testImage from '../assets/testpic.jpeg';
@@ -84,23 +85,23 @@ const Movie = ({route, navigation}) => {
 
   if (!movie) {
     return (
-      <div>
+      <Page>
         {!movies && "Loading"}
         {
           movies && movies.map((movie) => <p>{movie.title}</p>)
         }
-      </div>
+      </Page>
     )
   }
 
   return (movie &&
-    <div>
+    <Page>
       <div id="first">
         <div id="movieDiv">
           <ReactPlayer
             className = "reactPlayer"
             width = "100%"
-            height = '100%'
+            height = "inherit"
             playing
             url = {movie.trailer}
             playIcon = {<button id = "playButton">Play</button>}
@@ -108,17 +109,12 @@ const Movie = ({route, navigation}) => {
           />
         </div>
       </div>
-      <div id="topDiv"></div>
+      <div id="separator"></div>
       <div id="second">
-        <div style={{
-          position:"relative", left: '70px', top: '100px',
-        }}>
-          <MovieDescription  movie={movie}/>
-        </div>
+        <MovieDescription  movie={movie}/>
       </div>
-      <hr id="movieDescrSeperator"/>
-    </div>
-  ); 
+    </Page>
+  );
 };
 
 export default Movie;

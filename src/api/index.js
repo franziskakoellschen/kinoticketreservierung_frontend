@@ -60,3 +60,21 @@ export async function getImage(imageId){
 }
 
       
+export const isUserRegistered = async (email) => {
+
+    // TODO
+
+    //const {data} = await instance.get("/user")
+    //console.log(data);
+    return true;
+}
+
+
+export const signIn = async (email, password) => {
+
+    // TODO
+
+    //const {data} = await instance.get("/user")
+    //console.log(data);
+    return true;
+}

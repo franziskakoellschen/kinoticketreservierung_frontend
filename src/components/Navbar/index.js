@@ -8,7 +8,7 @@ import {
   NavMenu,
 } from './NavbarElements';
 
-const Navbar = () => {
+const Navbar = ({loggedIn, userFirstName}) => {
   return (
     <>
       <Nav>
@@ -26,9 +26,8 @@ const Navbar = () => {
           <NavLink to='/booking'activestyle="true">
             Booking
           </NavLink>
-          <NavLink to='/signin' activestyle="true">
-            Login
-          </NavLink>
+          { loggedIn && ( <NavLink to='/logout' activestyle="true">{userFirstName}</NavLink>)}
+          {!loggedIn && ( <NavLink to='/login' activestyle="true">Login</NavLink>)}
         </NavMenu>
       </Nav>
     </>
