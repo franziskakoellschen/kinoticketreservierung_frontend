@@ -26,3 +26,22 @@ export const getMovies = async () => {
     console.log(data);
     return data;
 }
+
+export const isUserRegistered = async (email) => {
+
+    // TODO
+
+    //const {data} = await instance.get("/user")
+    //console.log(data);
+    return true;
+}
+
+
+export const signIn = async (email, password) => {
+
+    // TODO
+
+    //const {data} = await instance.get("/user")
+    //console.log(data);
+    return true;
+}

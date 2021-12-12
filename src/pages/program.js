@@ -3,6 +3,7 @@ import './program.css'
 import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
+import Page from '../components/Page/Page';
 
 const Program = () => {
   const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ const Program = () => {
   }, []);
   
   return (
-    <div className="programPageDiv">
+    <Page>
       <div className="moviesDiv">
         {
           data && data.length === 0 && (
@@ -31,7 +32,7 @@ const Program = () => {
           data && data.map((movie) => <ProgramPageMovie movie={movie} /> )
         }
       </div>
-    </div>
+    </Page>
   );
 };
 

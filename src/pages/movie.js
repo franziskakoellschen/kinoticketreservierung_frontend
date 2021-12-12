@@ -1,17 +1,11 @@
 import React from 'react';
+import Page from '../components/Page/Page';
 
 const Movie = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '90vh'
-      }}
-    >
+    <Page>
       <h1>Movie</h1>
-    </div>
+    </Page>
   );
 };
 
