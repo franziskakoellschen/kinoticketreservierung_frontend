@@ -1,7 +1,4 @@
 
-* {
-    background: transparent;
-}
 @font-face {
     font-family: 'ssA';
     font-style: normal;
@@ -26,11 +23,16 @@
     src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2) format('woff2');
   }
 #bodyDescription {
-    
+    background: transparent;
     width: 80%;
     background-color: transparent;
     
 }
+
+#bodyDescription > * {
+    background: inherit;
+}
+
 #movieDescrHeader {
     font-family: 'ssA';
     font-size: 62px;
