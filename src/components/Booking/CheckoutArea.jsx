@@ -9,13 +9,13 @@ const CheckoutArea = ({selectedSeats, filmShowId}) => {
         let seats = [];
         selectedSeats.map((seat) => seats.push(seat.seat));
         console.log(seats)
-        await reserveSeats(seats, filmShowId).then(response => {
-          if (response === false) {
+        await reserveSeats(seats, filmShowId)
+          .then((response) => {
+            alert("Success! Refresh to see the change");
+          })
+          .catch((reason) => {
             alert("Error! Please refresh and try again");
-          } else if (response === true) {
-            alert("Success!");
-          }
-        })
+          });
     }
     postToApi();
   }
