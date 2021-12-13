@@ -25,7 +25,7 @@
 
 #bodyDescription {
     background: transparent;
-    width: inherit;
+    width: 100%;
     background-color: transparent;
 }
 
@@ -57,7 +57,9 @@
     font-family: 'ssD';
     font-size: 22px; 
     margin-top: 50px;
-    display: inline-block
+    display: inline-block;
+    margin-bottom: 60px;
+    
 }
 
 hr.DescrSeperator {
@@ -68,6 +70,7 @@ hr.DescrSeperator {
     margin-top: 3em  auto;
     margin-bottom: 3em  auto;
     padding: 0;
+
     width: inherit;
 }
 
@@ -78,6 +81,7 @@ span.spanProps {
 }
 
 #movieProps {
+   margin-top: 10%;
     font-family: 'ssD';
     font-size: 22px; 
 }
