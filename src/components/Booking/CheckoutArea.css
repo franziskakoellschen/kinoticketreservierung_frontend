@@ -1,0 +1,27 @@
+.checkoutArea {
+    position: absolute;
+    right: 0;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
+}
+
+ul {
+    height: 60vh;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-bottom: 10%;
+    list-style-type: none;
+}
+
+ul li {
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+
+.checkoutButton {
+    border: 1px solid white;
+    border-radius: 5px;    
+}

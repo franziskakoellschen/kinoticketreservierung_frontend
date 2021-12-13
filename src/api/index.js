@@ -27,6 +27,18 @@ export const getMovies = async () => {
     return data;
 }
 
+export const getFilmShowSeats = async (id) => {
+    const {data} = await instance.get("/filmshows/" + id +"/seats");
+    console.log(data);
+    return data;
+}
+
+export const reserveSeats = async (seats, filmShowId) => {
+    console.log(seats)
+    const {data} = await instance.post("filmshows/" + filmShowId + "/seats", seats);
+    return data;
+}
+
 export const isUserRegistered = async (email) => {
 
     // TODO

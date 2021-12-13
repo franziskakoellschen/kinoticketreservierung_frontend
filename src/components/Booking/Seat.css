@@ -1,0 +1,22 @@
+.container {
+    margin: 2%;
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 7vh;
+}
+
+
+.reserved {
+    background-color: grey;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+}
+
+.notSelected {
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    background-color: green;
+}
+
+.selected {
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    background-color: orange;
+}
