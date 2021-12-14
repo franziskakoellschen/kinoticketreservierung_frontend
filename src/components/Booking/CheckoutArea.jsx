@@ -6,10 +6,7 @@ const CheckoutArea = ({selectedSeats, filmShowId}) => {
 
   const onButtonClick = () => {
     async function postToApi()  {
-        let seats = [];
-        selectedSeats.map((seat) => seats.push(seat.seat));
-        console.log(seats)
-        await reserveSeats(seats, filmShowId)
+        await reserveSeats(selectedSeats, filmShowId)
           .then((response) => {
             alert("Success! Refresh to see the change");
           })
