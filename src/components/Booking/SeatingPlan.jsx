@@ -6,8 +6,8 @@ const SeatingPlan = ({seatingPlan, toggleSeatSelected}) => {
         <div>
             {!seatingPlan && "Not available"}
             {seatingPlan.length === 0 && "Not available"}
-            {seatingPlan.length !== 0 && seatingPlan.map((row) => {
-                return <Row row={row} toggleSeatSelected={toggleSeatSelected}/>
+            {seatingPlan.length !== 0 && seatingPlan.map((row, index) => {
+                return <Row key={index} row={row} toggleSeatSelected={toggleSeatSelected}/>
             })}
         </div>
     );

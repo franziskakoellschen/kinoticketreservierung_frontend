@@ -6,7 +6,7 @@ const Row = ({row, toggleSeatSelected}) => {
         <div style={{display: "flex"}}>
             {(!row || row.length === 0) && "Not available"}
             {row.length !== 0 && row.map((seat) => {
-                return <Seat seat={seat} toggleSeatSelected={toggleSeatSelected}/>
+                return <Seat key={seat.seat.id} seat={seat} toggleSeatSelected={toggleSeatSelected}/>
             })}
         </div>
     );

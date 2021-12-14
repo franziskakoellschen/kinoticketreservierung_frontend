@@ -35,7 +35,7 @@ export const FilmShows = (props) => {
           let time = filmShow.time // TODO: parse Date from timestamp
 
           return (
-              <div className="filmShowDiv" onClick={handleClick}>
+              <div key={filmShow.id} className="filmShowDiv" onClick={handleClick}>
                   <p>{date}</p>
                   <p>{time}</p>
               </div>
