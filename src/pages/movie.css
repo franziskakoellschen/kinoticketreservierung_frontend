@@ -76,6 +76,7 @@
 
 #showsContainer {
     position: relative ;
+    width: 80vw ;
     left: 20vw;
 }
 
