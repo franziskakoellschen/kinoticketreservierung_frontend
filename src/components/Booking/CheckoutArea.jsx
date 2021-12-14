@@ -40,7 +40,7 @@ const CheckoutArea = ({selectedSeats, filmShowId}) => {
         {selectedSeats.map(
           (seat) => {
             return (
-              <li>Row {seat.seat.row}, Nr {seat.seat.seatNumber}</li>
+              <li key={seat.seat.id}>Row {seat.seat.row}, Nr {seat.seat.seatNumber}</li>
             )
           }
         )}
