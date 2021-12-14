@@ -24,13 +24,8 @@
 }
 
 #bodyDescription {
-    background: transparent;
     width: 100%;
-    background-color: transparent;
-}
-
-#bodyDescription > * {
-    background: inherit;
+    height: inherit;
 }
 
 #movieDescrHeader {

@@ -168,26 +168,24 @@ function setFilmShowKeysAndValues(){
 
   return (movie &&
     <Page>
-     <div>
+     <div className='moviedetail'>
       <div id="outerContainer">
       <div id="first">
         <div id="movieDiv">
           <ReactPlayer
             className = "reactPlayer"
-            width = "100%"
+            width = "inherit"
             height = "inherit"
             playing
             url = {movie.trailer}
-            playIcon = {<button id = "playButton">Play</button>}
+            playIcon = {<button id = "playButton" />}
             light = {toBlobUlr(contentType, image)}
           />
         </div>
         <div id="topDiv"></div>
       </div>
       <div id="second">
-      <div style={{
-           position:"relative", left: '10%', top: '100px', width: '80%'
-         }}>
+      <div id="moviesidedesc" >
         <MovieDescription  movie={movie}/>
         </div>
       </div>
@@ -195,9 +193,10 @@ function setFilmShowKeysAndValues(){
       <hr id="movieDescrSeperator"/>
       <div id="showsContainer">
       <h1 id="showsHeader">Nächste Vorstellungen</h1>
-      <div>{ 
-         filmShowKeys.map((value,index) => <FilmShowsDetail passedDate={value} passedObject={filmShowsValues[index]} />) }
-      
+      <div id="showslist" >{ 
+         filmShowKeys.map((value,index) => 
+         <FilmShowsDetail passedDate={value} passedObject={filmShowsValues[index]} />
+         ) }
       </div>
       </div>
       </div>

@@ -6,24 +6,53 @@
     src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2) format('woff2');
 }
 
-#dayDescription {
+#show{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
 
+#dayDescription {
     font-family: 'ssD';
     font-size: 22px; 
-    margin-top: 50px;
-
 }
 
 .filmShowsDiv {
-    align-items: top;
+    margin-top: 10px;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .filmShowDiv {
     border: 2px solid white;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 5px;
-    margin-top: 30px;
+    padding: 4px;
+}
+
+.filmShowDiv:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.filmShowDiv p {
+    margin: 4px 50px;
+    background: transparent;
+}
+
+#p1 {
+    font-size: medium;
+}
+
+#p2 {
+    font-size:x-large;
+}
+
+#p3 {
+    font-size: small;
 }

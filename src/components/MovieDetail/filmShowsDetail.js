@@ -1,8 +1,6 @@
 import React, {useState ,useEffect} from 'react';
 import './filmShowsDetail.css' ;
-
-
-
+import { useNavigate } from 'react-router-dom';
 
 const FilmShowsDetail = (props) => {
 
@@ -10,13 +8,14 @@ const [dayState, setDayState] = useState();
 const [numericDayState, setNumericDayState] = useState();
 const [monthState, setMonthState] = useState();
 const [yearState, setYearState] = useState(); 
+const [daysState, setDaysState] = useState(); 
 
     useEffect(() => {
       createDayContainer(props.passedDate);
       console.log(props.passedObject)
     })
 
-
+ const navigate = useNavigate();
 
 function createDayContainer(day){
       
@@ -25,8 +24,35 @@ function createDayContainer(day){
         setNumericDayState(day.substring(8,10));
         setYearState(day.substring(11,15));
         var dayFullText = "";
+        var daySmallText = "";
         var monthFullText ="asd";
       
+        switch (dayProp) {
+          case 'Mon':
+            daySmallText="Mo";
+            break;
+          case 'Tue':
+            daySmallText="Di";
+            break;
+          case 'Wed':
+            daySmallText ="Mi"; 
+            break;
+          case 'Thu':
+            daySmallText ="Do"; 
+            break;
+          case 'Fri':
+            daySmallText ="Fr"; 
+            break;
+          case 'Sat':
+            daySmallText ="Sa"; 
+            break;
+          case 'Sun':
+            daySmallText ="So"; 
+            break;
+        }
+
+        setDaysState(daySmallText);
+
         switch (dayProp) {
           case 'Mon':
             dayFullText="Montag";
@@ -97,7 +123,7 @@ function createDayContainer(day){
       }
 
   return(
-    <div>
+    <div id='show'>
     <div id="dayDescription">{dayState+ " " + numericDayState + "." + monthState + "." + yearState }</div>
     <div className="filmShowsDiv">
     {
@@ -106,9 +132,10 @@ function createDayContainer(day){
         let time = filmShow.time // TODO: parse Date from timestamp
 
         return (
-            <div className="filmShowDiv" onClick={() => alert("to booking page")}>
-                <p>{date}</p>
-                <p>{time}</p>
+            <div className="filmShowDiv" onClick={() => navigate("/booking/" + filmShow.id) }>
+                <p id='p1'>{daysState} {date.substring(0,5)}</p>
+                <p id='p2'>{time.substring(0,5)}</p>
+                <p id='p3'>2D</p>
             </div>
         )})
     }

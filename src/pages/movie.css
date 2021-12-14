@@ -1,30 +1,26 @@
 
+.moviedetail {
+    position: absolute;
+    top: 7vh;
+}
+
+#outerContainer {
+
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+    
+}
+
 #first {
     width: 50vw;
-    height: inherit;
-    float: left; /* add this */
-    background: inherit;
+    height: 100vh;
     position: relative;
-}
-
-#separator {
-    width: 4vw;
-    height: inherit;
-    background: inherit;
-}
-
-#second {
-    width: 50vw;
-    float: left; /* add this */
-    background: inherit;
-    right: 0;
-    overflow: auto;
 }
 
 #movieDiv {
-    width: inherit;
-    height: 100%;
     position: relative;
+    height: 100%;
 }
 
 #playButton {
@@ -42,56 +38,54 @@
     border-width: 37px 0 37px 60px;
 }
 
+#playButton:hover {
+    border-color: transparent transparent transparent #404040;
+  }
+
 #topDiv {
     top:0vh;
     height: 100%;
     position: absolute;
     right: 0vh;
     width: 6vh;
-  background: linear-gradient(to right, rgba(22,22,22, 0), rgba(22,22,22,0.9),  #222222  ); }
+  background: linear-gradient(to right, rgba(22,22,22, 0), rgba(22,22,22,0.9),  #222222  ); 
+}
 
+#second {
+    width: 50vw;
+    right: 0;
+    overflow: auto;
+}
 
-#playButton:hover {
-    border-color: transparent transparent transparent #404040;
-  }
+#moviesidedesc {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    height: inherit;
+    margin-bottom: 4vh;
 
+}
 
 #movieDescrSeperator {
-    display: block;
     position: relative;
-    top: 0;
     height: 2px;
-    border: 1;
     border-top: 1px solid rgb(255, 255, 255);
     width: 100%;
     margin-bottom: 4vh;
 }
 
-#outerContainer {
-
-    display: flex;
-    overflow-y: auto;
-    position:relative;
-    height: inherit;
-    top: 7vh;
+#showsContainer {
+    position: relative ;
+    left: 20vw;
 }
 
 #showsHeader {
-
     font-family: 'ssA';
     font-size: 62px;
-    margin-bottom: -15px;
-    display:inline-block 
+    margin-bottom: 35px;
 }
 
-#showsContainer {
-position: relative ;
-left: 20vh;
-}
-
-.errorMessageText {
-    align-items: center;
+#showslist {
     display: flex;
-    height: inherit;
-    justify-content: center;
+    flex-direction: column;
 }

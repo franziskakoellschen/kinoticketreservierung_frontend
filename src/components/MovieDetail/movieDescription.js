@@ -2,14 +2,10 @@ import React, {useState} from 'react';
 import './movieDescription.css';
 import moment from 'moment'
 
-
 const MovieDescription = (props) => {
 
-
-function 
-formatDate(date){
-
- return moment(date).format('DD MMM, YYYY')
+function formatDate(date){
+  return moment(date).format('DD MMM, YYYY')
 }
 
   return(
