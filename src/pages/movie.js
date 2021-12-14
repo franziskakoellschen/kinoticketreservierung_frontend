@@ -1,10 +1,13 @@
 import React from 'react';
 import Page from '../components/Page/Page';
+import CenterContent from '../components/Page/CenterContent';
 
 const Movie = () => {
   return (
     <Page>
-      <h1>Movie</h1>
+      <CenterContent>
+        <h1>Movie</h1>
+      </CenterContent>
     </Page>
   );
 };

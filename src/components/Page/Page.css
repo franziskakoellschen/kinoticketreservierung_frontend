@@ -1,8 +1,8 @@
 
 .PageContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top: 7vh;
     height: 93vh;
+    width: 100vw;
     overflow-y: auto;
 }
