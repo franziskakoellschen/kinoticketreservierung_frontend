@@ -33,9 +33,9 @@ export const getFilmShowSeats = async (id) => {
     return data;
 }
 
-export const reserveSeats = async (seats, filmShowId) => {
-    console.log(seats)
-    const {data} = await instance.post("filmshows/" + filmShowId + "/seats", seats);
+export const reserveSeats = async (filmShowSeats, filmShowId) => {
+    const {data} = await instance.post("filmshows/" + filmShowId + "/seats",
+                                       filmShowSeats);
     return data;
 }
 
