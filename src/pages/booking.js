@@ -34,7 +34,7 @@ const Booking = ({route, navigation}) => {
       let answer = await getFilmShowSeats(filmShowID);
       setData(answer);
     }
-    fetchMyAPI();
+    filmShowID && fetchMyAPI();
   },[filmShowID])
 
   return (
