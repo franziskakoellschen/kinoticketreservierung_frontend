@@ -21,7 +21,7 @@ export const getTestRequestData = async () => {
     return data;
 }
 
-export const getMovies = async () => {
+export const  getMovies = async () => {
     const {data} = await instance.get("/movies");
     console.log(data);
     return data;

@@ -3,8 +3,6 @@ import './movieDescription.css';
 import moment from 'moment'
 
 
-
-
 const MovieDescription = (props) => {
 
 

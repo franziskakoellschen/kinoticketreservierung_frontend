@@ -15,16 +15,16 @@
 
 #second {
     width: 50vw;
-    height: inherit;
     float: left; /* add this */
     background: inherit;
     right: 0;
+    overflow: auto;
 }
 
 #movieDiv {
     width: inherit;
-    height: 90vh;
-    top: 80px;
+    height: 100%;
+    position: relative;
 }
 
 #playButton {
@@ -44,7 +44,7 @@
 
 #topDiv {
     top:0vh;
-    height: 90vh;
+    height: 100%;
     position: absolute;
     right: 0vh;
     width: 6vh;
@@ -71,4 +71,27 @@
 
     display: flex;
     overflow-y: auto;
+    position:relative;
+    height: inherit;
+    top: 7vh;
+}
+
+#showsHeader {
+
+    font-family: 'ssA';
+    font-size: 62px;
+    margin-bottom: -15px;
+    display:inline-block 
+}
+
+#showsContainer {
+position: relative ;
+left: 20vh;
+}
+
+.errorMessageText {
+    align-items: center;
+    display: flex;
+    height: inherit;
+    justify-content: center;
 }

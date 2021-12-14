@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'ssD';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2) format('woff2');
+}
+
+#dayDescription {
+
+    font-family: 'ssD';
+    font-size: 22px; 
+    margin-top: 50px;
+
+}
+
+.filmShowsDiv {
+    align-items: top;
+    display: flex;
+    justify-content: center;
+}
+
+.filmShowDiv {
+    border: 2px solid white;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 5px;
+    margin-top: 30px;
+}
