@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Field from '../components/TextInput/Field';
+import Field from '../components/Input/TextField';
 import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
