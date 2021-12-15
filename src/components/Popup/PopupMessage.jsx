@@ -1,13 +1,16 @@
 import './PopupMessage.css'
+import CenterContent from '../Page/CenterContent';
 
 const PopupMessage = (props) => {
 
   return (
-    <div className='PopupMessageDiv'>
-        <h1 className='Message'>
-            {props.children}
-        </h1>
-    </div>
+    <CenterContent>
+      <div className='PopupMessageDiv'>
+          <h1 className='Message'>
+              {props.children}
+          </h1>
+      </div>
+    </CenterContent>
   );
 }
 

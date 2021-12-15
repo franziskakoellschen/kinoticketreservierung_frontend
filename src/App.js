@@ -31,6 +31,7 @@ function App() {
         <Route path='/logout' exact element={<Logout setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path='/register' exact element={<Register desiredEmail={desiredEmail} />} />
         <Route path='/booking' exact element={<Booking />} />
+        <Route path='/booking/:filmShowID' exact element={<Booking />} />
       </Routes>
     </Router>
   );

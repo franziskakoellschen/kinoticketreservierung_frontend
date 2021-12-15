@@ -21,45 +21,24 @@ export const getTestRequestData = async () => {
     return data;
 }
 
-export const  getMovies = async () => {
+export const getMovies = async () => {
     const {data} = await instance.get("/movies");
     console.log(data);
     return data;
 }
 
-export const getMovieById = async (id) => {
-  const {data} = await instance.get("/movies/"+id);
-  console.log(data);
-  return data;
-}
-
-export const getMoviesTest = async () => {
-    const {data} = await instance.get("/movies/3");
+export const getFilmShowSeats = async (id) => {
+    const {data} = await instance.get("/filmshows/" + id +"/seats");
+    console.log(data);
     return data;
 }
 
-export async function getImage(imageId){
-  const {data} = await  instance.get("image/2")
+export const reserveSeats = async (filmShowSeats, filmShowId) => {
+    const {data} = await instance.post("filmshows/" + filmShowId + "/seats",
+                                       filmShowSeats);
     return data;
-    /*
-    .get(
-      'http://localhost:8080/image/2',
-      { responseType: 'arraybuffer' },
-    )
-    .then(response => {
-      const base64 = btoa(
-        new Uint8Array(response.data).reduce(
-          (data, byte) => data + String.fromCharCode(byte),
-          '',
-        ),
-      );
-      console.log(base64);
-      return(base64);
-        });*/
-
 }
 
-      
 export const isUserRegistered = async (email) => {
 
     // TODO

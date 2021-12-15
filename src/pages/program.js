@@ -30,7 +30,7 @@ const Program = () => {
           )
         } 
         {
-          data && data.map((movie) => <ProgramPageMovie movie={movie} /> )
+          data && data.map((movie) => <ProgramPageMovie key={movie.id} movie={movie} /> )
         }
       </div>
     </Page>

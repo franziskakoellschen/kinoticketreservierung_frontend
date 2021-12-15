@@ -45,9 +45,10 @@
 
 .movieDescription {
     align-items: center;
-    display: flex;    
+    display: flex;
 }
 
 .movieInformationDiv {
     flex: 1 1 auto;
+    width: 60vw;
 }
