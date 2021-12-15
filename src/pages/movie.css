@@ -1,7 +1,6 @@
 
 .moviedetail {
-    position: absolute;
-    top: 7vh;
+    position: relative;
 }
 
 #outerContainer {
@@ -81,7 +80,7 @@
 }
 
 #showsHeader {
-    font-family: 'ssA';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 62px;
     margin-bottom: 35px;
 }

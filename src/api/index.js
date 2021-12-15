@@ -57,3 +57,9 @@ export const signIn = async (email, password) => {
     //console.log(data);
     return true;
 }
+
+export const getMovieById = async (id) => {
+    const {data} = await instance.get("/movies/"+id);
+    console.log(data);
+    return data;
+  }

@@ -10,7 +10,7 @@ function formatDate(date){
 
   return(
     <div id="bodyDescription">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,700;1,600&display=swap" rel="stylesheet"></link>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css' />
       <h1 id="movieDescrHeader">
         {props.movie.title}
     </h1>

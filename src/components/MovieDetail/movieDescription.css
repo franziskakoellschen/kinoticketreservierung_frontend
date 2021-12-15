@@ -24,32 +24,35 @@
 }
 
 #bodyDescription {
+    margin-top: 3vh;
     width: 100%;
     height: inherit;
 }
 
 #movieDescrHeader {
-    font-family: 'ssA';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
     font-size: 62px;
     margin-bottom: -15px;
     display:inline-block 
 }
 
 #subTitle {
-    font-family: 'ssB';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px; 
+    font-style: 100;
     display: block;
 }
 
 #shortDescr {
-    font-family: 'ssD';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px; 
     margin-top: 50px; 
     display: inline-block
 }
 
 #fullDescr {
-    font-family: 'ssD';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px; 
     margin-top: 50px;
     display: inline-block;
@@ -70,13 +73,13 @@ hr.DescrSeperator {
 }
 
 span.spanProps {
-    font-family: 'ssD';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px; 
     font-weight: bold;
 }
 
 #movieProps {
    margin-top: 10%;
-    font-family: 'ssD';
-    font-size: 22px; 
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 22px; 
 }
