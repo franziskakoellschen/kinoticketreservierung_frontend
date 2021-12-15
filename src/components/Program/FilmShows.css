@@ -2,7 +2,8 @@
 .filmShowsDiv {
     align-items: top;
     display: flex;
-    justify-content: center;
+    overflow-x: auto;
+    width: inherit;
 }
 
 .filmShowDiv {

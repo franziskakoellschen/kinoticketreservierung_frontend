@@ -5,6 +5,7 @@ import Page from '../components/Page/Page';
 import SeatingPlan from '../components/Booking/SeatingPlan';
 import CheckoutArea from '../components/Booking/CheckoutArea';
 import { useParams } from 'react-router-dom';
+import CenterContent from '../components/Page/CenterContent';
 
 const Booking = ({route, navigation}) => {
 
@@ -38,14 +39,16 @@ const Booking = ({route, navigation}) => {
 
   return (
     <Page>
-      {(!data || data.length === 0) && "Not available"}
-      {data.length !== 0 && (
-        <SeatingPlan
-          seatingPlan={data}
-          toggleSeatSelected={toggleSeatSelected}
-        />
-      )}
-      {selectedSeats.length !== 0 && <CheckoutArea selectedSeats={selectedSeats} filmShowId={filmShowID}/>}
+      <CenterContent>
+        {(!data || data.length === 0) && "Not available"}
+        {data.length !== 0 && (
+          <SeatingPlan
+            seatingPlan={data}
+            toggleSeatSelected={toggleSeatSelected}
+          />
+        )}
+        {selectedSeats.length !== 0 && <CheckoutArea selectedSeats={selectedSeats} filmShowId={filmShowID}/>}
+      </CenterContent>
     </Page>
   );
 };
