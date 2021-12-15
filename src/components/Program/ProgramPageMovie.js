@@ -1,34 +1,33 @@
 import './ProgramPageMovie.css';
 
 import React from 'react';
-import { Component } from 'react';
 import { FilmShows } from './FilmShows';
+import { useNavigate } from 'react-router-dom';
 
-export class ProgramPageMovie extends Component {
+export const ProgramPageMovie = ({movie}) => {
 
-  constructor(props) {
-    super(props);
+  const navigate = useNavigate();
 
-    this.movie = props.movie;
+  const handleClick = () => {
+    navigate('/movie/' + movie.id);
   }
 
-  render = function () {
     return (
       <div
         className="movieDiv"
       >
         <div className="movieImgDiv">
-          <img src={this.movie.imageUrl} alt="Not available"
+          <img src={movie.imageUrl} alt="Not available"
             className="movieImg"/>
         </div>
         <div className="movieInformationDiv">
-            <p className="movieTitle">{this.movie.title}</p>
-            <p className="movieDetails">Jahr: {this.movie.year} | FSK {this.movie.fsk}</p>
-            <p className="movieDescription">{this.movie.shortDescription}</p>
-            <FilmShows filmShows={this.movie.filmShows}/>
+            <p className="movieTitle">{movie.title}</p>
+            <p className="movieDetails">Jahr: {movie.year} | FSK {movie.fsk}</p>
+            <p className="movieDescription">{movie.shortDescription}</p>
+            <FilmShows filmShows={movie.filmShows}/>
         </div>
-        <button className="moreDetailsButton" onClick={() => alert("to details page")}>More details</button>
+        <button className="moreDetailsButton" onClick={handleClick}>More details</button>
       </div>
     );
-  };
+  
 }

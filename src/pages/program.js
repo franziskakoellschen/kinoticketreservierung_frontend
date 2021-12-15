@@ -12,6 +12,7 @@ const Program = () => {
     async function fetchMyAPI ()  {
       let answer = await getMovies();
       setData(answer);
+      console.log(answer);
     }
     
     fetchMyAPI();
@@ -27,7 +28,7 @@ const Program = () => {
               Sorry! There are currently no movies available.
             </p>
           )
-        }
+        } 
         {
           data && data.map((movie) => <ProgramPageMovie key={movie.id} movie={movie} /> )
         }

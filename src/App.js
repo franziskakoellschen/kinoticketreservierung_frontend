@@ -7,9 +7,8 @@ import Movie from './pages/movie';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Booking from './pages/booking';
-import Register from './pages/Register';
 import { useState } from 'react';
-
+import Register from './pages/Register';
 
 
 function App() {
@@ -26,7 +25,8 @@ function App() {
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/program' exact element={<Program />} />
-        <Route path='/movie' exact element={<Movie />} />
+        <Route path='/movie' exact element={<Movie />}/>
+        <Route path='/movie/:id' exact element={<Movie />}/>
         <Route path='/login' exact element={<Login setIsLoggedIn={setIsLoggedIn} setDesiredEmail={setDesiredEmail} />} />
         <Route path='/logout' exact element={<Logout setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path='/register' exact element={<Register desiredEmail={desiredEmail} />} />
