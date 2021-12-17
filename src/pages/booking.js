@@ -8,11 +8,10 @@ import FilmShowSummary from '../components/Booking/FilmShowSummary';
 import { useParams } from 'react-router-dom';
 import CenterContent from '../components/Page/CenterContent';
 
-const Booking = ({route, navigation}) => {
+const Booking = ({ route, navigation }) => {
 
   const [selectedSeats, setSelectedSeats] = useState([]);
 
-  const [filmShowSeats, setFilmShowSeats] = useState([]);
   const [filmShowInformation, setFilmShowInformation] = useState();
   const { filmShowID } = useParams();
 
@@ -32,27 +31,25 @@ const Booking = ({route, navigation}) => {
   };
 
   useEffect(() => {
-    async function fetchMyAPI ()  {
-      let seats = await getFilmShowSeats(filmShowID);
-      setFilmShowSeats(seats);
-      let info = await getFilmShowInformation(filmShowID);
-      setFilmShowInformation(info);
+    async function fetchMyAPI() {
+      let answer = await getFilmShowInformation(filmShowID);
+      setFilmShowInformation(answer);
     }
     filmShowID && fetchMyAPI();
-  },[filmShowID])
+  }, [filmShowID])
 
   return (
     <Page>
       <CenterContent>
-        {!filmShowSeats && "Not available"}
-        {(filmShowSeats && filmShowInformation) && (<>
-          <FilmShowSummary filmShowInformation={filmShowInformation}/>
+        {!filmShowInformation && "Not available"}
+        {(filmShowInformation && filmShowInformation.filmShowSeats) && (<>
+          <FilmShowSummary filmShowInformation={filmShowInformation} />
           <SeatingPlan
-            seatingPlan={filmShowSeats}
+            seatingPlan={filmShowInformation.filmShowSeats}
             toggleSeatSelected={toggleSeatSelected}
           />
         </>)}
-        {selectedSeats.length !== 0 && <CheckoutArea selectedSeats={selectedSeats} filmShowId={filmShowID}/>}
+        {selectedSeats.length !== 0 && <CheckoutArea selectedSeats={selectedSeats} filmShowId={filmShowID} />}
       </CenterContent>
     </Page>
   );

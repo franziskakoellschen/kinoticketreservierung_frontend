@@ -27,12 +27,6 @@ export const getMovies = async () => {
     return data;
 }
 
-export const getFilmShowSeats = async (id) => {
-    const {data} = await instance.get("/filmshows/" + id +"/seats");
-    console.log(data);
-    return data;
-}
-
 export const getFilmShowInformation = async (id) => {
     const {data} = await instance.get("/filmshows/" + id);
     console.log(data);
@@ -49,8 +43,6 @@ export const isUserRegistered = async (email) => {
 
     // TODO
 
-    //const {data} = await instance.get("/user")
-    //console.log(data);
     return true;
 }
 
@@ -59,8 +51,6 @@ export const signIn = async (email, password) => {
 
     // TODO
 
-    //const {data} = await instance.get("/user")
-    //console.log(data);
     return true;
 }
 
