@@ -63,3 +63,14 @@ export const getMovieById = async (id) => {
     console.log(data);
     return data;
   }
+
+  export const setBooking = async (bookingDTO) => {
+    const {data} = await instance.post("/booking" ,
+                                       bookingDTO);
+    return data;
+}
+
+export const getCoupon = async (id) => {
+    const {data} = await instance.get("/coupons/"+id);
+    return data;
+  }

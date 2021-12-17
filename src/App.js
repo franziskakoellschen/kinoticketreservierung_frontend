@@ -9,6 +9,8 @@ import Logout from './pages/Logout';
 import Booking from './pages/booking';
 import { useState } from 'react';
 import Register from './pages/Register';
+import CheckoutArea from './components/Booking/CheckoutArea';
+import CheckoutFields from './pages/checkout';
 
 
 function App() {
@@ -32,6 +34,7 @@ function App() {
         <Route path='/register' exact element={<Register desiredEmail={desiredEmail} />} />
         <Route path='/booking' exact element={<Booking />} />
         <Route path='/booking/:filmShowID' exact element={<Booking />} />
+        <Route path='/checkout' exact element={<CheckoutFields />} />
       </Routes>
     </Router>
   );
