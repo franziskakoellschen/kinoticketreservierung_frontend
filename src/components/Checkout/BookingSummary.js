@@ -35,7 +35,6 @@ const BookingSummary = (props) => {
 
     function couponNotValid() {
 
-        console.log(couponInputValue);
         if (couponInputValue === undefined) {
             setCouponFormatIsWrong(false);
         } else {
@@ -53,7 +52,6 @@ const BookingSummary = (props) => {
                     });
             }
             fetchApi();
-
         }
     }
 
@@ -219,22 +217,21 @@ const BookingSummary = (props) => {
 
         } else {
 
-            var bookingAddress = { ['surName']: props.surnameInputValue, ['lastName']: props.nameInputValue, ['emailAddress']: props.emailInputValue, ['street']: props.streetInputValue, ['houseNumber']: props.houseNumberInputValue, ['postCode']: props.postCodeInputValue, ['city']: props.cityInputValue, ['phoneNumber']: props.phoneNumberInputValue }
+            var bookingAddress = { surName: props.surnameInputValue, lastName: props.nameInputValue, emailAddress: props.emailInputValue, street: props.streetInputValue, houseNumber: props.houseNumberInputValue, ['postCode']: props.postCodeInputValue, ['city']: props.cityInputValue, ['phoneNumber']: props.phoneNumberInputValue }
             var bookingDto = { ['filmShowID']: props.filmShowId, ['filmShowSeatList']: props.selectedSeats, ['isPaid']: true, ['totalSum']: totalSumBrutto - discountAmount, ['bookingAddress']: bookingAddress }
             console.log(bookingDto);
 
             async function postToApi() {
                 await setBooking(bookingDto)
                     .then((response) => {
+                        alert('Buchung erfolgreich!');            
                         navigate('/program');
                     })
                     .catch((reason) => {
+                        alert('Buchung fehlgeschlagen');
                     });
             }
             postToApi();
-
-            alert('Buchung erfolgreich!');
-
         }
     }
 
