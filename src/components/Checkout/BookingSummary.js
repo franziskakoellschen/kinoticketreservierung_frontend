@@ -32,7 +32,6 @@ const BookingSummary = (props) => {
         selectedSeats.forEach(seat => {
             setTotalSumBrutto(totalSumBrutto + seat.price);
         },[]);
-        console.log('moin');
 
     },[setTotalSumBrutto])
 
@@ -134,15 +133,16 @@ const BookingSummary = (props) => {
         props.setEmailFormatIsWrong(mailNotVailid(props.emailInputValue));
         props.setNameFormatIsWrong(alphanunericInputNotValid(props.nameInputValue));
         props.setSurnameFormatIsWrong(alphanunericInputNotValid(props.surnameInputValue));
-        props.setStreetFormatIsWrong(props.streetInputValue === undefined);
+        props.setStreetFormatIsWrong(alphanunericInputNotValid(props.streetInputValue));
         props.setHouseNumberFormatIsWrong(houseNumberNotValid(props.houseNumberInputValue));
         props.setPostCodeFormatIsWrong(postCodeNotValid(props.postCodeInputValue));
         props.setCityFormatIsWrong(alphanunericInputNotValid(props.cityInputValue));
         props.setPhoneNumberFormatIsWrong(phoneNumberNotValid(props.phoneNumberInputValue));
 
 
+        console.log(props.streetInputValue==='');
 
-        if ( mailNotVailid(props.emailInputValue) || alphanunericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanunericInputNotValid(props.surnameInputValue) || props.streetInputValue === undefined || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanunericInputNotValid(props.cityInputValue) || alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions ) {
+        if ( mailNotVailid(props.emailInputValue) || alphanunericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanunericInputNotValid(props.surnameInputValue) || alphanunericInputNotValid(props.streetInputValue) || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanunericInputNotValid(props.cityInputValue) || alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions ) {
             
             if(mailNotVailid(props.emailInputValue)){
                
@@ -193,7 +193,7 @@ const BookingSummary = (props) => {
     
             }
 
-            if(alphanunericInputNotValid(props.cityInputValue)){
+            if(alphanunericInputNotValid(props.cityInputValue) || props.cityInputValue === ''){
                 if(wrongInputFields!==''){
                     wrongInputFields=wrongInputFields+',';  
                 }
