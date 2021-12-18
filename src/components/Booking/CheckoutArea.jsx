@@ -12,7 +12,7 @@ const CheckoutArea = ({selectedSeats, filmShowId}) => {
     async function postToApi()  {
         await reserveSeats(selectedSeats, filmShowId)
           .then((response) => {
-            alert("Success! Refresh to see the change");
+            console.log("Seats blocked for 5 minutes")
             navigate('/checkout', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
           })
           .catch((reason) => {

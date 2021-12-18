@@ -12,7 +12,6 @@ const Program = () => {
     async function fetchMyAPI ()  {
       let answer = await getMovies();
       setData(answer);
-      console.log(answer);
     }
     
     fetchMyAPI();

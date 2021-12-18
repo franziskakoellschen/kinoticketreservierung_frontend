@@ -12,7 +12,6 @@ const [daysState, setDaysState] = useState();
 
     useEffect(() => {
       createDayContainer(props.passedDate);
-      console.log(props.passedObject)
     })
 
  const navigate = useNavigate();

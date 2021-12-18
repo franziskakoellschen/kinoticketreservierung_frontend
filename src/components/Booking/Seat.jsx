@@ -10,7 +10,7 @@ const Seat = ({seat, toggleSeatSelected}) => {
        toggleSeatSelected(seat);
     }
 
-    if (seat.reserved) {
+    if (seat.status != "FREE") {
         return <div className="container">
             <div className="reserved" />
         </div>

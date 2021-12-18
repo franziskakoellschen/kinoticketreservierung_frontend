@@ -1,5 +1,5 @@
 
-import { getFilmShowSeats, getFilmShowInformation } from './../api';
+import { getFilmShowInformation } from './../api';
 import React, { useState, useEffect } from 'react';
 import Page from '../components/Page/Page';
 import SeatingPlan from '../components/Booking/SeatingPlan';

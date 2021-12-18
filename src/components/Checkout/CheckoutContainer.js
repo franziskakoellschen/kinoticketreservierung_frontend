@@ -34,7 +34,7 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
                     <h1 id="showsHeader">Buchungsabschluss</h1>
                     <div id="OuterContainer">
                         <div className='CheckoutContainer'>
-                            <h1 class="invoiceHeader">Rechnungsadresse</h1>
+                            <h1 className="invoiceHeader">Rechnungsadresse</h1>
                             <div id='NameFields'>
                                 <Field locked={false} focused={false} label={'Vorname'} margin={"2%"} marginBottom={"2%"} setInputValue={setSurnameInputValue}
                                     error="falsche Eingabe" id={"SurnameInput"} wrongInput={surnameFormatIsWrong} />

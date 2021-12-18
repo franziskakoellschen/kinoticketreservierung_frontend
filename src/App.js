@@ -9,7 +9,6 @@ import Logout from './pages/Logout';
 import Booking from './pages/booking';
 import { useState } from 'react';
 import Register from './pages/Register';
-import CheckoutArea from './components/Booking/CheckoutArea';
 import CheckoutFields from './pages/checkout';
 
 
