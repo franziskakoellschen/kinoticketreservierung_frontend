@@ -1,9 +1,10 @@
-import {useLocation} from 'react-router-dom';
 import './BookingSummary.css';
 import { BsCaretDown } from "react-icons/bs";
 import Field from '../Input/TextField';
 import React, { useState, useEffect } from 'react';
 import { getCoupon, setBooking } from '../../api';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -15,6 +16,7 @@ const BookingSummary = (props) => {
     const [couponInputValue ,setCouponInputValue] = useState();
     const [couponFormatIsWrong, setCouponFormatIsWrong] = useState(false);
     const [discountAmount, setDiscountAmount] = useState(0);
+    const navigate = useNavigate();
 
     function mailNotVailid(inputValue){
         if (emailRegex.test(inputValue)) { return false;
@@ -55,9 +57,7 @@ const BookingSummary = (props) => {
             }
             fetchApi();
 
-        }
-
-      
+        }      
     }
    
 
@@ -142,7 +142,7 @@ const BookingSummary = (props) => {
 
 
 
-        if ( mailNotVailid(props.emailInputValue) || alphanunericInputNotValid(props.nameInputValue) || alphanunericInputNotValid(props.surnameInputValue) || props.streetInputValue === undefined || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanunericInputNotValid(props.cityInputValue) || alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions ) {
+        if ( mailNotVailid(props.emailInputValue) || alphanunericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanunericInputNotValid(props.surnameInputValue) || props.streetInputValue === undefined || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanunericInputNotValid(props.cityInputValue) || alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions ) {
             
             if(mailNotVailid(props.emailInputValue)){
                
@@ -153,7 +153,7 @@ const BookingSummary = (props) => {
                 wrongInputFields= wrongInputFields + ' E-Mail';
             }
 
-            if(mailNotVailid(props.nameInputValue)){
+            if(alphanunericInputNotValid(props.nameInputValue)){
                 if(wrongInputFields!==''){
                     wrongInputFields= wrongInputFields+',';  
                 }
@@ -169,7 +169,7 @@ const BookingSummary = (props) => {
     
             }
 
-            if(alphanunericInputNotValid(props.streetInputValue === undefined)){
+            if(alphanunericInputNotValid(props.streetInputValue)){
                 if(wrongInputFields!==''){
                     wrongInputFields= wrongInputFields+',';  
                 }
@@ -177,7 +177,7 @@ const BookingSummary = (props) => {
     
             }
 
-            if(alphanunericInputNotValid(props.houseNumberInputValue)){
+            if(houseNumberNotValid(props.houseNumberInputValue)){
                 if(wrongInputFields!==''){
                     wrongInputFields= wrongInputFields+',';  
                 }
@@ -185,7 +185,7 @@ const BookingSummary = (props) => {
     
             }
 
-            if(alphanunericInputNotValid(props.postCodeInputValue)){
+            if(postCodeNotValid(props.postCodeInputValue)){
                 if(wrongInputFields!==''){
                     wrongInputFields=wrongInputFields+',';  
                 }
@@ -201,7 +201,7 @@ const BookingSummary = (props) => {
     
             }
 
-            if(alphanunericInputNotValid(props.phoneNumberInputValue)){
+            if(phoneNumberNotValid(props.phoneNumberInputValue)){
                 if(wrongInputFields!==''){
                     wrongInputFields = wrongInputFields+',';  
                 }
@@ -227,11 +227,9 @@ const BookingSummary = (props) => {
         async function postToApi()  {
             await setBooking(bookingDto)
               .then((response) => {
-                alert("Success! Refresh to see the change");
-                
+                navigate('/program');
               })
               .catch((reason) => {
-                console.log(reason);
               });
         }
         postToApi(); 
