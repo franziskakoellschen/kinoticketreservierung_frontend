@@ -11,6 +11,7 @@ import { FilmShows } from '../components/Program/FilmShows';
 import { useParams } from 'react-router-dom';
 import Moment from 'react-moment';
 import FilmShowsDetail from '../components/MovieDetail/filmShowsDetail';
+import CenterContent from '../components/Page/CenterContent';
 
 
 const Movie = ({route, navigation}) => {
@@ -158,10 +159,12 @@ function setFilmShowKeysAndValues(){
   if (!movie) {
     return (
       <Page>
-        {!movies && "Loading"}
-        {
-          movies && movies.map((movie) => <p>{movie.title}</p>)
-        }
+          {!movies && <CenterContent>Loading</CenterContent>}
+          {movies && (
+            <div>
+              {movies.map((movie) => <p style={{margin: "1%", textAlign: "center"}}>{movie.title}</p>)}
+            </div>)
+          }
       </Page>
     )
   }

@@ -1,0 +1,15 @@
+
+.FilmShowSummary {
+  position: absolute;
+  top: 0;
+  margin: 2%;
+  display: flex;
+  background: #404040;
+  border: #404040;
+  border-radius: 1em;
+}
+
+.DetailItem {
+  margin: 1em;
+  background: inherit;
+}

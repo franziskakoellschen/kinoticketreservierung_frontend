@@ -1,17 +1,18 @@
 
-import { getFilmShowSeats } from './../api';
+import { getFilmShowSeats, getFilmShowInformation } from './../api';
 import React, { useState, useEffect } from 'react';
 import Page from '../components/Page/Page';
 import SeatingPlan from '../components/Booking/SeatingPlan';
 import CheckoutArea from '../components/Booking/CheckoutArea';
+import FilmShowSummary from '../components/Booking/FilmShowSummary';
 import { useParams } from 'react-router-dom';
 import CenterContent from '../components/Page/CenterContent';
 
-const Booking = ({route, navigation}) => {
+const Booking = ({ route, navigation }) => {
 
   const [selectedSeats, setSelectedSeats] = useState([]);
 
-  const [data, setData] = useState([]);
+  const [filmShowInformation, setFilmShowInformation] = useState();
   const { filmShowID } = useParams();
 
   const toggleSeatSelected = (seat) => {
@@ -30,24 +31,25 @@ const Booking = ({route, navigation}) => {
   };
 
   useEffect(() => {
-    async function fetchMyAPI ()  {
-      let answer = await getFilmShowSeats(filmShowID);
-      setData(answer);
+    async function fetchMyAPI() {
+      let answer = await getFilmShowInformation(filmShowID);
+      setFilmShowInformation(answer);
     }
     filmShowID && fetchMyAPI();
-  },[filmShowID])
+  }, [filmShowID])
 
   return (
     <Page>
       <CenterContent>
-        {(!data || data.length === 0) && "Not available"}
-        {data.length !== 0 && (
+        {!filmShowInformation && "Not available"}
+        {(filmShowInformation && filmShowInformation.filmShowSeats) && (<>
+          <FilmShowSummary filmShowInformation={filmShowInformation} />
           <SeatingPlan
-            seatingPlan={data}
+            seatingPlan={filmShowInformation.filmShowSeats}
             toggleSeatSelected={toggleSeatSelected}
           />
-        )}
-        {selectedSeats.length !== 0 && <CheckoutArea selectedSeats={selectedSeats} filmShowId={filmShowID}/>}
+        </>)}
+        {selectedSeats.length !== 0 && <CheckoutArea selectedSeats={selectedSeats} filmShowId={filmShowID} />}
       </CenterContent>
     </Page>
   );
