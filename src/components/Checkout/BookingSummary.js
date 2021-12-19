@@ -29,12 +29,15 @@ const BookingSummary = (props) => {
 
     useEffect(() => {
         var selectedSeats = props.selectedSeats;
+        console.log(selectedSeats);
 
         setTotalSumBrutto(0);
-        selectedSeats.forEach(seat => {
-            setTotalSumBrutto(totalSumBrutto + seat.price);
+        var totalSum = 0;
+        selectedSeats.forEach(seat => {            
+            totalSum = totalSum + seat.price;
         }, []);
 
+        setTotalSumBrutto(totalSum);
     }, [setTotalSumBrutto])
 
     function couponNotValid() {
@@ -76,7 +79,7 @@ const BookingSummary = (props) => {
             code = str.charCodeAt(i);
             if ( // numeric (0-9)
                 !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123)) {
+                !(code > 96 && code < 123) && !(code === 32) ) {
                 // lower alpha (a-z)
                 return false;
             }
@@ -105,7 +108,7 @@ const BookingSummary = (props) => {
         if (str.length !== 5) return true;
         for (i = 0, len = str.length; i < len; i++) {
             code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58)) {
+            if (!(code > 47 && code < 58) && !(code === 32)) {
                 return true;
             }
         }
@@ -232,6 +235,7 @@ const BookingSummary = (props) => {
                         navigate('/program');
                     })
                     .catch((reason) => {
+                        console.log(reason);
                         alert('Buchung fehlgeschlagen');
                     });
             }
@@ -285,16 +289,16 @@ const BookingSummary = (props) => {
                     </button>
                 </div>
                 { summaryOpen && <div className='summaryItemsContainer'>
-                <div id="firstRowSummary"><p id="subTotal">Zwischensumme</p><p id="subTotalSum">{totalSumBrutto} €</p></div>
-                <div id="firstRowSummary"><p id="subTotal">Rabatt</p><p id="subTotalSum">- {discountAmount} €</p></div>
-                <div id="firstRowSummary"><p id="subTotal">Versand</p><p id="subTotalSum">0 €</p></div>
-                <hr id="sumSeperator" />
-                <div id="firstRowSummary"><p id="totalSumP">Gesamtsumme</p><p id="totalSum">{totalSumBrutto - discountAmount} €</p></div>
-                <div id="firstRowSummary"><p id="subTotal">enthaltene Mehrwertssteuer</p><p id="totalSum">{(totalSumBrutto - discountAmount) * 0.19} €</p></div>
+                    <div id="firstRowSummary"><p id="subTotal">Zwischensumme</p><p id="subTotalSum">{totalSumBrutto} €</p></div>
+                    <div id="firstRowSummary"><p id="subTotal">Rabatt</p><p id="subTotalSum">- {discountAmount} €</p></div>
+                    <div id="firstRowSummary"><p id="subTotal">Versand</p><p id="subTotalSum">0 €</p></div>
+                    <hr id="sumSeperator" />
+                    <div id="firstRowSummary"><p id="totalSumP">Gesamtsumme</p><p id="totalSum">{totalSumBrutto - discountAmount} €</p></div>
+                    <div id="firstRowSummary"><p id="subTotal">enthaltene Mehrwertssteuer</p><p id="totalSum">{(totalSumBrutto - discountAmount) * 0.19} €</p></div>
                 </div>}
                 <div id="couponInput"><Field locked={false} focused={false} label={'Kommentar'} /></div>
                 <div id="firstRowSummary"> 
-                    <input type="checkbox" id="agree" vonChange={onChange} />
+                    <input type="checkbox" id="agree" onChange={onChange} />
                     <p id="agb">Bitte akzeptieren Sie unsere <span id="agb1">Allgemeinen Geschäftsbedingungen</span></p>
                 </div>
                 <button id="checkoutButton" onClick={onClick}>Tickets buchen</button>

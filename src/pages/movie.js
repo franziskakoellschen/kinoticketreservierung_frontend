@@ -22,43 +22,13 @@ const Movie = ({ route, navigation }) => {
   const [filmShowKeys, setFilmShowKeys] = useState([]);
 
   useEffect(() => {
-    function sortFilmShows(from, to) {
-      let showMap = new Map();
-      if (movie !== undefined) {
-        const filmShows = movie.filmShows;
+    
 
-        filmShows.map(currentShow => {
-
-          var date = new Date(currentShow.date);
-
-          if (date > from && date < to) {
-
-            var filmShowArray = [];
-            filmShowArray.push(currentShow);
-            var stringDate = date.toString().substring(0, 15);
-
-            if (showMap.has(stringDate)) {
-              showMap.get(stringDate).push(currentShow);
-            }
-            else {
-              showMap.set(stringDate, filmShowArray)
-            }
-          }
-        })
-        setFilmShowState(showMap);
-      }
+    if(filmShowState===undefined){
+      sortFilmShows();
     }
 
-    function setFilmShowKeysAndValues() {
-      if (filmShowKeys.length === 0) {
-
-        filmShowState && filmShowState.forEach((value, key) => {
-          setFilmShowKeys(prevFilmShowKeys => [...prevFilmShowKeys, key]);
-          setFilmShowsValues(prevFilmShowValues => [...prevFilmShowValues, value]);
-        })
-      }
-    }
-
+    console.log('in UseEffect');
     if (id) {
       async function fetchMyAPI() {
         let answer = await getMovieById(id);
@@ -95,6 +65,42 @@ const Movie = ({ route, navigation }) => {
         });
     }
   },[isloaded, filmShowState, filmShowKeys/*movie.image_id*/]);
+
+  function sortFilmShows() {
+    let showMap = new Map();
+    if (movie !== undefined) {
+      const filmShows = movie.filmShows;
+
+      filmShows.map(currentShow => {
+
+        var date = new Date(currentShow.date);
+
+          var filmShowArray = [];
+          filmShowArray.push(currentShow);
+          var stringDate = date.toString().substring(0, 15);
+
+          if (showMap.has(stringDate)) {
+            showMap.get(stringDate).push(currentShow);
+          }
+          else {
+            showMap.set(stringDate, filmShowArray)
+          }
+        
+      })
+      setFilmShowState(showMap);
+      console.log('is Set');
+    }
+  }
+
+  function setFilmShowKeysAndValues() {
+    if (filmShowKeys.length === 0) {
+
+      filmShowState && filmShowState.forEach((value, key) => {
+        setFilmShowKeys(prevFilmShowKeys => [...prevFilmShowKeys, key]);
+        setFilmShowsValues(prevFilmShowValues => [...prevFilmShowValues, value]);
+      })
+    }
+  }
 
   const [image, setImage] = useState('/9j/4AAQSkZJRgABAQEAeAB4AAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8V6KKKAP/2Q==');
   const contentType = 'image/png';

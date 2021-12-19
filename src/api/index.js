@@ -12,7 +12,7 @@ if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
 } else {
     instance = axios.create({
         baseURL: 'http://localhost:8080/',
-        timeout: 1000  });
+        timeout: 5000  });
 }
 
 export const getTestRequestData = async () => {
