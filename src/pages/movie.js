@@ -55,7 +55,7 @@ const Movie = ({ route, navigation }) => {
       setFilmShowKeysAndValues();
     }
 
-    if (movie !== undefined && !isImageLoaded ) {
+    /*if (movie !== undefined && !isImageLoaded ) {
       axios.get(
         'http://localhost:8080/image/' + movie.image_id,
         { responseType: 'arraybuffer' },
@@ -71,7 +71,7 @@ const Movie = ({ route, navigation }) => {
           setIsImageLoaded(true);
         });
     }
-    console.log(image);
+    console.log(image);*/
   },[isloaded,filmShowState, filmShowKeys/*movie.image_id*/]);
 
   function sortFilmShows() {
@@ -166,7 +166,7 @@ const Movie = ({ route, navigation }) => {
                 playing
                 url={movie.trailer}
                 playIcon={<button id="playButton" />}
-                light={'https://img.welt.de/img/icon/news/mobile235403144/4322500277-ci102l-w1024/2021-House-of-Gucci-Movie-Set.jpg'}
+                light={movie.templateUrl}
               />
             </div>
             <div id="topDiv"></div>
