@@ -18,10 +18,8 @@ const CheckoutFields = ( ) => {
   })
 
   return (
-    <Page>
-      <CenterContent>
-        <CheckoutContainer filmShowId={filmShowId} selectedSeats={selectedSeats} response={response} />
-      </CenterContent>
+    <Page>  
+      <CheckoutContainer filmShowId={filmShowId} selectedSeats={selectedSeats} response={response} />
     </Page>
   );
 };

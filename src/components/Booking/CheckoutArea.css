@@ -9,17 +9,19 @@
 
 ul {
     height: 60vh;
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     margin-bottom: 10%;
     list-style-type: none;
     overflow-y: auto;
+    padding: 3px;
 }
 
 ul li {
     border: 2px solid white;
     border-radius: 5px;
     margin-bottom: 2%;
+    padding: 5px;
 }
 
 .checkoutButton {

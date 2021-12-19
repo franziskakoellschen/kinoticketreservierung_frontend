@@ -1,5 +1,5 @@
 import './BookingSummary.css';
-import { BsCaretDown } from "react-icons/bs";
+import { BsCaretDown , BsCaretUp } from "react-icons/bs";
 import Field from '../Input/TextField';
 import React, { useState, useEffect } from 'react';
 import { getCoupon, setBooking } from '../../api';
@@ -14,6 +14,10 @@ const BookingSummary = (props) => {
     const [couponFormatIsWrong, setCouponFormatIsWrong] = useState(false);
     const [discountAmount, setDiscountAmount] = useState(0);
     const navigate = useNavigate();
+
+    const [ticketSummaryOpen, setTicketSummaryOpen] = useState(false);
+    const [cuponInputOpen, setCuponInputOpen] = useState(false);
+    const [summaryOpen, setSummaryOpen] = useState(true);
 
     function mailNotVailid(inputValue) {
         if (emailRegex.test(inputValue)) {
@@ -239,36 +243,62 @@ const BookingSummary = (props) => {
         setAgreedTermsAndConditions(!agreedTermsAndConditions);
     }
 
+    function onToggleTicketSummary() {
+        setTicketSummaryOpen( !ticketSummaryOpen );
+    }
+
+    function onToggleCuponInput() {
+        setCuponInputOpen( !cuponInputOpen );
+    }
+
+    function onToggleSummary() {
+        setSummaryOpen( !summaryOpen );
+    }
+
     return (
         <div className="outerClass">
             <div className="headContainer">
                 <div id="firstRow"><h1 id="ticketSummaryHeader">Ticketzusammenfasung</h1>
-                    <BsCaretDown /> </div>
-                <div id="ticketCount">{props.selectedSeats.length} {props.selectedSeats.length > 1 ? 'Tickets' : 'Ticket'}</div>
+                    <button type='button' className='toggle firstToggle' onClick={onToggleTicketSummary}> 
+                        {ticketSummaryOpen ? <BsCaretUp /> : <BsCaretDown />} 
+                    </button>
+                </div>
+                { ticketSummaryOpen &&  <div id="ticketCount">{props.selectedSeats.length} {props.selectedSeats.length > 1 ? 'Tickets' : 'Ticket'}</div>}
             </div>
             <div className="couponContainer">
+                
                 <div id="firstRow">
                     <h1 id="cuponHeader">Gutscheincode</h1>
-                    <BsCaretDown />
+                    <button type='button' className='toggle secondToggle' onClick={onToggleCuponInput}> 
+                        {cuponInputOpen ? <BsCaretUp /> : <BsCaretDown />} 
+                    </button>
                 </div>
-                <div id="couponInput"><Field locked={false} focused={false} label={'Gutscheincode'} setInputValue={setCouponInputValue} error="ungültiger Code" id={"CouponInput"} wrongInput={couponFormatIsWrong} />
+                { cuponInputOpen && <div id="couponInput"><Field locked={false} focused={false} label={'Gutscheincode'} setInputValue={setCouponInputValue} error="ungültiger Code" id={"CouponInput"} wrongInput={couponFormatIsWrong} />
                     <button id="checkoutButton" onClick={couponNotValid}>Gutschein anwenden</button>
-                </div>
+                </div>}
             </div>
             <div className="summaryContainer">
                 <div id="firstRow">
                     <h1 id="summaryHeader">Zusammenfassung</h1>
-                    <BsCaretDown />
+                    <button type='button' className='toggle thirdToggle' onClick={onToggleSummary}> 
+                        {summaryOpen ? <BsCaretUp /> : <BsCaretDown />} 
+                    </button>
                 </div>
+                { summaryOpen && <div className='summaryItemsContainer'>
                 <div id="firstRowSummary"><p id="subTotal">Zwischensumme</p><p id="subTotalSum">{totalSumBrutto} €</p></div>
                 <div id="firstRowSummary"><p id="subTotal">Rabatt</p><p id="subTotalSum">- {discountAmount} €</p></div>
                 <div id="firstRowSummary"><p id="subTotal">Versand</p><p id="subTotalSum">0 €</p></div>
                 <hr id="sumSeperator" />
                 <div id="firstRowSummary"><p id="totalSumP">Gesamtsumme</p><p id="totalSum">{totalSumBrutto - discountAmount} €</p></div>
                 <div id="firstRowSummary"><p id="subTotal">enthaltene Mehrwertssteuer</p><p id="totalSum">{(totalSumBrutto - discountAmount) * 0.19} €</p></div>
+                </div>}
                 <div id="couponInput"><Field locked={false} focused={false} label={'Kommentar'} /></div>
-                <div id="firstRowSummary"> <input type="checkbox" id="agree" onChange={onChange} /><p id="agb">Bitte akzeptieren Sie unsere <span id="agb1">Allgemeinen Geschäftsbedingungen</span></p></div>
+                <div id="firstRowSummary"> 
+                    <input type="checkbox" id="agree" vonChange={onChange} />
+                    <p id="agb">Bitte akzeptieren Sie unsere <span id="agb1">Allgemeinen Geschäftsbedingungen</span></p>
+                </div>
                 <button id="checkoutButton" onClick={onClick}>Tickets buchen</button>
+                <div />
             </div>
         </div>
     );
