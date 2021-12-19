@@ -21,6 +21,11 @@ const Movie = ({ route, navigation }) => {
   const [filmShowsValues, setFilmShowsValues] = useState([]);
   const [filmShowKeys, setFilmShowKeys] = useState([]);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [image, setImage] = useState('iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAcSURBVChTYxQTE/vPQARggtIEwahCvIBIhQwMAA9WAVUQUjPOAAAAAElFTkSuQmCC');
+  const contentType = 'image/png';
+  const b64Data = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
+  const defimage = 'iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAcSURBVChTYxQTE/vPQARggtIEwahCvIBIhQwMAA9WAVUQUjPOAAAAAElFTkSuQmCC';
+
 
   useEffect(() => {
     
@@ -50,7 +55,7 @@ const Movie = ({ route, navigation }) => {
       setFilmShowKeysAndValues();
     }
 
-    if (movie !== undefined) {
+    if (movie !== undefined && !isImageLoaded ) {
       axios.get(
         'http://localhost:8080/image/' + movie.image_id,
         { responseType: 'arraybuffer' },
@@ -63,9 +68,11 @@ const Movie = ({ route, navigation }) => {
             ),
           );
           setImage(base64);
+          setIsImageLoaded(true);
         });
     }
-  },[isloaded, filmShowState, filmShowKeys/*movie.image_id*/]);
+    console.log(image);
+  },[isloaded,filmShowState, filmShowKeys/*movie.image_id*/]);
 
   function sortFilmShows() {
     let showMap = new Map();
@@ -102,46 +109,6 @@ const Movie = ({ route, navigation }) => {
       })
     }
   }
-
-  function sortFilmShows() {
-    let showMap = new Map();
-    if (movie !== undefined) {
-      const filmShows = movie.filmShows;
-
-      filmShows.map(currentShow => {
-
-        var date = new Date(currentShow.date);
-
-          var filmShowArray = [];
-          filmShowArray.push(currentShow);
-          var stringDate = date.toString().substring(0, 15);
-
-          if (showMap.has(stringDate)) {
-            showMap.get(stringDate).push(currentShow);
-          }
-          else {
-            showMap.set(stringDate, filmShowArray)
-          }
-        
-      })
-      setFilmShowState(showMap);
-      console.log('is Set');
-    }
-  }
-
-  function setFilmShowKeysAndValues() {
-    if (filmShowKeys.length === 0) {
-
-      filmShowState && filmShowState.forEach((value, key) => {
-        setFilmShowKeys(prevFilmShowKeys => [...prevFilmShowKeys, key]);
-        setFilmShowsValues(prevFilmShowValues => [...prevFilmShowValues, value]);
-      })
-    }
-  }
-
-  const [image, setImage] = useState('iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAcSURBVChTYxQTE/vPQARggtIEwahCvIBIhQwMAA9WAVUQUjPOAAAAAElFTkSuQmCC');
-  const contentType = 'image/png';
-  const b64Data = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
 
   const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
     const byteCharacters = atob(b64Data);
@@ -192,13 +159,14 @@ const Movie = ({ route, navigation }) => {
           <div id="first">
             <div id="movieDiv">
               <ReactPlayer
+                background = "transparent"
                 className="reactPlayer"
                 width="inherit"
                 height="inherit"
                 playing
                 url={movie.trailer}
                 playIcon={<button id="playButton" />}
-                light={toBlobUlr(contentType, image)}
+                light={'https://img.welt.de/img/icon/news/mobile235403144/4322500277-ci102l-w1024/2021-House-of-Gucci-Movie-Set.jpg'}
               />
             </div>
             <div id="topDiv"></div>
