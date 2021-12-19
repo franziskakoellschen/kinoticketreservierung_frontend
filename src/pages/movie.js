@@ -20,6 +20,8 @@ const Movie = ({ route, navigation }) => {
   const [filmShowState, setFilmShowState] = useState();
   const [filmShowsValues, setFilmShowsValues] = useState([]);
   const [filmShowKeys, setFilmShowKeys] = useState([]);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
 
   useEffect(() => {
     
@@ -49,7 +51,7 @@ const Movie = ({ route, navigation }) => {
       setFilmShowKeysAndValues();
     }
 
-    if (movie !== undefined) {
+    if (movie !== undefined && !isImageLoaded ) {
       axios.get(
         'http://localhost:8080/image/' + movie.image_id,
         { responseType: 'arraybuffer' },
@@ -62,6 +64,7 @@ const Movie = ({ route, navigation }) => {
             ),
           );
           setImage(base64);
+          setIsImageLoaded(true);
         });
     }
   },[isloaded, filmShowState, filmShowKeys/*movie.image_id*/]);
