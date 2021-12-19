@@ -231,12 +231,17 @@ const BookingSummary = (props) => {
             async function postToApi() {
                 await setBooking(bookingDto)
                     .then((response) => {
-                        alert('Buchung erfolgreich!');            
+                        alert('Buchung erfolgreich!');
                         navigate('/program');
                     })
                     .catch((reason) => {
-                        console.log(reason);
-                        alert('Buchung fehlgeschlagen');
+                        if (reason.response.status === 400) {
+                            alert('Buchung fehlgeschlagen: Bad Request (400)');
+                        } else if (reason.response.status === 409) {
+                            alert('Buchung fehlgeschlagen: Zeitfenster überschritten (409)');
+                        } else {
+                            alert(reason.response.status);
+                        }
                     });
             }
             postToApi();

@@ -12,10 +12,11 @@ const CheckoutArea = ({selectedSeats, filmShowId}) => {
     async function postToApi()  {
         await reserveSeats(selectedSeats, filmShowId)
           .then((response) => {
+            console.log(response);
             navigate('/checkout', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
-         
           })
           .catch((reason) => {
+            alert("Fehlgeschlagen! Sitze konnten nicht ausgewählt werden");
           });
     }
     postToApi();
