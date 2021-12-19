@@ -55,24 +55,8 @@ const Movie = ({ route, navigation }) => {
       setFilmShowKeysAndValues();
     }
 
-    /*if (movie !== undefined && !isImageLoaded ) {
-      axios.get(
-        'http://localhost:8080/image/' + movie.image_id,
-        { responseType: 'arraybuffer' },
-      )
-        .then(response => {
-          const base64 = btoa(
-            new Uint8Array(response.data).reduce(
-              (data, byte) => data + String.fromCharCode(byte),
-              '',
-            ),
-          );
-          setImage(base64);
-          setIsImageLoaded(true);
-        });
-    }
-    console.log(image);*/
-  },[isloaded,filmShowState, filmShowKeys/*movie.image_id*/]);
+  
+  },[isloaded,filmShowState, filmShowKeys]);
 
   function sortFilmShows() {
     let showMap = new Map();
