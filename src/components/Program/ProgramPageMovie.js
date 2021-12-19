@@ -26,7 +26,7 @@ export const ProgramPageMovie = ({movie}) => {
             <p className="movieDescription">{movie.shortDescription}</p>
             <FilmShows filmShows={movie.filmShows}/>
         </div>
-        <button className="moreDetailsButton" onClick={handleClick}>More details</button>
+        <button className="moreDetailsButton" onClick={handleClick}>Mehr Informationen</button>
       </div>
     );
   
