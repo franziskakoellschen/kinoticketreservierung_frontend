@@ -81,8 +81,16 @@ const BookingSummary = (props) => {
                 !(code > 64 && code < 91) && // upper alpha (A-Z)
                 !(code > 96 && code < 123) && 
                 !(code === 32) && 
-                !(code === 223)) {
+                !(code === 223)&&
+                !(code === 228)&&
+                !(code === 196)&&
+                !(code === 252)&&
+                !(code === 220)&&
+                !(code === 246)&&
+                !(code === 45)&&
+                !(code === 214) ) {
                 // lower alpha (a-z)
+                console.log('for ' + str + ' code' + code);
                 return false;
             }
         }
@@ -99,7 +107,8 @@ const BookingSummary = (props) => {
                 !(code > 96 && code < 123) && // lower alpha
                 !(code === 32) // spcae
                 && !(code === 46)) { // .
-                return true;
+                  
+              return true;
             }
         }
         return false;
