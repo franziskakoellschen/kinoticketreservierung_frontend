@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './TextField.css';
 
@@ -13,6 +13,10 @@ export default class Field extends Component {
         label: PropTypes.string,
         onChange: PropTypes.func,
         setInputValue: PropTypes.func,
+        margin: PropTypes.string,
+        marginTop: PropTypes.string,
+        marginBottom: PropTypes.string,
+       
     };
 
     static defaultProps = {
@@ -24,6 +28,12 @@ export default class Field extends Component {
         label: '',
         onChange: () => '',
         setInputValue: () => '',
+        margin:'5%',
+        marginTop:'5%',
+        marginBottom: '5%',
+        
+
+
     };
 
     constructor(props) {
@@ -34,21 +44,31 @@ export default class Field extends Component {
             value: props.value || '',
             error: props.error || '',
             label: props.label || '',
+            margin: props.margin || '5%',
+            marginTop: props.marginTop || '5%',
+            marginBottom: props.marginBottom || '5%',
+            wrongInput: props.wrongInput,
         };
     }
 
+    componentDidUpdate(prevProps) {
+        if(prevProps.wrongInput !== this.props.wrongInput) {
+          this.setState({wrongInput: this.props.wrongInput});
+        }}
+   
+
     onChange = event => {
+        
         const { id } = this.props;
         const value = event.target.value;
-        this.setState({ value, error: '' });
+        this.setState({ value });
         this.props.setInputValue(value);
         return this.props.onChange(id, value);
     }
 
-    
-
+ 
     render() {
-        const { focussed, value, error, label } = this.state;
+        const { focussed, value, error, label, margin, marginTop, marginBottom , wrongInput} = this.state;
         const { id, type, locked } = this.props;
 
         const fieldClassName =
@@ -64,7 +84,7 @@ export default class Field extends Component {
         
 
         return (
-            <div style={{margin: "5%"}}>
+            <div style={{margin: margin, marginBottom: marginBottom, marginTop: marginTop} }>
                 <div className={fieldClassName}>
                     <input
                     id ={id}
@@ -75,8 +95,8 @@ export default class Field extends Component {
                     onFocus={onFocus}
                     onBlur={onBlur}
                     />
-                    <label htmlFor={id} className={error && 'error'}>
-                        {error || label}
+                    <label key={this.props.wrongInput} htmlFor={id} className={error && wrongInput && 'error'}>
+                        {wrongInput && error || label}
                     </label>
                 </div>
             </div>

@@ -1,17 +1,22 @@
 import './CheckoutArea.css';
 import PopupContinueButton from '../Popup/PopupContinueButton';
 import { reserveSeats } from '../../api';
+import { useNavigate } from 'react-router-dom';
+
 
 const CheckoutArea = ({selectedSeats, filmShowId}) => {
+
+  const navigate = useNavigate();
 
   const onButtonClick = () => {
     async function postToApi()  {
         await reserveSeats(selectedSeats, filmShowId)
           .then((response) => {
-            alert("Success! Refresh to see the change");
+            console.log(response);
+            navigate('/checkout', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
           })
           .catch((reason) => {
-            alert("Error! Please refresh and try again");
+            alert("Fehlgeschlagen! Sitze konnten nicht ausgewählt werden");
           });
     }
     postToApi();

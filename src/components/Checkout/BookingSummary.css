@@ -1,0 +1,188 @@
+
+.outerClass {
+    width: 30vw;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.outerClass > *{
+    background: #404040;
+}
+
+.headContainer{
+    width: 30vw;
+    margin-bottom: 5%;
+}
+
+#firstRow {
+    margin: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+#ticketCount {
+    margin-left: 5%;
+    margin-bottom: 4%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+}
+
+#firstRow > *{
+    background: inherit;
+}
+
+.headContainer > *{
+    background: inherit;
+}
+
+#ticketSummaryHeader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+    font-weight: bold;
+    margin-right: auto;
+}
+
+#cuponHeader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.couponContainer {
+    width: 30vw;
+    margin-bottom: 5%;
+    justify-content: center;
+}
+
+.couponContainer > * {
+    background: inherit;
+}
+
+#couponInput{
+    font-size:small;
+}
+
+#couponInput > *{
+background: inherit;
+
+}
+
+.summaryContainer {
+    width: 30vw;
+    margin-bottom: 10%;
+    justify-content: center;
+}
+
+.summaryContainer > * {
+    background: inherit;
+}
+
+.toggle {
+    border: 0;
+    background: inherit;
+}
+
+.toggle > *{
+    border: 0;
+    background: inherit;
+}
+
+.summaryItemsContainer {
+    background: inherit;
+}
+
+.summaryItemsContainer > * {
+    background: inherit;
+}
+
+#summaryHeader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+    font-weight: bold;
+    margin-right: auto;
+}
+
+#firstRowSummary {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+}
+
+#subTotal {
+    background: inherit;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+}
+#subTotalSum {
+    background: inherit;
+    margin-left: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+}
+#sumSeperator {
+    margin-top: 4%;
+    position: relative;
+    width: 90%;
+    left:5%;
+    margin-bottom: 4%;
+}
+
+#totalSumP {
+    background: inherit;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 15px; 
+
+}
+
+#totalSum {
+    background: inherit;
+    margin-left: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+    font-weight: bold;
+
+}
+
+#agreedTermsAndConditions {
+    margin: 5%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+#agb {
+    margin-left: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px; 
+    background-color: transparent;  
+}
+
+#agb1 {
+    color: orange;
+    background-color: transparent;
+}
+
+#agree:checked + #agree::before{
+    background-color: orange;
+}
+
+#checkoutButton {
+    background: orange;
+  color: black;
+  width: 60%;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 20%;
+  cursor: pointer;
+    margin-bottom: 30px;
+
+}

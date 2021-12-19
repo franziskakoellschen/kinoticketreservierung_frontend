@@ -12,7 +12,6 @@ const Program = () => {
     async function fetchMyAPI ()  {
       let answer = await getMovies();
       setData(answer);
-      console.log(answer);
     }
     
     fetchMyAPI();
@@ -30,7 +29,7 @@ const Program = () => {
           )
         } 
         {
-          data && data.map((movie) => <ProgramPageMovie key={movie.id} movie={movie} /> )
+          data && data.map((movie) => <ProgramPageMovie key={movie.id} movie={movie}  />  )
         }
       </div>
     </Page>
