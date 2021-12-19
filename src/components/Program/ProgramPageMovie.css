@@ -1,0 +1,59 @@
+
+.movieDiv {
+    display: flex;
+    align-items: top;
+    margin: 60px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid white;
+    border-bottom-style: groove;
+}
+
+.movieImgDiv {
+    height: 300px;
+    width: 250px;
+}
+
+.movieImg {
+    height: inherit;
+    border-radius: 10px;
+}
+
+.moreDetailsButton {
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    float: right;
+    font-weight: 300;
+    height: 50px;
+    margin-right: 0; 
+    padding: 2%;   
+}
+
+.moreDetailsButton:hover {
+    background: rgba(255, 255, 255, 0.45);   
+}
+
+.movieTitle {
+    align-items: center;
+    display: flex;
+    font-size: 36px;
+    margin: 30px;
+    margin-left: 0px;
+}
+
+.movieDetails {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.movieDescription {
+    align-items: center;
+    display: flex;
+}
+
+.movieInformationDiv {
+    flex: 1 1 auto;
+    width: 60vw;
+}

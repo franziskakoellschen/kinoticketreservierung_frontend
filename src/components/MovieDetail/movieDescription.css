@@ -1,0 +1,85 @@
+
+@font-face {
+    font-family: 'ssA';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmhdu3cOWxy40.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'ssB';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wkxdu3cOWxy40.woff2) format('woff2');
+}
+ 
+@font-face {
+    font-family: 'ssD';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2) format('woff2');
+}
+
+#bodyDescription {
+    margin-top: 3vh;
+    width: 100%;
+    height: inherit;
+}
+
+#movieDescrHeader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
+    font-size: 62px;
+    margin-bottom: -15px;
+    display:inline-block 
+}
+
+#subTitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px; 
+    font-style: 100;
+    display: block;
+}
+
+#shortDescr {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px; 
+    margin-top: 50px; 
+    display: inline-block
+}
+
+#fullDescr {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px; 
+    margin-top: 50px;
+    display: inline-block;
+    margin-bottom: 60px;
+    
+}
+
+hr.DescrSeperator {
+    display: block;
+    height: 1px;
+    border: 1;
+    border-top: 1px solid rgb(255, 255, 255);
+    margin-top: 3em  auto;
+    margin-bottom: 3em  auto;
+    padding: 0;
+
+    width: inherit;
+}
+
+span.spanProps {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px; 
+    font-weight: bold;
+}
+
+#movieProps {
+   margin-top: 10%;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 22px; 
+}

@@ -1,0 +1,9 @@
+
+.PageContent {
+    position: absolute;
+    top: 7vh;
+    height: 93vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x:hidden; 
+}

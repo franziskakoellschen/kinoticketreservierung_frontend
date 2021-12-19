@@ -1,0 +1,115 @@
+.floatingContainer {
+    display: flex;
+    flex-direction: column;
+
+align-items: center;
+}
+
+#OuterContainer {
+    position: relative;
+
+   
+display: flex;
+flex-direction: row;
+justify-content:center;
+align-items: flex-start;
+}
+
+.CheckoutContainer {
+    background: #404040;
+    border-radius: 4px;
+    height: fit-content;
+    font-size: large;
+    width: 40vw;
+    margin-bottom: 20px;
+}
+
+
+.CheckoutContainer > * {
+    background: inherit;
+    margin: 5%;
+
+}
+
+#showsHeader {
+    margin-top: 3%;
+}
+
+.invoiceHeader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px; 
+    font-weight: bold;
+    bottom: 0;
+}
+
+#NameFields {
+    display: flex;
+    flex-direction: row;
+    margin: 3%;
+    margin-bottom: 0%;
+    
+}
+
+#NameFields > * { 
+    background: inherit;
+    width: 50%;
+}
+
+#bookingHeader {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 62px;
+    margin-bottom: 35px;
+    margin: 0%;
+    
+}
+
+#AddressFields {
+    display: flex;
+    flex-direction: row;
+    margin-right: 3.5%;
+    margin-left: 2.5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    justify-content: center;
+  
+}
+
+#AddressFields > * { 
+    background: inherit;
+
+}
+
+#field1 {
+    width: 75%;
+    background: transparent;
+
+}
+
+#field1 > * {
+    background: inherit;
+
+}
+
+#field2 {
+    width: 23%;
+}
+
+#field2 > * {
+    background: inherit;
+}
+
+#CityFields {
+    display: flex;
+    flex-direction: row;
+    margin: 3%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    
+}
+
+#CityFields > * { 
+    background: inherit;
+    width: 50%;
+
+}
+

@@ -1,39 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './pages';
+import Program from './pages/program';
+import Movie from './pages/movie';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
+import Booking from './pages/booking';
+import { useState } from 'react';
+import Register from './pages/Register';
+import CheckoutFields from './pages/checkout';
 
-function onButtonClick() {
-  
-  var backendUrl;
-  if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
-    backendUrl = "https://kinoticket-backend-dev.herokuapp.com/";
-  } else if (process.env.REACT_APP_DEPLOYMENT_STAGE === "PROD") {
-    backendUrl = "https://kinoticket-backend-prod.herokuapp.com/";
-  } else {
-    backendUrl = "http://localhost:8080/";
-  }
-
-  axios.get(backendUrl + "testRequest")
-  .then(function (response) {
-    alert("Requested URL was: " + backendUrl  + "\nResponse data: " + response.data);
-  })
-  .catch(function (error) {
-    alert(error);
-  });
-
-}
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [desiredEmail, setDesiredEmail] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={onButtonClick}>Trigger backend</button>
-      </header>
-    </div>
+    <Router>
+      <Navbar
+        loggedIn={isLoggedIn}
+        userFirstName="Vorname" // TEMP
+      />
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+        <Route path='/program' exact element={<Program />} />
+        <Route path='/movie' exact element={<Movie />}/>
+        <Route path='/movie/:id' exact element={<Movie />}/>
+        <Route path='/login' exact element={<Login setIsLoggedIn={setIsLoggedIn} setDesiredEmail={setDesiredEmail} />} />
+        <Route path='/logout' exact element={<Logout setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path='/register' exact element={<Register desiredEmail={desiredEmail} />} />
+        <Route path='/booking' exact element={<Booking />} />
+        <Route path='/booking/:filmShowID' exact element={<Booking />} />
+        <Route path='/checkout' exact element={<CheckoutFields />} />
+      </Routes>
+    </Router>
   );
 }
 

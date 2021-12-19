@@ -1,0 +1,9 @@
+
+.PopupContinueButton {
+    margin: 5%;
+    background: #F3AF00;
+    border-radius: 6px;
+    width: 90%;
+    justify-content: center;
+    font-size: larger;
+}

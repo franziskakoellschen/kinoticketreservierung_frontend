@@ -1,0 +1,80 @@
+.field {
+    width: 100%;
+    height: 4em;
+    border-radius: 0.5em;
+    position: relative;
+    background-color: rgba(255,255,255,0.3);
+    transition: 0.3s all;
+  }
+  .field:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0em 0.5em 2.5em 0em rgba(0, 0, 0, 0.05);
+  }
+
+.field.focussed input {
+    padding: 2em 1.5em 0.8em 1em;
+}
+
+.field.focussed input + label {
+    top: 0.4em;
+    opacity: 1;
+    color: #282828;
+    background: none;
+}
+
+.field.locked {
+   pointer-events: none;
+}
+
+.field input {
+    width: 100%;
+    height: 4em;
+    position: relative;
+    padding: 0em 1em;
+    border: none;
+    border-radius: 0.25em;
+    font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
+    color: #282828;
+    outline: none;
+    box-shadow: 0em 0.5em 2.5em 0em transparent;
+    transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
+    -webkit-appearance: none;
+}
+
+.field input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.field input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.field input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.field input:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.field input + label {
+    position: absolute;
+    top: 1.5em;
+    left: 1.35em;
+    font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 2em;
+    color: #ffffff;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.1s all ease-in-out;
+}
+
+.field input + label.error {
+   color: #ec392f;
+}

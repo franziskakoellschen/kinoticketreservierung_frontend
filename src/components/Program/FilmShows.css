@@ -1,0 +1,23 @@
+
+.filmShowsDiv {
+    align-items: top;
+    display: flex;
+    overflow-x: auto;
+    width: inherit;
+}
+
+.filmShowDiv {
+    border: 2px solid white;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 5px;
+    margin-top: 30px;
+}
+
+.noShowsAvailableMsg {
+    display: flex;
+    font-style: normal;
+    margin-top: 60px;
+    text-align: center; 
+    vertical-align: middle;
+}
