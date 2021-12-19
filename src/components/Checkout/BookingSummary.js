@@ -79,7 +79,9 @@ const BookingSummary = (props) => {
             code = str.charCodeAt(i);
             if ( // numeric (0-9)
                 !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123) && !(code === 32) ) {
+                !(code > 96 && code < 123) && 
+                !(code === 32) && 
+                !(code === 223)) {
                 // lower alpha (a-z)
                 return false;
             }
