@@ -4,15 +4,15 @@ let instance;
 if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
     instance = axios.create({
         baseURL: 'https://kinoticket-backend-dev.herokuapp.com/',
-        timeout: 3000  });
+        timeout: 5000  });
 } else if (process.env.REACT_APP_DEPLOYMENT_STAGE === "PROD") {
     instance = axios.create({
         baseURL: 'https://kinoticket-backend-prod.herokuapp.com/',
-        timeout: 3000  });
+        timeout: 5000  });
 } else {
     instance = axios.create({
         baseURL: 'http://localhost:8080/',
-        timeout: 3000  });
+        timeout: 5000  });
 }
 
 export const getTestRequestData = async () => {
@@ -28,8 +28,9 @@ export const getMovies = async () => {
 }
 
 export const getFilmShowInformation = async (id) => {
-    const {data, status} = await instance.get("/filmshows/" + id);
-    console.log(data);    return data;
+    const {data} = await instance.get("/filmshows/" + id);
+    console.log(data);
+    return data;
 }
 
 export const reserveSeats = async (filmShowSeats, filmShowId) => {

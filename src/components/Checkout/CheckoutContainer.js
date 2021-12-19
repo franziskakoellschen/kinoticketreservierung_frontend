@@ -28,8 +28,6 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
 
 
     return (
-        <Page>
-            <CenterContent >
                 <div className="floatingContainer">
                     <h1 id="showsHeader">Buchungsabschluss</h1>
                     <div id="OuterContainer">
@@ -57,6 +55,7 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
                             </div>
                             <Field locked={false} focused={false} label={'Telefonnummer'} marginTop={"2%"} marginBottom={"2%"}
                                 setInputValue={setPhoneNumberInputValue} error="falsches Format" id={"PhoneNumberInput"} wrongInput={phoneNumberFormatIsWrong} />
+                            <div />
                         </div>
                         <BookingSummary selectedSeats={selectedSeats} filmShowId={filmShowId} response={response}
                             emailInputValue={emailInputValue} setEmailFormatIsWrong={setEmailFormatIsWrong} surnameInputValue={surnameInputValue}
@@ -66,9 +65,6 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
                             phoneNumberInputValue={phoneNumberInputValue} setPhoneNumberFormatIsWrong={setPhoneNumberFormatIsWrong} />
                     </div>
                 </div>
-            </CenterContent>
-        </Page>
-
     );
 };
 

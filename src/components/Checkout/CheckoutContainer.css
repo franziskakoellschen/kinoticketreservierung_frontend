@@ -1,18 +1,18 @@
 .floatingContainer {
     display: flex;
     flex-direction: column;
-    height: inherit;
-    width: inherit;
+
 align-items: center;
 }
 
 #OuterContainer {
-position: relative;
-height: 100%;
-width: 100%;    
+    position: relative;
+
+   
 display: flex;
 flex-direction: row;
-justify-content: center;
+justify-content:center;
+align-items: flex-start;
 }
 
 .CheckoutContainer {
@@ -21,6 +21,7 @@ justify-content: center;
     height: fit-content;
     font-size: large;
     width: 40vw;
+    margin-bottom: 20px;
 }
 
 
@@ -30,10 +31,15 @@ justify-content: center;
 
 }
 
+#showsHeader {
+    margin-top: 3%;
+}
+
 .invoiceHeader {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px; 
     font-weight: bold;
+    bottom: 0;
 }
 
 #NameFields {
@@ -47,7 +53,6 @@ justify-content: center;
 #NameFields > * { 
     background: inherit;
     width: 50%;
-
 }
 
 #bookingHeader {
@@ -61,7 +66,10 @@ justify-content: center;
 #AddressFields {
     display: flex;
     flex-direction: row;
-    margin: 0%;
+    margin-right: 3.5%;
+    margin-left: 2.5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
     justify-content: center;
   
 }
@@ -72,7 +80,7 @@ justify-content: center;
 }
 
 #field1 {
-    width: 72%;
+    width: 75%;
     background: transparent;
 
 }
@@ -83,7 +91,7 @@ justify-content: center;
 }
 
 #field2 {
-    width: 21%;
+    width: 23%;
 }
 
 #field2 > * {
@@ -104,3 +112,4 @@ justify-content: center;
     width: 50%;
 
 }
+
