@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from './auth-header';
 
 let instance;
 if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
@@ -15,6 +16,60 @@ if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
         timeout: 5000  });
 }
 
+export const isUserRegistered = async (username) => {
+    const response = await instance.post(
+        "/auth/isUserRegistered", {username: username}, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+    )
+}
+
+export const login = async (username, password, setUser) => {
+    console.log(localStorage.getItem('user'))
+    await instance.post("/auth/signin", {
+        username,
+        password
+    }).then(response => {
+        if (response.data.token) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            setUser(JSON.parse(localStorage.getItem('user')));
+        }
+    });
+}
+
+export const logout = (setUser) => {
+    localStorage.removeItem("user");
+    setUser()
+}
+
+export const register = async (username, email, password) => {
+    await instance.post("/auth/signup", {
+        username,
+        email,
+        password
+    })
+}
+
+// test requests
+export const getPublicContent = async () => {
+    const {data} = await instance.get("/test/all");
+    console.log(data);
+    return data;
+}
+export const getUserContent = async () => {
+    const {data} = await instance.get("/test/user", {headers: authHeader()});
+    console.log(data);
+    return data;
+}
+export const getAdminContent = async () => {
+    const {data} = await instance.get("/test/admin", {headers: authHeader()});
+    console.log(data);
+    return data;
+}
+// end of test requests
+
 export const getTestRequestData = async () => {
     const {data} = await instance.get("/testRequest");
     console.log(data);
@@ -22,7 +77,7 @@ export const getTestRequestData = async () => {
 }
 
 export const getMovies = async () => {
-    const {data} = await instance.get("/movies");
+    const {data} = await instance.get("/movies", {headers: authHeader()});
     console.log(data);
     return data;
 }
@@ -39,14 +94,6 @@ export const reserveSeats = async (filmShowSeats, filmShowId) => {
 
     return data;
 }
-
-export const isUserRegistered = async (email) => {
-
-    // TODO
-
-    return true;
-}
-
 
 export const signIn = async (email, password) => {
 
