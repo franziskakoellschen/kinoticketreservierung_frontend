@@ -10,6 +10,8 @@ import Booking from './pages/booking';
 import { useState } from 'react';
 import Register from './pages/Register';
 import CheckoutFields from './pages/checkout';
+import LoginStateCheck from './pages/LoginStateCheck';
+import UserBookings from './pages/UserBookings';
 
 
 function App() {
@@ -26,7 +28,9 @@ function App() {
         <Route path='/movie' exact element={<Movie />}/>
         <Route path='/movie/:id' exact element={<Movie />}/>
         <Route path='/login' exact element={<Login setUser={setUser} setdesiredUsername={setdesiredUsername} />} />
+        <Route path='/loginStateCheck' exact element={<LoginStateCheck />} />
         <Route path='/profile' exact element={<Profile user={user} setUser={setUser} />} />
+        <Route path='/profile/bookings' exact element={<UserBookings />} />
         <Route path='/register' exact element={<Register setUser={setUser} desiredUsername={desiredUsername} />} />
         <Route path='/booking' exact element={<Booking />} />
         <Route path='/booking/:filmShowID' exact element={<Booking />} />

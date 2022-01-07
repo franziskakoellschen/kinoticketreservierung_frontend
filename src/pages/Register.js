@@ -32,7 +32,7 @@ const Register = ({desiredUsername}) => {
     return (
       <Page>
         <PopupMessage>
-          Erfolgreich registriert! 
+          Erfolgreich. Emails prüfen und Konto aktivieren.
         </PopupMessage>
       </Page>
     )

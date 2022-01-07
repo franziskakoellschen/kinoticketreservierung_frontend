@@ -6,14 +6,21 @@ import { useNavigate } from 'react-router-dom';
 
 const CheckoutArea = ({selectedSeats, filmShowId}) => {
 
+  const isLoggedIn = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user && user.token)
+  }
   const navigate = useNavigate();
 
   const onButtonClick = () => {
     async function postToApi()  {
         await reserveSeats(selectedSeats, filmShowId)
           .then((response) => {
-            console.log(response);
-            navigate('/checkout', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
+            if (isLoggedIn()) {
+              navigate("/checkout", { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
+            } else {
+              navigate('/loginStateCheck', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
+            }
           })
           .catch((reason) => {
             alert("Fehlgeschlagen! Sitze konnten nicht ausgewählt werden");

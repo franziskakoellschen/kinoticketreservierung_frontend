@@ -50,6 +50,13 @@ const Login = ({setUser, setdesiredUsername}) => {
   }
 
   if (loginSuccess) {
+    // check if redirected from booking process
+    if (JSON.parse(localStorage.getItem("bookingState"))) {
+      let state = JSON.parse(localStorage.getItem("bookingState"));
+      localStorage.removeItem("bookingState");
+      navigate("/checkout", {state: state})
+    }
+
     return (
       <Page>
         <PopupMessage>

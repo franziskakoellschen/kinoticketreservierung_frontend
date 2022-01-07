@@ -1,0 +1,14 @@
+
+.ProfileDiv {
+    display: block;
+    background: #404040;
+    border-radius: 4px;
+    width: 30%;
+    height: fit-content;
+    font-size: medium;
+}
+
+.ProfileDiv > * {
+    background: inherit;
+    margin: 5%;
+}
