@@ -27,6 +27,13 @@ export const getMovies = async () => {
     return data;
 }
 
+export const getMoviesBetweenDates = async (date1,date2) => {
+    const {data} = await instance.get("/movies/filter/"+date1+"/"+date2);
+    console.log(data);
+    return data;
+  }
+
+
 export const getFilmShowInformation = async (id) => {
     const {data} = await instance.get("/filmshows/" + id);
     console.log(data);

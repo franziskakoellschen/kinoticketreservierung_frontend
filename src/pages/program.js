@@ -1,13 +1,26 @@
 import './program.css'
 
 import React, { useEffect, useState } from 'react';
-import { getMovies } from '../api';
+import { getMovies, getMoviesBetweenDates } from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 import Page from '../components/Page/Page';
 import FilterBar from '../components/FilterBar/FilterBar';
 
 const Program = () => {
   const [data, setData] = useState([]);
+  const [dateFrom, setDateFrom] = useState([]);
+  const [dateTo, setDateTo] = useState([]);
+
+
+  const onClick = () => {
+    async function fetchMyAPI ()  {
+      console.log(dateTo);
+      let answer = await getMoviesBetweenDates(dateFrom, dateTo);
+      setData(answer);
+    }
+    
+    fetchMyAPI();
+  } 
 
   useEffect(()=>{
     async function fetchMyAPI ()  {
@@ -22,7 +35,9 @@ const Program = () => {
   return (
     <Page>
      <div className="outerDiv">
-      <FilterBar/>
+      <FilterBar dateFrom={dateFrom} setDateFrom={setDateFrom}
+                 dateTo={dateTo} setDateTo={setDateTo} onClick={onClick}
+      />
       <div className="moviesDiv">
         {
           data && data.length === 0 && (
