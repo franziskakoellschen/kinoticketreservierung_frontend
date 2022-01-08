@@ -51,6 +51,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 15vw;
+    margin: .5rem 1rem;
   }
 
   #dateText {

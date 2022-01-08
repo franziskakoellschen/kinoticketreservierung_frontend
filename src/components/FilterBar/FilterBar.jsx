@@ -15,7 +15,7 @@ const FilterBar = (props) => {
       />
        <DatePickerInput date={props.dateTo} setDate={props.setDateTo} text={"Bis"}
       />
-        <Nav>
+        <Nav style={{ marginTop: "auto" }}>
          <NavDropdown
           id="nav-dropdown-dark-example"
           title="Genre"

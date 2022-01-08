@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content:center;
+    margin-top: -1%;
 }
 
 #moreDetailButton {
@@ -13,7 +14,7 @@
     float: right;
     font-weight: 300;
     height: 20px;
-    margin-top: 1.3%;
+    margin-top: auto;
     margin-right: 0; 
     padding: 1%;   
 }
@@ -27,6 +28,6 @@
    color: #ffffff; 
 }
 
-#nav-dropdown-dark-example::after{
-    border: 0; 
+#nav{
+    margin-top: auto; 
  }
