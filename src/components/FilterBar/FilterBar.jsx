@@ -23,7 +23,13 @@ const FilterBar = (props) => {
       />
        <DatePickerInput date={props.dateTo} setDate={props.setDateTo} text={"Bis"}
       />
-        <Dropdown options={options} onChange={onChange}   />;
+        <Dropdown 
+        className='myClassName' 
+        controlClassName='myControlClassName'
+        placeholderClassName='myPlaceholderClassName'
+        menuClassName='myMenuClassName'
+        arrowClassName='myArrowClassName'
+        options={options} onChange={onChange}   />;
 
         
       <button id="moreDetailButton" onClick={props.onClick}>Suchen</button>

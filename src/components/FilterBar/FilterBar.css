@@ -23,11 +23,51 @@
     background: rgba(255, 255, 255, 0.45);   
 }
 
-
-#nav-dropdown-dark-example{
-   color: #ffffff; 
+ .Dropdown-root{
+     margin-top: auto;
+     background: black;
+ }
+ .Dropdown-root > *{
+    background: black;
 }
 
-#nav{
-    margin-top: auto; 
- }
+.Dropdown-control {
+    background-color: black;
+}
+
+
+.Dropdown-menu > *  {
+    color: white;
+}
+
+.myClassName{
+    
+}
+
+.myControlClassName{
+    background: #222 !important ;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+}
+.myControlClassName >* {
+    background: #222 !important ;
+}
+
+.myPlaceholderClassName{
+    background: inherit;
+}
+
+.myMenuClassName{
+    background: #222 !important;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+}
+
+.myMenuClassName > *{
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+.myMenuClassName > *:hover{
+    background: black !important;
+}
