@@ -1,0 +1,19 @@
+.react-datepicker {
+    color: white;
+}
+
+.datePicker {
+
+    color: white;
+}
+
+.react-datepicker   {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    background-color: #a66;
+    color: white !important;
+    border: 0px;
+    border-radius: 0;
+    display: inline-block;
+    position: relative;
+  }

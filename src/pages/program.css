@@ -17,3 +17,10 @@
     height: inherit;
     justify-content: center;
 }
+
+.outerDiv {
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+}

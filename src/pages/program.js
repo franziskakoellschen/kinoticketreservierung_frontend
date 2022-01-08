@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getMovies } from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 import Page from '../components/Page/Page';
+import FilterBar from '../components/FilterBar/FilterBar';
 
 const Program = () => {
   const [data, setData] = useState([]);
@@ -20,6 +21,8 @@ const Program = () => {
   
   return (
     <Page>
+     <div className="outerDiv">
+      <FilterBar/>
       <div className="moviesDiv">
         {
           data && data.length === 0 && (
@@ -31,6 +34,7 @@ const Program = () => {
         {
           data && data.map((movie) => <ProgramPageMovie key={movie.id} movie={movie}  />  )
         }
+      </div>
       </div>
     </Page>
   );
