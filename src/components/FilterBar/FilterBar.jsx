@@ -3,11 +3,19 @@ import "./FilterBar.css";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import  Nav  from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 const FilterBar = (props) => {
 
-  
+  const  options = ["Acton" 
+ ,  "Drama", "Horror" , "Science Fiction", "Comedy" ];
+
+ function onChange(data) {
+
+  console.log(data.value);
+ } 
   
   return (
     <div id="OuterContainer">
@@ -15,21 +23,9 @@ const FilterBar = (props) => {
       />
        <DatePickerInput date={props.dateTo} setDate={props.setDateTo} text={"Bis"}
       />
-        <Nav style={{ marginTop: "auto" }}
-         onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
-         <NavDropdown
-          id="nav-dropdown-dark-example"
-          title="Genre"
-          menuVariant="dark"
-          color="white"
-        >
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
-        </Nav>
+        <Dropdown options={options} onChange={onChange}   />;
+
+        
       <button id="moreDetailButton" onClick={props.onClick}>Suchen</button>
     </div>
   );

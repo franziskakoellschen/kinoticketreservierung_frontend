@@ -10,6 +10,8 @@ const Program = () => {
   const [data, setData] = useState([]);
   const [dateFrom, setDateFrom] = useState([]);
   const [dateTo, setDateTo] = useState([]);
+  const [genre, setGenre] = useState([]);
+
 
 
   const onClick = () => {
@@ -37,6 +39,7 @@ const Program = () => {
      <div className="outerDiv">
       <FilterBar dateFrom={dateFrom} setDateFrom={setDateFrom}
                  dateTo={dateTo} setDateTo={setDateTo} onClick={onClick}
+                 setGenre={setGenre}
       />
       <div className="moviesDiv">
         {
