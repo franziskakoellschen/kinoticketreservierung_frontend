@@ -95,7 +95,7 @@ export default class Field extends Component {
                     onFocus={onFocus}
                     onBlur={onBlur}
                     />
-                    <label key={this.props.wrongInput} htmlFor={id} className={error && wrongInput && 'error'}>
+                    <label key={this.props.wrongInput} htmlFor={id} className={(error && wrongInput) ? 'error' : undefined}>
                         {wrongInput && error || label}
                     </label>
                 </div>

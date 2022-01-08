@@ -293,7 +293,7 @@ const BookingSummary = (props) => {
                         {cuponInputOpen ? <BsCaretUp /> : <BsCaretDown />} 
                     </button>
                 </div>
-                { cuponInputOpen && <div id="couponInput"><Field locked={false} focused={false} label={'Gutscheincode'} setInputValue={setCouponInputValue} error="ungültiger Code" id={"CouponInput"} wrongInput={couponFormatIsWrong} />
+                { cuponInputOpen && <div id="couponInput"><Field id="couponInput" locked={false} focused={false} label={'Gutscheincode'} setInputValue={setCouponInputValue} error="ungültiger Code" id={"CouponInput"} wrongInput={couponFormatIsWrong} />
                     <button id="checkoutButton" onClick={couponNotValid}>Gutschein anwenden</button>
                 </div>}
             </div>
@@ -312,7 +312,7 @@ const BookingSummary = (props) => {
                     <div id="firstRowSummary"><p id="totalSumP">Gesamtsumme</p><p id="totalSum">{totalSumBrutto - discountAmount} €</p></div>
                     <div id="firstRowSummary"><p id="subTotal">enthaltene Mehrwertssteuer</p><p id="totalSum">{(totalSumBrutto - discountAmount) * 0.19} €</p></div>
                 </div>}
-                <div id="couponInput"><Field locked={false} focused={false} label={'Kommentar'} /></div>
+                <div id="couponInput"><Field id="couponInput" locked={false} focused={false} label={'Kommentar'} /></div>
                 <div id="firstRowSummary"> 
                     <input type="checkbox" id="agree" onChange={onChange} />
                     <p id="agb">Bitte akzeptieren Sie unsere <span id="agb1">Allgemeinen Geschäftsbedingungen</span></p>

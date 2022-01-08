@@ -42,7 +42,9 @@ const Login = ({setUser, setdesiredUsername}) => {
         console.log(JSON.parse(localStorage.getItem('user')));
         setloginSuccess(true);
       } catch (error) {
-        alert("Wrong password");
+        if (error.response.status === 401) alert("Wrong password")
+        else if (error.response.status === 423) alert("Account is disabled")
+        else alert("Error: " + error.response.status)
       }
     }
 

@@ -33,6 +33,11 @@ export const getUserInformation = async () => {
   return data;
 };
 
+export const getUserBookings = async () => {
+  const { data } = await instance.get("/user/bookings", { headers: authHeader() });
+  return data;
+};
+
 export const login = async (username, password, setUser) => {
     console.log(localStorage.getItem('user'))
     await instance.post("/auth/signin", {
@@ -44,6 +49,14 @@ export const login = async (username, password, setUser) => {
             setUser(JSON.parse(localStorage.getItem('user')));
         }
     });
+}
+
+export const updateUserInformation = async (newUser) => {
+  await instance.post("/user", newUser, { headers: authHeader() })
+}
+
+export const resendBookingConfirmation = async (id) => {
+  await instance.get("/user/tickets", { params: { bookingId: id }, headers: authHeader() })
 }
 
 export const logout = (setUser) => {

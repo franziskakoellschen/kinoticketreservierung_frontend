@@ -20,7 +20,11 @@ const Register = ({desiredUsername}) => {
         await register(username, email, password)
         setRegistered(true);
       } catch (error) {
-        alert("ERROR");
+        if (error.response.data.message) {
+          alert(error.response.data.message)
+        } else {
+          alert("Error")
+        }
       }
     }
 
