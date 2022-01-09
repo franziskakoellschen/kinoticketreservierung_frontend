@@ -65,16 +65,14 @@ const FilterBar = (props) => {
         options={optionLanguage} onChange={onChangeLanguage}
         value={props.dimension}   />
         <form adction="/" method="get" id="searchInput"  onSubmit>
-        <label htmlFor="header-search">
-            <span className="visually-hidden">Search blog posts</span>
-        </label>
         <input
+            onInput={e => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
-            placeholder="Search blog posts"
+            placeholder="Filmtitel"
             name="s" 
-        />
-    </form>) 
+          />
+    </form>
       <button id="moreDetailButton" onClick={props.onClearFilter}>Filter aufheben</button>
       <button id="moreDetailButton" onClick={props.onClick}>Suchen</button>
      
