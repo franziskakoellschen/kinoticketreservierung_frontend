@@ -6,16 +6,18 @@ import Page from '../components/Page/Page';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
 import { register } from '../api';
 import PopupMessage from '../components/Popup/PopupMessage';
+import { useNavigate } from 'react-router-dom';
 
 
-const Register = ({desiredUsername}) => {
+const Register = ({ desiredUsername }) => {
   const [username, setUsername] = useState(desiredUsername);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [registered, setRegistered] = useState(false);
+  const navigate = useNavigate();
 
   const onRegisterButtonPress = () => {
-    async function fetchMyAPI ()  {
+    async function fetchMyAPI() {
       try {
         await register(username, email, password)
         setRegistered(true);
@@ -31,13 +33,17 @@ const Register = ({desiredUsername}) => {
     fetchMyAPI();
   }
 
-  
+  const onLoginClick = () => {
+    navigate("/login")
+  }
+
   if (registered) {
     return (
       <Page>
-        <PopupMessage>
-          Erfolgreich. Emails prüfen und Konto aktivieren.
-        </PopupMessage>
+        <PopupContainer>
+          <h1>Erfolgreich. Emails prüfen und Konto aktivieren.</h1>
+          <PopupContinueButton onClick={onLoginClick}>Zum Login</PopupContinueButton>
+        </PopupContainer>
       </Page>
     )
   }
@@ -45,9 +51,9 @@ const Register = ({desiredUsername}) => {
   return (
     <Page>
       <PopupContainer title="Registrierung">
-        <Field label="Benutzername" value={username} setInputValue={setUsername}/>
-        <Field label="Email Adresse" setInputValue={setEmail}/>
-        <Field label="Password" type="password" setInputValue={setPassword}/>
+        <Field label="Benutzername" value={username} setInputValue={setUsername} />
+        <Field label="Email Adresse" setInputValue={setEmail} />
+        <Field label="Password" type="password" setInputValue={setPassword} />
         <PopupContinueButton onClick={onRegisterButtonPress}>Registrieren</PopupContinueButton>
       </PopupContainer>
     </Page>
