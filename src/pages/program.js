@@ -12,15 +12,61 @@ const Program = () => {
   const [dateFrom, setDateFrom] = useState();
   const [dateTo, setDateTo] = useState();
   const [genre, setGenre] = useState();
+  const [dimension, setDimension] = useState();
+  const [language, setLanguage] = useState();
 
 
+
+
+  const onClearFilter = () => {
+
+      setDateFrom(undefined);
+      setDateTo(undefined);
+      setGenre(undefined);
+      setDimension(undefined);
+      setLanguage(undefined);
+
+      
+      async function fetchMyAPI ()  {
+        let answer = await getMovies();
+        setData(answer);
+      }
+      
+      fetchMyAPI();
+  }
+
+  function getLanguageKey(){
+    var shortLanguage;
+    
+    if(language === undefined) { return language; }
+    
+    switch (language) {
+      case "Deutsch":
+          shortLanguage ="DE"
+        break;
+      case "Spanisch":
+          shortLanguage ="ESP"
+        break;
+      case "Frazöisch":
+          shortLanguage ="FR"
+      break;
+      case "Englisch":
+        shortLanguage ="EN"
+    break;
+    }
+return shortLanguage;
+  }
 
   const onClick = () => {
     async function fetchMyAPI ()  {
+   
      let dto = { ['date1'] : dateFrom,
                  ['date2'] : dateTo,   
-                 ['genre'] : genre }
-                 
+                 ['genre'] : (genre === undefined ? undefined : genre.toUpperCase()),
+                 ['dimension'] : dimension,
+                 ['language'] : getLanguageKey()
+                }
+                 console.log(dto);
       let answer = await getWithFilters(dto);
       setData(answer.data);
     }
@@ -44,7 +90,9 @@ const Program = () => {
      <div className="outerDiv"> 
       <FilterBar dateFrom={dateFrom} setDateFrom={setDateFrom}
                  dateTo={dateTo} setDateTo={setDateTo} onClick={onClick}
-                 setGenre={setGenre}
+                 setGenre={setGenre} genre ={genre} onClearFilter = {onClearFilter}
+                 setDimension={setDimension} dimension={dimension} setLanguage ={setLanguage}
+                 language={language}
       />
       <div className="moviesDiv">
         {

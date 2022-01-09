@@ -27,17 +27,9 @@ export const getMovies = async () => {
     return data;
 }
 
-export const getMoviesWithFilter = async (date1,date2, genre) => {
-    const {data} = await instance.get("/movies/filter/"+date1+"/"+date2+"/"+genre);
-    console.log(data);
-    return data;
-  }
-
 
   export const getWithFilters = async (dto) => {
-    console.log(dto);
     const res = await instance.post("/movies/filters", dto );
-    console.log(res);
     return res;
   }
 

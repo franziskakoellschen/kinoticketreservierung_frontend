@@ -71,3 +71,7 @@
 .myMenuClassName > *:hover{
     background: black !important;
 }
+
+#searchInput {
+margin-top: auto;
+}

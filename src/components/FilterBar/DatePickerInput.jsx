@@ -1,12 +1,12 @@
 import React from "react";
-import DatePicker from "react-datepicker"; //import reat-datepicker module
+import DatePicker , {registerLocale} from "react-datepicker"; //import reat-datepicker module
 import "react-datepicker/dist/react-datepicker.css"; //import reat-datepicker css
+import de from "date-fns/locale/de"; // the locale you want
 import { FiCalendar } from "react-icons/fi";//import calendar icon from reat-icon 
 import{ useEffect, useState , forwardRef} from 'react';
 import './DatePickerInput.css';
 import * as moment from 'moment';
 import 'moment/locale/de';
-import { registerLocale, setDefaultLocale } from  "react-datepicker";
 
 
 const DatePickerInput = (props) => {
@@ -17,6 +17,7 @@ const DatePickerInput = (props) => {
     
       useEffect(() => {
         moment.locale('de');  
+        registerLocale("de", de);
 
     })
      
@@ -32,13 +33,15 @@ const DatePickerInput = (props) => {
     return (
        <div id="outerContainer"> 
        <div id="dateFilterInput">
-        <span id="dateText"> {props.text}:</span> <span id="dateText">{selectedDate1 ? moment(selectedDate1).format("MMM Do YY"): "-"}</span>
+        <span id="dateText"> {props.text}:</span> <span id="dateText">{props.date ? moment(props.date).format("MMM Do YY"): "-"}</span>
             <div> <DatePicker
-                 selected={selectedDate1}
+                 selected={props.date}
                  onChange={handleSelectedDate1}
                  customInput={<ExampleCustomInput />}
                  dateFormat="yyyy/MM/dd" 
                  locale="de"
+                 minDate={new Date()}
+
              />
      </div>
      </div>
