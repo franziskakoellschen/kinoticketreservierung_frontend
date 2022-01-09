@@ -7,8 +7,7 @@ import PopupContinueButton from '../components/Popup/PopupContinueButton';
 import { register } from '../api';
 import PopupMessage from '../components/Popup/PopupMessage';
 import { useNavigate } from 'react-router-dom';
-import { ValidationHelper } from '../util/ValidationHelper';
-
+import { mailNotValid } from '../util/ValidationUtils';
 
 const Register = ({ desiredUsername }) => {
   const [username, setUsername] = useState(desiredUsername);
@@ -31,7 +30,7 @@ const Register = ({ desiredUsername }) => {
       }
     }
 
-    if (ValidationHelper.mailNotVailid(email)) {
+    if (mailNotValid(email)) {
       alert("Ungültige Email. Bitte überprüfen Sie ihre Eingabe.")
     } else {
       fetchMyAPI();

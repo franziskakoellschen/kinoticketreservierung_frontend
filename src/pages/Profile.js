@@ -5,8 +5,8 @@ import Page from "../components/Page/Page";
 import PopupContainer from "../components/Popup/PopupContainer";
 import PopupContinueButton from "../components/Popup/PopupContinueButton";
 import UserDetails from "../components/Profile/UserDetails";
-import { ValidationHelper } from "../util/ValidationHelper";
 import "./Profile.css";
+import { alphanumericInputNotValid, houseNumberNotValid, phoneNumberNotValid, postCodeNotValid } from "../util/ValidationUtils";
 
 const Profile = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -39,13 +39,13 @@ const Profile = ({ user, setUser }) => {
 
     var wrongInputFields = "";
 
-    setNameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newLastname));
-    setSurnameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newSurname));
-    setStreetFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newStreet));
-    setHouseNumberFormatIsWrong(ValidationHelper.houseNumberNotValid(newHouseNumber));
-    setPostCodeFormatIsWrong(ValidationHelper.postCodeNotValid(newPostCode));
-    setCityFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newCity));
-    setPhoneNumberFormatIsWrong(ValidationHelper.phoneNumberNotValid(newPhoneNumber));
+    setNameFormatIsWrong(alphanumericInputNotValid(newLastname));
+    setSurnameFormatIsWrong(alphanumericInputNotValid(newSurname));
+    setStreetFormatIsWrong(alphanumericInputNotValid(newStreet));
+    setHouseNumberFormatIsWrong(houseNumberNotValid(newHouseNumber));
+    setPostCodeFormatIsWrong(postCodeNotValid(newPostCode));
+    setCityFormatIsWrong(alphanumericInputNotValid(newCity));
+    setPhoneNumberFormatIsWrong(phoneNumberNotValid(newPhoneNumber));
 
     if (
       (nameFormatIsWrong && newLastname) ||

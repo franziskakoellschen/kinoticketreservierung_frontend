@@ -4,7 +4,8 @@ import Field from '../Input/TextField';
 import React, { useState, useEffect } from 'react';
 import { getCoupon, setBooking } from '../../api';
 import { useNavigate } from 'react-router-dom';
-import { ValidationHelper } from '../../util/ValidationHelper';
+import { alphanumericInputNotValid, houseNumberNotValid, mailNotValid, phoneNumberNotValid, postCodeNotValid } from '../../util/ValidationUtils';
+
 
 const BookingSummary = (props) => {
 
@@ -58,21 +59,21 @@ const BookingSummary = (props) => {
 
         var wrongInputFields = '';
 
-        props.setEmailFormatIsWrong(ValidationHelper.mailNotVailid(props.emailInputValue));
-        props.setNameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.nameInputValue));
-        props.setSurnameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.surnameInputValue));
-        props.setStreetFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.streetInputValue));
-        props.setHouseNumberFormatIsWrong(ValidationHelper.houseNumberNotValid(props.houseNumberInputValue));
-        props.setPostCodeFormatIsWrong(ValidationHelper.postCodeNotValid(props.postCodeInputValue));
-        props.setCityFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.cityInputValue));
-        props.setPhoneNumberFormatIsWrong(ValidationHelper.phoneNumberNotValid(props.phoneNumberInputValue));
+        props.setEmailFormatIsWrong(mailNotValid(props.emailInputValue));
+        props.setNameFormatIsWrong(alphanumericInputNotValid(props.nameInputValue));
+        props.setSurnameFormatIsWrong(alphanumericInputNotValid(props.surnameInputValue));
+        props.setStreetFormatIsWrong(alphanumericInputNotValid(props.streetInputValue));
+        props.setHouseNumberFormatIsWrong(houseNumberNotValid(props.houseNumberInputValue));
+        props.setPostCodeFormatIsWrong(postCodeNotValid(props.postCodeInputValue));
+        props.setCityFormatIsWrong(alphanumericInputNotValid(props.cityInputValue));
+        props.setPhoneNumberFormatIsWrong(phoneNumberNotValid(props.phoneNumberInputValue));
 
 
         console.log(props.streetInputValue === '');
 
-        if (ValidationHelper.mailNotVailid(props.emailInputValue) || ValidationHelper.alphanunericInputNotValid(props.nameInputValue) || ValidationHelper.phoneNumberNotValid(props.phoneNumberInputValue) || ValidationHelper.alphanunericInputNotValid(props.surnameInputValue) || ValidationHelper.alphanunericInputNotValid(props.streetInputValue) || ValidationHelper.houseNumberNotValid(props.houseNumberInputValue) || ValidationHelper.postCodeNotValid(props.postCodeInputValue) || ValidationHelper.alphanunericInputNotValid(props.cityInputValue) || ValidationHelper.alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions) {
+        if (mailNotValid(props.emailInputValue) || alphanumericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanumericInputNotValid(props.surnameInputValue) || alphanumericInputNotValid(props.streetInputValue) || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanumericInputNotValid(props.cityInputValue) || alphanumericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions) {
 
-            if (ValidationHelper.mailNotVailid(props.emailInputValue)) {
+            if (mailNotValid(props.emailInputValue)) {
 
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
@@ -81,7 +82,7 @@ const BookingSummary = (props) => {
                 wrongInputFields = wrongInputFields + ' E-Mail';
             }
 
-            if (ValidationHelper.alphanunericInputNotValid(props.nameInputValue)) {
+            if (alphanumericInputNotValid(props.nameInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -89,7 +90,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (ValidationHelper.alphanunericInputNotValid(props.surnameInputValue)) {
+            if (alphanumericInputNotValid(props.surnameInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -97,7 +98,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (ValidationHelper.alphanunericInputNotValid(props.streetInputValue)) {
+            if (alphanumericInputNotValid(props.streetInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -105,7 +106,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (ValidationHelper.houseNumberNotValid(props.houseNumberInputValue)) {
+            if (houseNumberNotValid(props.houseNumberInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -113,7 +114,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (ValidationHelper.postCodeNotValid(props.postCodeInputValue)) {
+            if (postCodeNotValid(props.postCodeInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -121,7 +122,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (ValidationHelper.alphanunericInputNotValid(props.cityInputValue) || props.cityInputValue === '') {
+            if (alphanumericInputNotValid(props.cityInputValue) || props.cityInputValue === '') {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -129,7 +130,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (ValidationHelper.phoneNumberNotValid(props.phoneNumberInputValue)) {
+            if (phoneNumberNotValid(props.phoneNumberInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
