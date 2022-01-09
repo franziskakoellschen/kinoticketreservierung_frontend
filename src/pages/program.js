@@ -5,6 +5,7 @@ import { getMovies, getMoviesWithFilter  , getWithFilters} from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 import Page from '../components/Page/Page';
 import FilterBar from '../components/FilterBar/FilterBar';
+import Slideshow from '../components/Slideshow/Slideshow';
 
 const Program = () => {
   const [data, setData] = useState([]);
@@ -39,7 +40,8 @@ const Program = () => {
   
   return (
     <Page>
-     <div className="outerDiv">
+       <Slideshow />
+     <div className="outerDiv"> 
       <FilterBar dateFrom={dateFrom} setDateFrom={setDateFrom}
                  dateTo={dateTo} setDateTo={setDateTo} onClick={onClick}
                  setGenre={setGenre}

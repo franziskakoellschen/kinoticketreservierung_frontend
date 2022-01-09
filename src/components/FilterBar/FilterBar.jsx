@@ -28,7 +28,7 @@ props.setGenre((data.value).toUpperCase());
         placeholderClassName='myPlaceholderClassName'
         menuClassName='myMenuClassName'
         arrowClassName='myArrowClassName'
-        options={options} onChange={onChange}   />;
+        options={options} onChange={onChange}   />
 
         
       <button id="moreDetailButton" onClick={props.onClick}>Suchen</button>
