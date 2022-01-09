@@ -13,8 +13,7 @@ const FilterBar = (props) => {
  ,  "Drama", "Horror" , "Science Fiction", "Comedy" ];
 
  function onChange(data) {
-
-  console.log(data.value);
+props.setGenre((data.value).toUpperCase());  
  } 
   
   return (

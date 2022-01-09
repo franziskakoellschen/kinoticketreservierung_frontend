@@ -1,24 +1,27 @@
 import './program.css'
 
 import React, { useEffect, useState } from 'react';
-import { getMovies, getMoviesBetweenDates } from '../api';
+import { getMovies, getMoviesWithFilter  , getWithFilters} from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 import Page from '../components/Page/Page';
 import FilterBar from '../components/FilterBar/FilterBar';
 
 const Program = () => {
   const [data, setData] = useState([]);
-  const [dateFrom, setDateFrom] = useState([]);
-  const [dateTo, setDateTo] = useState([]);
-  const [genre, setGenre] = useState([]);
+  const [dateFrom, setDateFrom] = useState();
+  const [dateTo, setDateTo] = useState();
+  const [genre, setGenre] = useState();
 
 
 
   const onClick = () => {
     async function fetchMyAPI ()  {
-      console.log(dateTo);
-      let answer = await getMoviesBetweenDates(dateFrom, dateTo);
-      setData(answer);
+     let dto = { ['date1'] : dateFrom,
+                 ['date2'] : dateTo,   
+                 ['genre'] : genre }
+                 
+      let answer = await getWithFilters(dto);
+      setData(answer.data);
     }
     
     fetchMyAPI();
