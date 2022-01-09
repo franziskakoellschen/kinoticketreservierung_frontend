@@ -1,7 +1,23 @@
   .react-datepicker {
     color: white ;
     border-radius: 5%;
-    background: #666;
+    background: transparent;
+  }
+
+  #datepickerbg{
+    background: transparent;
+  }
+
+  #datepickerbg > *{
+    background: transparent;
+  }
+
+  #datepickerbg > * > *{
+    background: transparent;
+  }
+
+  #datepickerbg > * > * > *{
+    background: transparent;
   }
 
   .react-datepicker > * {
@@ -51,17 +67,24 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 15vw;
-    margin: .5rem 1rem;
+    padding: .5rem 1rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    
+    
   }
+  #dateFilterInput:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
 
   #dateText {
 color: white;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 font-size: 15px; 
+background: transparent;
   }
   
   #outerContainerdate {
-    margin-top: 2%;
     display:flex;
     flex-direction: row;
     
@@ -69,4 +92,13 @@ font-size: 15px;
  
   [aria-disabled="true"] {
     color: rgba(255, 255, 255, 0.45);   
+  }
+
+
+  .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+    border-radius: 20%;
+  }
+
+  .react-datepicker__triangle{
+    visibility: hidden;
   }

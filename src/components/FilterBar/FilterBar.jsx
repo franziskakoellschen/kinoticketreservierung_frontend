@@ -38,6 +38,7 @@ const FilterBar = (props) => {
   
  
   return (
+    <div className="filterbarcontainer">
     <div id="OuterContainer">
       <DatePickerInput date={props.dateFrom} setDate={props.setDateFrom} text={"Von"}
       />
@@ -84,7 +85,7 @@ const FilterBar = (props) => {
       <button id="moreDetailButton" onClick={props.onClearFilter}>Filter aufheben</button>
       <button id="moreDetailButton" onClick={props.onClick}>Suchen</button>
      
-    </div>
+    </div></div>
   );
 }
 

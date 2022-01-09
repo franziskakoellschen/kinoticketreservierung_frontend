@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import DatePicker , {registerLocale} from "react-datepicker"; //import reat-datepicker module
 import "react-datepicker/dist/react-datepicker.css"; //import reat-datepicker css
 import de from "date-fns/locale/de"; // the locale you want
@@ -30,18 +30,21 @@ const DatePickerInput = (props) => {
         props.setDate(date);
     }
 
+    const childRef = useRef();
+
     return (
-       <div id="outerContainerdate"> 
-       <div id="dateFilterInput">
-        <span id="dateText"> {props.text}:</span> <span id="dateText">{props.date ? moment(props.date).format("MMM Do YY"): "-"}</span>
-            <div> <DatePicker
+       <div id="outerContainerfilter"> 
+       <div id="dateFilterInput" >
+        <span id="dateText"> {props.text}:</span> 
+        <span id="dateText">{props.date ? moment(props.date).format("MMM Do YY"): "-"}</span>
+            <div id="datepickerbg" > <DatePicker
                  selected={props.date}
                  onChange={handleSelectedDate1}
                  customInput={<ExampleCustomInput />}
                  dateFormat="yyyy/MM/dd" 
                  locale="de"
                  minDate={new Date()}
-
+                 ref={childRef}
              />
      </div>
      </div>
