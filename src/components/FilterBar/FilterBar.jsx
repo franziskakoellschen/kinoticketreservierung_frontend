@@ -29,6 +29,12 @@ const FilterBar = (props) => {
  function onChangeDimension(data) {
   props.setDimension((data.value));  
    } 
+
+  function onTextInput(e){
+
+    props.setSearchString((e.target.value));
+
+  } 
   
  
   return (
@@ -45,7 +51,7 @@ const FilterBar = (props) => {
         menuClassName='myMenuClassName'
         arrowClassName='myArrowClassName'
         options={optionsCategory} onChange={onChangeGenre}
-        value={props.genre}   />;
+        value={props.genre}   />
         <Dropdown 
         className='myClassName' 
         controlClassName='myControlClassName'
@@ -54,7 +60,7 @@ const FilterBar = (props) => {
         menuClassName='myMenuClassName'
         arrowClassName='myArrowClassName'
         options={optionDimension} onChange={onChangeDimension}
-        value={props.dimension}   />;
+        value={props.dimension}   />
         <Dropdown 
         className='myClassName' 
         controlClassName='myControlClassName'
@@ -66,11 +72,13 @@ const FilterBar = (props) => {
         value={props.dimension}   />
         <form adction="/" method="get" id="searchInput"  onSubmit>
         <input
-            onInput={e => setSearchQuery(e.target.value)}
+            onInput={onTextInput}
+            value={props.searchString}
             type="text"
             id="header-search"
             placeholder="Filmtitel"
             name="s" 
+
           />
     </form>
       <button id="moreDetailButton" onClick={props.onClearFilter}>Filter aufheben</button>

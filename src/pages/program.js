@@ -5,6 +5,7 @@ import { getMovies, getMoviesWithFilter  , getWithFilters} from '../api';
 import { ProgramPageMovie } from '../components/Program/ProgramPageMovie.js';
 import Page from '../components/Page/Page';
 import FilterBar from '../components/FilterBar/FilterBar';
+import Slideshow from '../components/Slideshow/Slideshow';
 
 const Program = () => {
   const [data, setData] = useState([]);
@@ -13,6 +14,7 @@ const Program = () => {
   const [genre, setGenre] = useState();
   const [dimension, setDimension] = useState();
   const [language, setLanguage] = useState();
+  const [searchString, setSearchString] = useState("");
 
 
 
@@ -24,6 +26,7 @@ const Program = () => {
       setGenre(undefined);
       setDimension(undefined);
       setLanguage(undefined);
+      setSearchString("");
 
       
       async function fetchMyAPI ()  {
@@ -63,9 +66,10 @@ return shortLanguage;
                  ['date2'] : dateTo,   
                  ['genre'] : (genre === undefined ? undefined : genre.toUpperCase()),
                  ['dimension'] : dimension,
-                 ['language'] : getLanguageKey()
+                 ['language'] : getLanguageKey(),
+                 ['searchString'] : (searchString === "" ? undefined : searchString.trim().toUpperCase())  
                 }
-                 console.log(dto);
+                 console.log(searchString);
       let answer = await getWithFilters(dto);
       setData(answer.data);
     }
@@ -85,12 +89,13 @@ return shortLanguage;
   
   return (
     <Page>
-     <div className="outerDiv">
+       <Slideshow />
+     <div className="outerDiv"> 
       <FilterBar dateFrom={dateFrom} setDateFrom={setDateFrom}
                  dateTo={dateTo} setDateTo={setDateTo} onClick={onClick}
                  setGenre={setGenre} genre ={genre} onClearFilter = {onClearFilter}
                  setDimension={setDimension} dimension={dimension} setLanguage ={setLanguage}
-                 language={language}
+                 language={language} searchString={searchString} setSearchString={setSearchString}
       />
       <div className="moviesDiv">
         {
