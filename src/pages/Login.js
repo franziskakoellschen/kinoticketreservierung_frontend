@@ -7,7 +7,7 @@ import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
 import PopupMessage from '../components/Popup/PopupMessage';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
-import { isLoggedIn } from '../util/UserHelper';
+import { getUser, isLoggedIn } from '../util/UserHelper';
 
 
 const Login = ({setUser, setdesiredUsername}) => {
@@ -37,7 +37,6 @@ const Login = ({setUser, setdesiredUsername}) => {
     async function fetchMyAPI ()  {
       try {
         await login(email, password, setUser)
-        console.log(JSON.parse(localStorage.getItem('user')));
         setloginSuccess(true);
       } catch (error) {
         if (error.response.status === 401) alert("Wrong password")

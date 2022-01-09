@@ -57,7 +57,7 @@ export function isAlphaNumeric(str) {
 }
 
 export function alphanumericInputNotValid(inputValue) {
-  if (this.isAlphaNumeric(inputValue) && inputValue.length > 0) return false;
+  if (isAlphaNumeric(inputValue) && inputValue.length > 0) return false;
   else return true;
 }
 

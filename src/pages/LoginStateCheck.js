@@ -16,7 +16,6 @@ const LoginStateCheck = () => {
   });
 
   const onLoginButtonPress = function () {
-    console.log(state)
     localStorage.setItem("bookingState", JSON.stringify(state))
     navigate("/login");
   };

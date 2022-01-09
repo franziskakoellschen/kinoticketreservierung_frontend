@@ -28,8 +28,7 @@ const Profile = ({ user, setUser }) => {
     useState(false);
   const [postCodeFormatIsWrong, setPostCodeFormatIsWrong] = useState(false);
   const [cityFormatIsWrong, setCityFormatIsWrong] = useState(false);
-  const [phoneNumberFormatIsWrong, setPhoneNumberFormatIsWrong] =
-    useState(false);
+  const [phoneNumberFormatIsWrong, setPhoneNumberFormatIsWrong] = useState(false);
 
   const onEditClick = function () {
     if (!changeMode) {

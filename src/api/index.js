@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getUser } from '../util/UserHelper';
 import authHeader from './auth-header';
 
 let instance;
@@ -39,14 +40,13 @@ export const getUserBookings = async () => {
 };
 
 export const login = async (username, password, setUser) => {
-    console.log(localStorage.getItem('user'))
     await instance.post("/auth/signin", {
         username,
         password
     }).then(response => {
         if (response.data.token) {
             localStorage.setItem("user", JSON.stringify(response.data));
-            setUser(JSON.parse(localStorage.getItem('user')));
+            setUser(getUser());
         }
     });
 }

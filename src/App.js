@@ -12,12 +12,13 @@ import Register from './pages/Register';
 import CheckoutFields from './pages/checkout';
 import LoginStateCheck from './pages/LoginStateCheck';
 import UserBookings from './pages/UserBookings';
+import { getUser } from './util/UserHelper';
 
 
 function App() {
 
   const [desiredUsername, setdesiredUsername] = useState("");
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+  const [user, setUser] = useState(getUser())
 
   return (
     <Router>
