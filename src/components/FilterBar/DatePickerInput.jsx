@@ -31,7 +31,7 @@ const DatePickerInput = (props) => {
     }
 
     return (
-       <div id="outerContainer"> 
+       <div id="outerContainerdate"> 
        <div id="dateFilterInput">
         <span id="dateText"> {props.text}:</span> <span id="dateText">{props.date ? moment(props.date).format("MMM Do YY"): "-"}</span>
             <div> <DatePicker
