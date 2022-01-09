@@ -3,14 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PopupContainer from "../components/Popup/PopupContainer";
 import Page from "../components/Page/Page";
 import PopupContinueButton from "../components/Popup/PopupContinueButton";
+import { isLoggedIn } from "../util/UserHelper";
 
 const LoginStateCheck = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (user && user.token) {
+    if (isLoggedIn()) {
       navigate("/checkout", { state: state });
     }
   });

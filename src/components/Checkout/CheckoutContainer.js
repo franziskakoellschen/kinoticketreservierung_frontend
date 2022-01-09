@@ -5,6 +5,7 @@ import CenterContent from '../Page/CenterContent';
 import Field from '..//Input/TextField';
 import BookingSummary from './BookingSummary';
 import { getUserInformation } from '../../api';
+import { isLoggedIn } from '../../util/UserHelper';
 
 
 const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
@@ -26,11 +27,6 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
     const [cityFormatIsWrong, setCityFormatIsWrong] = useState(false);
     const [phoneNumberInputValue, setPhoneNumberInputValue] = useState();
     const [phoneNumberFormatIsWrong, setPhoneNumberFormatIsWrong] = useState(false);
-
-    const isLoggedIn = () => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        return (user && user.token)
-    }
 
     const [userDetails, setUserDetails] = useState();
 

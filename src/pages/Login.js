@@ -7,6 +7,7 @@ import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
 import PopupMessage from '../components/Popup/PopupMessage';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
+import { isLoggedIn } from '../util/UserHelper';
 
 
 const Login = ({setUser, setdesiredUsername}) => {
@@ -15,10 +16,7 @@ const Login = ({setUser, setdesiredUsername}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loginSuccess, setloginSuccess] = useState(
-    JSON.parse(localStorage.getItem('user'))
-    && JSON.parse(localStorage.getItem('user')).token
-  );
+  const [loginSuccess, setloginSuccess] = useState(isLoggedIn());
   const [userRegistrationChecked, setUserRegistrationChecked] = useState(false);
 
   const onContinueButtonPress = () => {

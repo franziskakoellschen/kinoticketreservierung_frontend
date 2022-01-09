@@ -2,14 +2,11 @@ import './CheckoutArea.css';
 import PopupContinueButton from '../Popup/PopupContinueButton';
 import { reserveSeats } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../../util/UserHelper';
 
 
 const CheckoutArea = ({selectedSeats, filmShowId}) => {
 
-  const isLoggedIn = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return (user && user.token)
-  }
   const navigate = useNavigate();
 
   const onButtonClick = () => {
