@@ -29,6 +29,12 @@ const FilterBar = (props) => {
  function onChangeDimension(data) {
   props.setDimension((data.value));  
    } 
+
+  function onTextInput(e){
+
+    props.setSearchString((e.target.value));
+
+  } 
   
  
   return (
@@ -65,15 +71,15 @@ const FilterBar = (props) => {
         options={optionLanguage} onChange={onChangeLanguage}
         value={props.dimension}   />
         <form adction="/" method="get" id="searchInput"  onSubmit>
-        <label htmlFor="header-search">
-            <span className="visually-hidden">Search blog posts</span>
-        </label>
         <input
+            onInput={onTextInput}
+            value={props.searchString}
             type="text"
             id="header-search"
-            placeholder="Search blog posts"
+            placeholder="Filmtitel"
             name="s" 
-        />
+
+          />
     </form>
       <button id="moreDetailButton" onClick={props.onClearFilter}>Filter aufheben</button>
       <button id="moreDetailButton" onClick={props.onClick}>Suchen</button>
