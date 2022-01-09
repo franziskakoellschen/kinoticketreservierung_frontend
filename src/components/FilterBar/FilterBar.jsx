@@ -69,7 +69,7 @@ const FilterBar = (props) => {
         menuClassName='myMenuClassName'
         arrowClassName='myArrowClassName'
         options={optionLanguage} onChange={onChangeLanguage}
-        value={props.dimension}   />
+        value={props.language}   />
         <form adction="/" method="get" id="searchInput"  onSubmit>
         <input
             onInput={onTextInput}
