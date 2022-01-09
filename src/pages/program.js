@@ -86,7 +86,7 @@ return shortLanguage;
   
   return (
     <Page>
-       <Slideshow />
+       <Slideshow data={data} />
      <div className="outerDiv"> 
       <FilterBar dateFrom={dateFrom} setDateFrom={setDateFrom}
                  dateTo={dateTo} setDateTo={setDateTo} onClick={onClick}

@@ -9,12 +9,25 @@
     display: inline-block;
     height: 70vh;
     width: 100%;
+    position: relative;
     
   }
 
   .slideshowSlider {
     white-space: nowrap;
     transition: ease 2000ms;
+  }
+
+  .slideImage{
+    height: inherit;
+    width: inherit;
+  }
+
+  .slideDesc{
+    background: transparent;
+    position: absolute;
+    transform: translate(5vw,-65vh);
+    font-size: 60px;
   }
   
 /* Buttons */
