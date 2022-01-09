@@ -67,3 +67,6 @@ font-size: 15px;
     
   }
  
+  [aria-disabled="true"] {
+    color: rgba(255, 255, 255, 0.45);   
+  }
