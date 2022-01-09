@@ -5,6 +5,7 @@ import Page from "../components/Page/Page";
 import PopupContainer from "../components/Popup/PopupContainer";
 import PopupContinueButton from "../components/Popup/PopupContinueButton";
 import UserDetails from "../components/Profile/UserDetails";
+import { ValidationHelper } from "../util/ValidationHelper";
 import "./Profile.css";
 
 const Profile = ({ user, setUser }) => {
@@ -20,46 +21,131 @@ const Profile = ({ user, setUser }) => {
   const [newCity, setCity] = useState();
   const [newPhoneNumber, setPhoneNumber] = useState();
 
+  const [surnameFormatIsWrong, setSurnameFormatIsWrong] = useState(false);
+  const [nameFormatIsWrong, setNameFormatIsWrong] = useState(false);
+  const [streetFormatIsWrong, setStreetFormatIsWrong] = useState(false);
+  const [HouseNumberFormatIsWrong, setHouseNumberFormatIsWrong] =
+    useState(false);
+  const [postCodeFormatIsWrong, setPostCodeFormatIsWrong] = useState(false);
+  const [cityFormatIsWrong, setCityFormatIsWrong] = useState(false);
+  const [phoneNumberFormatIsWrong, setPhoneNumberFormatIsWrong] =
+    useState(false);
+
+  const onEditClick = function () {
+    if (!changeMode) {
+      setChangeMode(true)
+      return;
+    }
+
+    var wrongInputFields = "";
+
+    setNameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newLastname));
+    setSurnameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newSurname));
+    setStreetFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newStreet));
+    setHouseNumberFormatIsWrong(ValidationHelper.houseNumberNotValid(newHouseNumber));
+    setPostCodeFormatIsWrong(ValidationHelper.postCodeNotValid(newPostCode));
+    setCityFormatIsWrong(ValidationHelper.alphanunericInputNotValid(newCity));
+    setPhoneNumberFormatIsWrong(ValidationHelper.phoneNumberNotValid(newPhoneNumber));
+
+    if (
+      (nameFormatIsWrong && newLastname) ||
+      (phoneNumberFormatIsWrong && newPhoneNumber) ||
+      (surnameFormatIsWrong && newSurname) ||
+      (streetFormatIsWrong && newStreet) ||
+      (postCodeFormatIsWrong && newPostCode) ||
+      (cityFormatIsWrong && newCity)
+    ) {
+      if (nameFormatIsWrong && newLastname) {
+        alert(newLastname)
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Nachname";
+      }
+
+      if (surnameFormatIsWrong && newSurname) {
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Vorname";
+      }
+
+      if (streetFormatIsWrong && newStreet) {
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Straße";
+      }
+
+      if (HouseNumberFormatIsWrong && newHouseNumber) {
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Hausnummer";
+      }
+
+      if (postCodeFormatIsWrong && newPostCode) {
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Postleitzahl";
+      }
+
+      if (cityFormatIsWrong && newCity) {
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Stadt";
+      }
+
+      if (phoneNumberFormatIsWrong && newPhoneNumber) {
+        if (wrongInputFields !== "") {
+          wrongInputFields = wrongInputFields + ",";
+        }
+        wrongInputFields = wrongInputFields + " Telefonnummer";
+      }
+
+      alert("Bitte überprüfe folgende Felder: " + wrongInputFields);
+
+      wrongInputFields = "";
+    } else {
+      async function postToAPI(user) {
+        try {
+          await updateUserInformation(user);
+        } catch (error) {
+          alert("Something went wrong!");
+        }
+      }
+
+      if (changeMode) {
+        postToAPI({
+          username: userDetails.username,
+          email: userDetails.email,
+          surName: newSurname ? newSurname : userDetails.address.surName,
+          lastName: newLastname ? newLastname : userDetails.address.lastName,
+          street: newStreet ? newStreet : userDetails.address.street,
+          houseNumber: newHouseNumber ? newHouseNumber : userDetails.address.houseNumber,
+          postCode: newPostCode ? newPostCode : userDetails.address.postCode,
+          city: newCity ? newCity : userDetails.address.city,
+          phoneNumber: newPhoneNumber ? newPhoneNumber : userDetails.address.phoneNumber,
+        });
+      }
+      setChangeMode(!changeMode);
+    }
+  };
+
   const onLogoutClick = function () {
     logout(setUser);
     navigate("/");
-  };
-
-  const onEditClick = function () {
-  
-    console.log(newSurname)
-
-    async function postToAPI(user) {
-      try {
-        await updateUserInformation(user);
-      } catch (error) {
-        alert("Something went wrong!");
-      }
-    }
-    
-    if (changeMode) {
-      postToAPI({
-        username: userDetails.username,
-        email: userDetails.email,
-        surName: newSurname ? newSurname : userDetails.address.surName,
-        lastName: newLastname ? newLastname : userDetails.address.lastName,
-        street: newStreet ? newStreet : userDetails.address.street,
-        houseNumber: newHouseNumber ? newHouseNumber : userDetails.address.houseNumber,
-        postCode: newPostCode ? newPostCode : userDetails.address.postCode,
-        city: newCity ? newCity : userDetails.address.city,
-        phoneNumber: newPhoneNumber ? newPhoneNumber : userDetails.address.phoneNumber
-      });
-    }
-    setChangeMode(!changeMode);
   };
 
   const onChangePasswordClick = function () {
     alert("Coming soon");
   };
 
-  const onShowBookingsClick = function() {
-    navigate('/profile/bookings')
-  }
+  const onShowBookingsClick = function () {
+    navigate("/profile/bookings");
+  };
 
   useEffect(() => {
     if (!user) {
@@ -83,7 +169,9 @@ const Profile = ({ user, setUser }) => {
       <Page>
         <PopupContainer title={"Profil"} wide={true}>
           {userDetails && (
-            <UserDetails user={userDetails} changeMode={!changeMode}
+            <UserDetails
+              user={userDetails}
+              changeMode={!changeMode}
               setSurname={setSurname}
               setLastname={setLastname}
               setStreet={setStreet}
@@ -91,24 +179,39 @@ const Profile = ({ user, setUser }) => {
               setPostCode={setPostCode}
               setCity={setCity}
               setPhoneNumber={setPhoneNumber}
-            />)}
-          <div style={{ background: "inherit", display: "flex", marginTop: 0, marginBottom: 0 }}>
-            <div style={{ background: "inherit",  width: "25%" }}>
+              surnameFormatIsWrong={surnameFormatIsWrong}
+              nameFormatIsWrong={nameFormatIsWrong}
+              streetFormatIsWrong={streetFormatIsWrong}
+              HouseNumberFormatIsWrong={HouseNumberFormatIsWrong}
+              postCodeFormatIsWrong={postCodeFormatIsWrong}
+              cityFormatIsWrong={cityFormatIsWrong}
+              phoneNumberFormatIsWrong={phoneNumberFormatIsWrong}
+            />
+          )}
+          <div
+            style={{
+              background: "inherit",
+              display: "flex",
+              marginTop: 0,
+              marginBottom: 0,
+            }}
+          >
+            <div style={{ background: "inherit", width: "25%" }}>
               <PopupContinueButton onClick={onEditClick}>
                 {changeMode ? "Speichern" : "Nutzerdaten ändern"}
               </PopupContinueButton>
             </div>
-            <div style={{ background: "inherit",  width: "25%" }}>
+            <div style={{ background: "inherit", width: "25%" }}>
               <PopupContinueButton onClick={onChangePasswordClick}>
                 Passwort ändern
               </PopupContinueButton>
             </div>
-            <div style={{ background: "inherit",  width: "25%" }}>
+            <div style={{ background: "inherit", width: "25%" }}>
               <PopupContinueButton onClick={onShowBookingsClick}>
                 Buchungen anzeigen
               </PopupContinueButton>
             </div>
-            <div style={{ background: "inherit",  width: "25%" }}>
+            <div style={{ background: "inherit", width: "25%" }}>
               <PopupContinueButton onClick={onLogoutClick}>
                 Abmelden
               </PopupContinueButton>

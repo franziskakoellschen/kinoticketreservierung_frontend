@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
 import Field from '../components/Input/TextField';
 import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
@@ -7,6 +7,7 @@ import PopupContinueButton from '../components/Popup/PopupContinueButton';
 import { register } from '../api';
 import PopupMessage from '../components/Popup/PopupMessage';
 import { useNavigate } from 'react-router-dom';
+import { ValidationHelper } from '../util/ValidationHelper';
 
 
 const Register = ({ desiredUsername }) => {
@@ -30,7 +31,11 @@ const Register = ({ desiredUsername }) => {
       }
     }
 
-    fetchMyAPI();
+    if (ValidationHelper.mailNotVailid(email)) {
+      alert("Ungültige Email. Bitte überprüfen Sie ihre Eingabe.")
+    } else {
+      fetchMyAPI();
+    }
   }
 
   const onLoginClick = () => {

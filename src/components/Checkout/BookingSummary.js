@@ -4,10 +4,10 @@ import Field from '../Input/TextField';
 import React, { useState, useEffect } from 'react';
 import { getCoupon, setBooking } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import { ValidationHelper } from '../../util/ValidationHelper';
 
 const BookingSummary = (props) => {
 
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const [agreedTermsAndConditions, setAgreedTermsAndConditions] = useState(false);
     const [totalSumBrutto, setTotalSumBrutto] = useState(0);
     const [couponInputValue, setCouponInputValue] = useState();
@@ -18,14 +18,6 @@ const BookingSummary = (props) => {
     const [ticketSummaryOpen, setTicketSummaryOpen] = useState(false);
     const [cuponInputOpen, setCuponInputOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(true);
-
-    function mailNotVailid(inputValue) {
-        if (emailRegex.test(inputValue)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     useEffect(() => {
         var selectedSeats = props.selectedSeats;
@@ -62,104 +54,25 @@ const BookingSummary = (props) => {
         }
     }
 
-
-    function alphanunericInputNotValid(inputValue) {
-        if (isAlphaNumeric(inputValue) && inputValue.length > 0) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    function isAlphaNumeric(str) {
-        var code, i, len;
-        if (str === undefined) return false;
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if ( // numeric (0-9)
-                !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123) && 
-                !(code === 32) && 
-                !(code === 223)&&
-                !(code === 228)&&
-                !(code === 196)&&
-                !(code === 252)&&
-                !(code === 220)&&
-                !(code === 246)&&
-                !(code === 45)&&
-                !(code === 214) ) {
-                // lower alpha (a-z)
-                console.log('for ' + str + ' code' + code);
-                return false;
-            }
-        }
-        return true;
-    };
-
-    function houseNumberNotValid(str) {
-        var code, i, len;
-        if (str === undefined) return true;
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58) && // numeric (0-9)
-                !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123) && // lower alpha
-                !(code === 32) // spcae
-                && !(code === 46)) { // .
-                  
-              return true;
-            }
-        }
-        return false;
-    }
-    function postCodeNotValid(str) {
-        var code, i, len;
-        if (str === undefined) return true;
-        if (str.length !== 5) return true;
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58) && !(code === 32)) {
-                return true;
-            }
-        }
-        return false;
-    };
-
-    function phoneNumberNotValid(str) {
-        var code, i, len;
-        if (str === undefined) return false; //Die Möglichkeit geben keine Handynummer
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58) //0-9 ) {
-                && !(code === 32) // blank
-                && !(code === 43) // +
-                && !(code === 47)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     function onClick() {
 
         var wrongInputFields = '';
 
-        props.setEmailFormatIsWrong(mailNotVailid(props.emailInputValue));
-        props.setNameFormatIsWrong(alphanunericInputNotValid(props.nameInputValue));
-        props.setSurnameFormatIsWrong(alphanunericInputNotValid(props.surnameInputValue));
-        props.setStreetFormatIsWrong(alphanunericInputNotValid(props.streetInputValue));
-        props.setHouseNumberFormatIsWrong(houseNumberNotValid(props.houseNumberInputValue));
-        props.setPostCodeFormatIsWrong(postCodeNotValid(props.postCodeInputValue));
-        props.setCityFormatIsWrong(alphanunericInputNotValid(props.cityInputValue));
-        props.setPhoneNumberFormatIsWrong(phoneNumberNotValid(props.phoneNumberInputValue));
+        props.setEmailFormatIsWrong(ValidationHelper.mailNotVailid(props.emailInputValue));
+        props.setNameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.nameInputValue));
+        props.setSurnameFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.surnameInputValue));
+        props.setStreetFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.streetInputValue));
+        props.setHouseNumberFormatIsWrong(ValidationHelper.houseNumberNotValid(props.houseNumberInputValue));
+        props.setPostCodeFormatIsWrong(ValidationHelper.postCodeNotValid(props.postCodeInputValue));
+        props.setCityFormatIsWrong(ValidationHelper.alphanunericInputNotValid(props.cityInputValue));
+        props.setPhoneNumberFormatIsWrong(ValidationHelper.phoneNumberNotValid(props.phoneNumberInputValue));
 
 
         console.log(props.streetInputValue === '');
 
-        if (mailNotVailid(props.emailInputValue) || alphanunericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanunericInputNotValid(props.surnameInputValue) || alphanunericInputNotValid(props.streetInputValue) || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanunericInputNotValid(props.cityInputValue) || alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions) {
+        if (ValidationHelper.mailNotVailid(props.emailInputValue) || ValidationHelper.alphanunericInputNotValid(props.nameInputValue) || ValidationHelper.phoneNumberNotValid(props.phoneNumberInputValue) || ValidationHelper.alphanunericInputNotValid(props.surnameInputValue) || ValidationHelper.alphanunericInputNotValid(props.streetInputValue) || ValidationHelper.houseNumberNotValid(props.houseNumberInputValue) || ValidationHelper.postCodeNotValid(props.postCodeInputValue) || ValidationHelper.alphanunericInputNotValid(props.cityInputValue) || ValidationHelper.alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions) {
 
-            if (mailNotVailid(props.emailInputValue)) {
+            if (ValidationHelper.mailNotVailid(props.emailInputValue)) {
 
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
@@ -168,7 +81,7 @@ const BookingSummary = (props) => {
                 wrongInputFields = wrongInputFields + ' E-Mail';
             }
 
-            if (alphanunericInputNotValid(props.nameInputValue)) {
+            if (ValidationHelper.alphanunericInputNotValid(props.nameInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -176,7 +89,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (alphanunericInputNotValid(props.surnameInputValue)) {
+            if (ValidationHelper.alphanunericInputNotValid(props.surnameInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -184,7 +97,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (alphanunericInputNotValid(props.streetInputValue)) {
+            if (ValidationHelper.alphanunericInputNotValid(props.streetInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -192,7 +105,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (houseNumberNotValid(props.houseNumberInputValue)) {
+            if (ValidationHelper.houseNumberNotValid(props.houseNumberInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -200,7 +113,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (postCodeNotValid(props.postCodeInputValue)) {
+            if (ValidationHelper.postCodeNotValid(props.postCodeInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -208,7 +121,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (alphanunericInputNotValid(props.cityInputValue) || props.cityInputValue === '') {
+            if (ValidationHelper.alphanunericInputNotValid(props.cityInputValue) || props.cityInputValue === '') {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -216,7 +129,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (phoneNumberNotValid(props.phoneNumberInputValue)) {
+            if (ValidationHelper.phoneNumberNotValid(props.phoneNumberInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
