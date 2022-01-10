@@ -2,6 +2,7 @@ import './CheckoutArea.css';
 import PopupContinueButton from '../Popup/PopupContinueButton';
 import { reserveSeats } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../../util/UserHelper';
 
 
 const CheckoutArea = ({selectedSeats, filmShowId}) => {
@@ -12,8 +13,11 @@ const CheckoutArea = ({selectedSeats, filmShowId}) => {
     async function postToApi()  {
         await reserveSeats(selectedSeats, filmShowId)
           .then((response) => {
-            console.log(response);
-            navigate('/checkout', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
+            if (isLoggedIn()) {
+              navigate("/checkout", { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
+            } else {
+              navigate('/loginStateCheck', { state: {response: response, selectedSeats: selectedSeats, filmShowId:filmShowId}});
+            }
           })
           .catch((reason) => {
             alert("Fehlgeschlagen! Sitze konnten nicht ausgewählt werden");

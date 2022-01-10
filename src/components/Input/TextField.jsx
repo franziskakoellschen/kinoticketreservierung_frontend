@@ -16,7 +16,6 @@ export default class Field extends Component {
         margin: PropTypes.string,
         marginTop: PropTypes.string,
         marginBottom: PropTypes.string,
-       
     };
 
     static defaultProps = {
@@ -31,9 +30,6 @@ export default class Field extends Component {
         margin:'5%',
         marginTop:'5%',
         marginBottom: '5%',
-        
-
-
     };
 
     constructor(props) {
@@ -49,6 +45,10 @@ export default class Field extends Component {
             marginBottom: props.marginBottom || '5%',
             wrongInput: props.wrongInput,
         };
+        if (this.state.value !== '') {
+            console.log(this.state.value)
+            this.props.setInputValue(this.state.value)
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -84,7 +84,7 @@ export default class Field extends Component {
         
 
         return (
-            <div style={{margin: margin, marginBottom: marginBottom, marginTop: marginTop} }>
+            <div style={{margin: margin, marginBottom: marginBottom, marginTop: marginTop, background: "inherit", } }>
                 <div className={fieldClassName}>
                     <input
                     id ={id}
@@ -95,7 +95,7 @@ export default class Field extends Component {
                     onFocus={onFocus}
                     onBlur={onBlur}
                     />
-                    <label key={this.props.wrongInput} htmlFor={id} className={error && wrongInput && 'error'}>
+                    <label key={this.props.wrongInput} htmlFor={id} className={(error && wrongInput) ? 'error' : undefined}>
                         {wrongInput && error || label}
                     </label>
                 </div>

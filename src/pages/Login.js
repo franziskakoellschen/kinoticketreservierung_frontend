@@ -1,53 +1,61 @@
 
 import React, { useState } from 'react';
 import Field from '../components/Input/TextField';
-import { isUserRegistered, signIn  } from '../api';
+import { isUserRegistered, login, signIn  } from '../api';
 import { useNavigate } from 'react-router-dom';
 import PopupContainer from '../components/Popup/PopupContainer';
 import Page from '../components/Page/Page';
 import PopupMessage from '../components/Popup/PopupMessage';
 import PopupContinueButton from '../components/Popup/PopupContinueButton';
+import { getUser, isLoggedIn } from '../util/UserHelper';
 
 
-const Login = ({setIsLoggedIn, setDesiredEmail}) => {
+const Login = ({setUser, setdesiredUsername}) => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loginSuccess, setloginSuccess] = useState(false);
+  const [loginSuccess, setloginSuccess] = useState(isLoggedIn());
   const [userRegistrationChecked, setUserRegistrationChecked] = useState(false);
 
   const onContinueButtonPress = () => {
     async function fetchMyAPI ()  {
-      let answer = await isUserRegistered(email);
-  
-      if (answer) {
-        // switch to password input
+      try {
+        await isUserRegistered(email);
         setUserRegistrationChecked(true)
-      } else {
-        setDesiredEmail(email);
+      } catch (error) {
+        setdesiredUsername(email);
         navigate('/register');
-      }}
+      }
+    }
 
     fetchMyAPI();
   }
 
   const onLoginButtonPress = () => {
     async function fetchMyAPI ()  {
-      let answer = await signIn(email, password);
-  
-      if (answer) {
-        setIsLoggedIn(true);
+      try {
+        await login(email, password, setUser)
         setloginSuccess(true);
-      } else {
-        alert("wrong password")
-      }}
+      } catch (error) {
+        if (error.response.status === 401) alert("Wrong password")
+        else if (error.response.status === 423) alert("Account is disabled")
+        else alert("Error: " + error.response.status)
+      }
+    }
 
     fetchMyAPI();
   }
 
   if (loginSuccess) {
+    // check if redirected from booking process
+    if (JSON.parse(localStorage.getItem("bookingState"))) {
+      let state = JSON.parse(localStorage.getItem("bookingState"));
+      localStorage.removeItem("bookingState");
+      navigate("/checkout", {state: state})
+    }
+
     return (
       <Page>
         <PopupMessage>
@@ -60,7 +68,7 @@ const Login = ({setIsLoggedIn, setDesiredEmail}) => {
   return (
     <Page>
       <PopupContainer title="Herzlich Willkommen bei THEATERY">
-        <Field label="Email Adresse" setInputValue={setEmail}/>
+        <Field label="Nutzername" setInputValue={setEmail}/>
         {userRegistrationChecked && (
           <>
             <Field label="Password" type="password" setInputValue={setPassword}/>

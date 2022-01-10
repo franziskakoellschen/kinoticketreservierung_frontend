@@ -5,7 +5,7 @@ const PopupContainer = (props) => {
 
   return (
     <CenterContent>
-      <div className='PopupDiv'>
+      <div className={props.wide ? 'PopupDivWide' : 'PopupDiv'}>
         {props.title && <h1>{props.title}</h1>}
         {props.children}
       </div>
