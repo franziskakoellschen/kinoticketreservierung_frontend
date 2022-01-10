@@ -86,6 +86,12 @@ export const getMovies = async () => {
     return data;
 }
 
+
+  export const getWithFilters = async (dto) => {
+    const res = await instance.post("/movies/filters", dto );
+    return res;
+  }
+
 export const getFilmShowInformation = async (id) => {
     const {data} = await instance.get("/filmshows/" + id);
     console.log(data);

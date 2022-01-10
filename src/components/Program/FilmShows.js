@@ -38,6 +38,7 @@ export const FilmShows = (props) => {
               <div key={filmShow.id} className="filmShowDiv" onClick={handleClick}>
                   <p>{date}</p>
                   <p>{time}</p>
+                  <p style={{fontSize:"0.8em"}} >{filmShow.dimension} {filmShow.language}</p>
               </div>
           )})
       }

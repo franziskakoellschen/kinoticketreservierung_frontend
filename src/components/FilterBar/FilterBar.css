@@ -1,0 +1,141 @@
+#OuterContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    justify-content:space-between;
+    margin-top: 2vh;
+    width: fit-content;
+    padding: 1%;
+    background: #333;
+    border-radius: 20px;
+
+}
+#OuterContainer > * {
+margin: 10px;
+background: inherit;
+}
+#moreDetailButton {
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    float: right;
+    font-weight: 300;
+    padding: .5rem 1rem;
+    white-space: nowrap;
+    background: #333;
+    margin: 10px 1px;
+}
+
+#moreDetailButton:hover {
+    background: rgba(255, 255, 255, 0.45);   
+}
+
+ .Dropdown-root{
+     margin-top: auto;
+     background: black;
+ }
+ .Dropdown-root > *{
+    background: black;
+}
+
+.Dropdown-control {
+    background-color: black;
+}
+
+
+.Dropdown-menu > *  {
+    color: white;
+}
+
+
+.myControlClassName{
+    background: #222 !important ;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+}
+.myControlClassName:hover{
+    background: rgba(255, 255, 255, 0.45) !important;
+}
+.myControlClassName >* {
+    background: transparent!important ;
+}
+
+.myPlaceholderClassName{
+    background: inherit;
+    outline: none;
+}
+
+.myMenuClassName{
+    background: #222 !important;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+    outline: none;
+}
+
+.myMenuClassName > *{
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+.myArrowClassName {
+    background: inherit !important ;
+    color: white !important ;
+}
+
+
+
+.myMenuClassName > *:hover{
+    background: black !important;
+}
+.Dropdown-option.isSelected{
+    background: black !important;
+}
+
+
+#searchInput {
+margin-top: auto;
+
+border: 2px solid white !important;
+border-radius: 5px !important;
+
+color: #fff;
+margin-right: 19px;
+background: #222;
+}
+
+#searchInput:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+#header-search {
+    font-size: 15px;
+    margin: .5rem 1rem;
+    border: 0;
+    color: #fff;
+    background: transparent;
+}
+
+#header-search:focus{
+ 
+    color: white; outline: none;
+}
+
+.filterbarcontainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    
+}
+
+#outerContainerfilter {
+
+    display: flex;
+    flex-direction: row;
+    height: inherit;
+    top:0;
+    background: inherit;
+}
+
