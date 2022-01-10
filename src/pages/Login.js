@@ -13,19 +13,23 @@ import { getUser, isLoggedIn } from '../util/UserHelper';
 const Login = ({setUser, setdesiredUsername}) => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [loginSuccess, setloginSuccess] = useState(isLoggedIn());
   const [userRegistrationChecked, setUserRegistrationChecked] = useState(false);
 
+  const onPasswordForgottenPress = () => {
+    navigate('/passwordForgotten')
+  };
+
   const onContinueButtonPress = () => {
     async function fetchMyAPI ()  {
       try {
-        await isUserRegistered(email);
+        await isUserRegistered(username);
         setUserRegistrationChecked(true)
       } catch (error) {
-        setdesiredUsername(email);
+        setdesiredUsername(username);
         navigate('/register');
       }
     }
@@ -36,7 +40,7 @@ const Login = ({setUser, setdesiredUsername}) => {
   const onLoginButtonPress = () => {
     async function fetchMyAPI ()  {
       try {
-        await login(email, password, setUser)
+        await login(username, password, setUser);
         setloginSuccess(true);
       } catch (error) {
         if (error.response.status === 401) alert("Wrong password")
@@ -68,11 +72,12 @@ const Login = ({setUser, setdesiredUsername}) => {
   return (
     <Page>
       <PopupContainer title="Herzlich Willkommen bei THEATERY">
-        <Field label="Nutzername" setInputValue={setEmail}/>
+        <Field label="Nutzername" setInputValue={setUsername} />
         {userRegistrationChecked && (
           <>
             <Field label="Password" type="password" setInputValue={setPassword}/>
             <PopupContinueButton onClick={onLoginButtonPress}>Login</PopupContinueButton>
+            <PopupContinueButton onClick={onPasswordForgottenPress}>Passwort vergessen</PopupContinueButton>
           </>)}
         {
           !userRegistrationChecked && <PopupContinueButton onClick={onContinueButtonPress}>Weiter</PopupContinueButton>

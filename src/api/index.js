@@ -51,6 +51,14 @@ export const login = async (username, password, setUser) => {
     });
 }
 
+export const resetPasswordForEmail = async (email) => {
+  await instance.post("/auth/resetPassword", { email });
+}
+
+export const changePassword = async (token, newPassword) => {
+  await instance.post("/auth/changePassword", { token, newPassword });
+}
+
 export const updateUserInformation = async (newUser) => {
   await instance.post("/user", newUser, { headers: authHeader() })
 }
