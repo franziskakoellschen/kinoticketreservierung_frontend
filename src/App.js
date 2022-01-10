@@ -13,6 +13,8 @@ import CheckoutFields from './pages/checkout';
 import LoginStateCheck from './pages/LoginStateCheck';
 import UserBookings from './pages/UserBookings';
 import { getUser } from './util/UserHelper';
+import PasswordForgotten from './pages/PasswordForgotten';
+import ChangePassword from './pages/ChangePassword';
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
         <Route path='/movie' exact element={<Movie />}/>
         <Route path='/movie/:id' exact element={<Movie />}/>
         <Route path='/login' exact element={<Login setUser={setUser} setdesiredUsername={setdesiredUsername} />} />
+        <Route path='/passwordForgotten' exact element={<PasswordForgotten />} />
+        <Route path='/passwordReset' exact element={<ChangePassword />} />
         <Route path='/loginStateCheck' exact element={<LoginStateCheck />} />
         <Route path='/profile' exact element={<Profile user={user} setUser={setUser} />} />
         <Route path='/profile/bookings' exact element={<UserBookings />} />

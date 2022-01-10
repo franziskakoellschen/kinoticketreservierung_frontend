@@ -139,7 +139,8 @@ const Profile = ({ user, setUser }) => {
   };
 
   const onChangePasswordClick = function () {
-    alert("Coming soon");
+    logout(setUser);
+    navigate("/passwordForgotten");
   };
 
   const onShowBookingsClick = function () {
