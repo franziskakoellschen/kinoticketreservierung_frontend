@@ -11,12 +11,12 @@ const Seat = ({seat, toggleSeatSelected}) => {
     }
 
     if (seat.status != "FREE") {
-        return <div className="container">
+        return <div className="containerSeat">
             <div className="reserved" />
         </div>
     }
 
-    return <div className="container" onClick={handleSeatClicked}>
+    return <div className="containerSeat" onClick={handleSeatClicked}>
         {!selected && <div className="notSelected" />}
         {selected && <div className="selected" />}
     </div>

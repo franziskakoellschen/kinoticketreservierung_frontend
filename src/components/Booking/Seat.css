@@ -1,22 +1,31 @@
-.container {
+.containerSeat {
     margin: 2%;
     border: 2px solid white;
     border-radius: 5px;
-    width: 7vh;
+    width: 10vh;
 }
 
 
 .reserved {
     background-color: grey;
     padding-top: 100%; /* 1:1 Aspect Ratio */
+    border-radius: 5px;
 }
 
 .notSelected {
     padding-top: 100%; /* 1:1 Aspect Ratio */
     background-color: green;
+    border-radius: 5px;
 }
 
 .selected {
     padding-top: 100%; /* 1:1 Aspect Ratio */
     background-color: orange;
+    border-radius: 5px;
 }
+
+.SeatingplanContainer{
+    position: absolute;
+    top: 150px
+}
+
