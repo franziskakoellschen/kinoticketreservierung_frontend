@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import CenterContent from '../Page/CenterContent';
 import Field from '..//Input/TextField';
 import BookingSummary from './BookingSummary';
+import { getUserInformation } from '../../api';
+import { isLoggedIn } from '../../util/UserHelper';
 
 
 const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
@@ -26,6 +28,26 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
     const [phoneNumberInputValue, setPhoneNumberInputValue] = useState();
     const [phoneNumberFormatIsWrong, setPhoneNumberFormatIsWrong] = useState(false);
 
+    const [userDetails, setUserDetails] = useState();
+
+    useEffect(() => {
+        async function fetchMyAPI() {
+            try {
+                let data = await getUserInformation();
+                setUserDetails(data);
+            } catch (error) {
+                alert("Something went wrong!");
+            }
+        }
+    
+        if (isLoggedIn()) {
+            !userDetails && fetchMyAPI();
+        }
+    });
+
+    if (isLoggedIn() && !userDetails) return (
+        <></>
+    );
 
     return (
                 <div className="floatingContainer">
@@ -34,26 +56,26 @@ const CheckoutContainer = ({ selectedSeats, filmShowId, response }) => {
                         <div className='CheckoutContainer'>
                             <h1 className="invoiceHeader">Rechnungsadresse</h1>
                             <div id='NameFields'>
-                                <Field locked={false} focused={false} label={'Vorname'} margin={"2%"} marginBottom={"2%"} setInputValue={setSurnameInputValue}
+                                <Field value={userDetails ? userDetails.address.surName : ""} locked={false} focused={false} label={'Vorname'} margin={"2%"} marginBottom={"2%"} setInputValue={setSurnameInputValue}
                                     error="falsche Eingabe" id={"SurnameInput"} wrongInput={surnameFormatIsWrong} />
-                                <Field locked={false} focused={false} label={'Nachname'} margin={"2%"} marginBottom={"2%"} setInputValue={setNameInputValue}
+                                <Field value={userDetails ? userDetails.address.lastName : ""} locked={false} focused={false} label={'Nachname'} margin={"2%"} marginBottom={"2%"} setInputValue={setNameInputValue}
                                     error="falsche Eingabe" id={"NameInput"} wrongInput={nameFormatIsWrong} />
                             </div>
-                            <Field locked={false} focused={false} label={'E-Mail'} marginTop={"2%"} marginBottom={"2%"} setInputValue={setEmailInputValue}
+                            <Field value={userDetails ? userDetails.address.emailAddress : ""} locked={false} focused={false} label={'E-Mail'} marginTop={"2%"} marginBottom={"2%"} setInputValue={setEmailInputValue}
                                 error="falsche Eingabe" id={"EmailInput"} wrongInput={emailFormatIsWrong} />
                             <div id='AddressFields'>
-                                <div id="field1"> <Field locked={false} focused={false} label={'Straße'} margin={"2%"} marginTop={"2%"} marginBottom={"2%"}
+                                <div id="field1"> <Field value={userDetails ? userDetails.address.street : ""} locked={false} focused={false} label={'Straße'} margin={"2%"} marginTop={"2%"} marginBottom={"2%"}
                                     setInputValue={setStreetInputValue} error="Straße eingeben" id={"AddressInput"} wrongInput={streetFormatIsWrong} /> </div>
-                                <div id="field2"> <Field locked={false} focused={false} label={'Hnr'} margin={"2%"} marginTop={"7%"} marginBottom={"2%"}
+                                <div id="field2"> <Field value={userDetails ? userDetails.address.houseNumber : ""} locked={false} focused={false} label={'Hnr'} margin={"2%"} marginTop={"7%"} marginBottom={"2%"}
                                     setInputValue={setHouseNumberInputValue} error="Ungültig" id={"HausNrInput"} wrongInput={HouseNumberFormatIsWrong} /> </div>
                             </div>
                             <div id='CityFields'>
-                                <Field locked={false} focused={false} label={'Postleitzahl'} margin={"2%"} marginBottom={"2%"} marginTop={"2%"}
+                                <Field value={(userDetails && userDetails.address.postCode !== 0) ? userDetails.address.postCode.toString() : ""} locked={false} focused={false} label={'Postleitzahl'} margin={"2%"} marginBottom={"2%"} marginTop={"2%"}
                                     setInputValue={setPostCodeInputValue} error="Ungültige Plz" id={"PostCodeInput"} wrongInput={postCodeFormatIsWrong} />
-                                <Field locked={false} focused={false} label={'Stadt'} margin={"2%"} marginBottom={"2%"} marginTop={"2%"}
+                                <Field value={userDetails ? userDetails.address.city : ""} locked={false} focused={false} label={'Stadt'} margin={"2%"} marginBottom={"2%"} marginTop={"2%"}
                                     setInputValue={setCityInputValue} error="Ungültiges Format" id={"CityInput"} wrongInput={cityFormatIsWrong} />
                             </div>
-                            <Field locked={false} focused={false} label={'Telefonnummer'} marginTop={"2%"} marginBottom={"2%"}
+                            <Field value={userDetails ? userDetails.address.phoneNumber : ""} locked={false} focused={false} label={'Telefonnummer'} marginTop={"2%"} marginBottom={"2%"}
                                 setInputValue={setPhoneNumberInputValue} error="falsches Format" id={"PhoneNumberInput"} wrongInput={phoneNumberFormatIsWrong} />
                             <div />
                         </div>

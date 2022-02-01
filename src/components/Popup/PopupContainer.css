@@ -8,6 +8,20 @@
     font-size: medium;
 }
 
+.PopupDivWide {
+    display: block;
+    background: #404040;
+    border-radius: 4px;
+    width: 80%;
+    height: fit-content;
+    font-size: medium;
+}
+
+.PopupDivWide > * {
+    background: inherit;
+    margin: 1%;
+}
+
 .PopupDiv > * {
     background: inherit;
     margin: 5%;

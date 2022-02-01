@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { getUser } from '../util/UserHelper';
+import authHeader from './auth-header';
 
 let instance;
 if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
@@ -15,10 +17,67 @@ if (process.env.REACT_APP_DEPLOYMENT_STAGE === "DEV") {
         timeout: 5000  });
 }
 
-export const getTestRequestData = async () => {
-    const {data} = await instance.get("/testRequest");
-    console.log(data);
-    return data;
+export const isUserRegistered = async (username) => {
+  const response = await instance.post(
+    "/auth/isUserRegistered",
+    { username: username },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+};
+
+export const getUserInformation = async () => {
+  const { data } = await instance.get("/user", { headers: authHeader() });
+  return data;
+};
+
+export const getUserBookings = async () => {
+  const { data } = await instance.get("/user/bookings", { headers: authHeader() });
+  return data;
+};
+
+export const login = async (username, password, setUser) => {
+    await instance.post("/auth/signin", {
+        username,
+        password
+    }).then(response => {
+        if (response.data.token) {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            setUser(getUser());
+        }
+    });
+}
+
+export const resetPasswordForEmail = async (email) => {
+  await instance.post("/auth/resetPassword", { email });
+}
+
+export const changePassword = async (token, newPassword) => {
+  await instance.post("/auth/changePassword", { token, newPassword });
+}
+
+export const updateUserInformation = async (newUser) => {
+  await instance.post("/user", newUser, { headers: authHeader() })
+}
+
+export const resendBookingConfirmation = async (id) => {
+  await instance.get("/user/tickets", { params: { bookingId: id }, headers: authHeader() })
+}
+
+export const logout = (setUser) => {
+    localStorage.removeItem("user");
+    setUser()
+}
+
+export const register = async (username, email, password) => {
+    await instance.post("/auth/signup", {
+        username,
+        email,
+        password
+    })
 }
 
 export const getMovies = async () => {
@@ -27,6 +86,12 @@ export const getMovies = async () => {
     return data;
 }
 
+
+  export const getWithFilters = async (dto) => {
+    const res = await instance.post("/movies/filters", dto );
+    return res;
+  }
+
 export const getFilmShowInformation = async (id) => {
     const {data} = await instance.get("/filmshows/" + id);
     console.log(data);
@@ -34,26 +99,13 @@ export const getFilmShowInformation = async (id) => {
 }
 
 export const reserveSeats = async (filmShowSeats, filmShowId) => {
-    const {data} = await instance.post("filmshows/" + filmShowId + "/seats",
-                                       filmShowSeats);
+  const {data} = await instance.post(
+    "filmshows/" + filmShowId + "/seats",
+    filmShowSeats
+  );
 
-    return data;
-}
-
-export const isUserRegistered = async (email) => {
-
-    // TODO
-
-    return true;
-}
-
-
-export const signIn = async (email, password) => {
-
-    // TODO
-
-    return true;
-}
+  return data;
+};
 
 export const getMovieById = async (id) => {
     const {data} = await instance.get("/movies/"+id);
@@ -61,13 +113,14 @@ export const getMovieById = async (id) => {
     return data;
   }
 
-  export const setBooking = async (bookingDTO) => {
-    const answer = await instance.post("/booking" ,
-                                       bookingDTO);
-    return answer;
-}
+export const setBooking = async (bookingDTO) => {
+  const answer = await instance.post("/booking", bookingDTO, {
+    headers: authHeader(),
+  });
+  return answer;
+};
 
 export const getCoupon = async (id) => {
     const {data} = await instance.get("/coupons/"+id);
     return data;
-  }
+}

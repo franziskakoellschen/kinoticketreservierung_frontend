@@ -4,10 +4,11 @@ import Field from '../Input/TextField';
 import React, { useState, useEffect } from 'react';
 import { getCoupon, setBooking } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import { alphanumericInputNotValid, houseNumberNotValid, mailNotValid, phoneNumberNotValid, postCodeNotValid } from '../../util/ValidationUtils';
+
 
 const BookingSummary = (props) => {
 
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const [agreedTermsAndConditions, setAgreedTermsAndConditions] = useState(false);
     const [totalSumBrutto, setTotalSumBrutto] = useState(0);
     const [couponInputValue, setCouponInputValue] = useState();
@@ -18,14 +19,6 @@ const BookingSummary = (props) => {
     const [ticketSummaryOpen, setTicketSummaryOpen] = useState(false);
     const [cuponInputOpen, setCuponInputOpen] = useState(false);
     const [summaryOpen, setSummaryOpen] = useState(true);
-
-    function mailNotVailid(inputValue) {
-        if (emailRegex.test(inputValue)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     useEffect(() => {
         var selectedSeats = props.selectedSeats;
@@ -62,104 +55,25 @@ const BookingSummary = (props) => {
         }
     }
 
-
-    function alphanunericInputNotValid(inputValue) {
-        if (isAlphaNumeric(inputValue) && inputValue.length > 0) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    function isAlphaNumeric(str) {
-        var code, i, len;
-        if (str === undefined) return false;
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if ( // numeric (0-9)
-                !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123) && 
-                !(code === 32) && 
-                !(code === 223)&&
-                !(code === 228)&&
-                !(code === 196)&&
-                !(code === 252)&&
-                !(code === 220)&&
-                !(code === 246)&&
-                !(code === 45)&&
-                !(code === 214) ) {
-                // lower alpha (a-z)
-                console.log('for ' + str + ' code' + code);
-                return false;
-            }
-        }
-        return true;
-    };
-
-    function houseNumberNotValid(str) {
-        var code, i, len;
-        if (str === undefined) return true;
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58) && // numeric (0-9)
-                !(code > 64 && code < 91) && // upper alpha (A-Z)
-                !(code > 96 && code < 123) && // lower alpha
-                !(code === 32) // spcae
-                && !(code === 46)) { // .
-                  
-              return true;
-            }
-        }
-        return false;
-    }
-    function postCodeNotValid(str) {
-        var code, i, len;
-        if (str === undefined) return true;
-        if (str.length !== 5) return true;
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58) && !(code === 32)) {
-                return true;
-            }
-        }
-        return false;
-    };
-
-    function phoneNumberNotValid(str) {
-        var code, i, len;
-        if (str === undefined) return false; //Die Möglichkeit geben keine Handynummer
-        for (i = 0, len = str.length; i < len; i++) {
-            code = str.charCodeAt(i);
-            if (!(code > 47 && code < 58) //0-9 ) {
-                && !(code === 32) // blank
-                && !(code === 43) // +
-                && !(code === 47)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     function onClick() {
 
         var wrongInputFields = '';
 
-        props.setEmailFormatIsWrong(mailNotVailid(props.emailInputValue));
-        props.setNameFormatIsWrong(alphanunericInputNotValid(props.nameInputValue));
-        props.setSurnameFormatIsWrong(alphanunericInputNotValid(props.surnameInputValue));
-        props.setStreetFormatIsWrong(alphanunericInputNotValid(props.streetInputValue));
+        props.setEmailFormatIsWrong(mailNotValid(props.emailInputValue));
+        props.setNameFormatIsWrong(alphanumericInputNotValid(props.nameInputValue));
+        props.setSurnameFormatIsWrong(alphanumericInputNotValid(props.surnameInputValue));
+        props.setStreetFormatIsWrong(alphanumericInputNotValid(props.streetInputValue));
         props.setHouseNumberFormatIsWrong(houseNumberNotValid(props.houseNumberInputValue));
         props.setPostCodeFormatIsWrong(postCodeNotValid(props.postCodeInputValue));
-        props.setCityFormatIsWrong(alphanunericInputNotValid(props.cityInputValue));
+        props.setCityFormatIsWrong(alphanumericInputNotValid(props.cityInputValue));
         props.setPhoneNumberFormatIsWrong(phoneNumberNotValid(props.phoneNumberInputValue));
 
 
         console.log(props.streetInputValue === '');
 
-        if (mailNotVailid(props.emailInputValue) || alphanunericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanunericInputNotValid(props.surnameInputValue) || alphanunericInputNotValid(props.streetInputValue) || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanunericInputNotValid(props.cityInputValue) || alphanunericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions) {
+        if (mailNotValid(props.emailInputValue) || alphanumericInputNotValid(props.nameInputValue) || phoneNumberNotValid(props.phoneNumberInputValue) || alphanumericInputNotValid(props.surnameInputValue) || alphanumericInputNotValid(props.streetInputValue) || houseNumberNotValid(props.houseNumberInputValue) || postCodeNotValid(props.postCodeInputValue) || alphanumericInputNotValid(props.cityInputValue) || alphanumericInputNotValid(props.cityInputValue) || !agreedTermsAndConditions) {
 
-            if (mailNotVailid(props.emailInputValue)) {
+            if (mailNotValid(props.emailInputValue)) {
 
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
@@ -168,7 +82,7 @@ const BookingSummary = (props) => {
                 wrongInputFields = wrongInputFields + ' E-Mail';
             }
 
-            if (alphanunericInputNotValid(props.nameInputValue)) {
+            if (alphanumericInputNotValid(props.nameInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -176,7 +90,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (alphanunericInputNotValid(props.surnameInputValue)) {
+            if (alphanumericInputNotValid(props.surnameInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -184,7 +98,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (alphanunericInputNotValid(props.streetInputValue)) {
+            if (alphanumericInputNotValid(props.streetInputValue)) {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -208,7 +122,7 @@ const BookingSummary = (props) => {
 
             }
 
-            if (alphanunericInputNotValid(props.cityInputValue) || props.cityInputValue === '') {
+            if (alphanumericInputNotValid(props.cityInputValue) || props.cityInputValue === '') {
                 if (wrongInputFields !== '') {
                     wrongInputFields = wrongInputFields + ',';
                 }
@@ -293,7 +207,7 @@ const BookingSummary = (props) => {
                         {cuponInputOpen ? <BsCaretUp /> : <BsCaretDown />} 
                     </button>
                 </div>
-                { cuponInputOpen && <div id="couponInput"><Field locked={false} focused={false} label={'Gutscheincode'} setInputValue={setCouponInputValue} error="ungültiger Code" id={"CouponInput"} wrongInput={couponFormatIsWrong} />
+                { cuponInputOpen && <div id="couponInput"><Field id="couponInput" locked={false} focused={false} label={'Gutscheincode'} setInputValue={setCouponInputValue} error="ungültiger Code" id={"CouponInput"} wrongInput={couponFormatIsWrong} />
                     <button id="checkoutButton" onClick={couponNotValid}>Gutschein anwenden</button>
                 </div>}
             </div>
@@ -312,7 +226,7 @@ const BookingSummary = (props) => {
                     <div id="firstRowSummary"><p id="totalSumP">Gesamtsumme</p><p id="totalSum">{totalSumBrutto - discountAmount} €</p></div>
                     <div id="firstRowSummary"><p id="subTotal">enthaltene Mehrwertssteuer</p><p id="totalSum">{(totalSumBrutto - discountAmount) * 0.19} €</p></div>
                 </div>}
-                <div id="couponInput"><Field locked={false} focused={false} label={'Kommentar'} /></div>
+                <div id="commentDiv"><Field id="commentField" locked={false} focused={false} label={'Kommentar'} /></div>
                 <div id="firstRowSummary"> 
                     <input type="checkbox" id="agree" onChange={onChange} />
                     <p id="agb">Bitte akzeptieren Sie unsere <span id="agb1">Allgemeinen Geschäftsbedingungen</span></p>

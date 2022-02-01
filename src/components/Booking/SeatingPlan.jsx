@@ -1,9 +1,10 @@
 import Row from './Row'
+import './Seat.css';
 
 const SeatingPlan = ({seatingPlan, toggleSeatSelected}) => {
 
     return (
-        <div>
+        <div className='SeatingplanContainer'>
             {!seatingPlan && "Not available"}
             {seatingPlan.length === 0 && "Not available"}
             {seatingPlan.length !== 0 && seatingPlan.map((row, index) => {
