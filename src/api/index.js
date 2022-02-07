@@ -39,6 +39,11 @@ export const getUserBookings = async () => {
   return data;
 };
 
+export const cancelBooking = async (id) => {
+  const { data } = await instance.post("/booking/cancel/" + id, {}, { headers: authHeader() });
+  return data;
+};
+
 export const login = async (username, password, setUser) => {
     await instance.post("/auth/signin", {
         username,
