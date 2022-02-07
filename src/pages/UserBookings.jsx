@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PopupContainer from "../components/Popup/PopupContainer";
 import Page from "../components/Page/Page";
-import { getUserBookings, resendBookingConfirmation } from "../api";
+import { cancelBooking, getUserBookings, resendBookingConfirmation } from "../api";
 
 const UserBookings = () => {
   const [bookings, setBookings] = useState();
@@ -14,6 +14,18 @@ const UserBookings = () => {
     } else {
       setShowDetails(id);
     }
+  };
+  const onCancelClick = (id) => {
+    async function fetchMyAPI(id) {
+      try {
+        await cancelBooking(id);
+      } catch (error) {
+        alert("Something went wrong");
+      }
+    }
+
+    fetchMyAPI(id);
+    window.location.reload(false);
   };
 
   const onResendClick = (id) => {
@@ -65,13 +77,22 @@ const UserBookings = () => {
                   </div>
                 </div>
                 {showDetails === booking.id && (
-                  <button
+                  <div>
+                    <button
+                      onClick={() => {
+                        onResendClick(booking.id);
+                      }}
+                    >
+                      Buchungsbestätigung erneut senden
+                    </button>
+                    <button
                     onClick={() => {
-                      onResendClick(booking.id);
+                      onCancelClick(booking.id);
                     }}
                   >
-                    Buchungsbestätigung erneut senden
+                    Buchung stornieren
                   </button>
+                </div>
                 )}
               </div>
             );
